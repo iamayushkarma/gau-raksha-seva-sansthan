@@ -1,9 +1,18 @@
 import "./App.css";
+import MainLayout from "./layout/MainLayout";
+import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h1>gau-raksha-seva-sansthan</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
