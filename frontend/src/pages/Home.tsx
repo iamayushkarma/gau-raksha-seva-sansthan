@@ -1,7 +1,11 @@
-import React from "react";
+import HeroSection from "../components/HeroSection";
 
 function Home() {
-  return <div>gau-raksha-seva-sansthan</div>;
+  return (
+    <div className="bg-background">
+      <HeroSection />
+    </div>
+  );
 }
 
 export default Home;

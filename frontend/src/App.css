@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--background);
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Primary Colors */
+  --color-primary: #ffde4d;
+  --color-primary-light: #ffeb80;
+  --color-primary-lighter: #fff5b3;
+  --color-primary-dark: #e6c61a;
+  --color-primary-darker: #ccad00;
+
+  /* Secondary/Accent Colors */
+  --color-secondary: #ff9d4d;
+  --color-accent: #4d9fff;
+  --color-accent-alt: #8d4dff;
+
+  /* Neutral Colors */
+  --color-background: #fff9ee;
+  --color-surface: #fffaed;
+  --color-surface-light: #fffdeb;
+  --color-border: #f5e6b8;
+  --color-divider: #ede4cc;
+
+  /* Text Colors */
+  --color-text-primary: #2d2400;
+  --color-text-secondary: #5c4d1a;
+  --color-text-tertiary: #8c7733;
+  --color-text-disabled: #b3a266;
+  --color-text-on-primary: #2d2400;
+
+  /* Semantic Colors */
+  --color-success: #6bc24d;
+  --color-warning: #ff9d4d;
+  --color-error: #ff4d4d;
+  --color-info: #4d9fff;
+
+  /* Interactive States */
+  --color-hover: #ffe680;
+  --color-active: #e6c61a;
+  --color-focus: #4d9fff;
+  --color-disabled: #f5f0d9;
+
+  /* Shadows & Overlays */
+  --shadow-sm: 0 1px 2px rgba(230, 198, 26, 0.1);
+  --shadow-md: 0 4px 6px rgba(230, 198, 26, 0.15);
+  --shadow-lg: 0 10px 25px rgba(230, 198, 26, 0.2);
+  --overlay: rgba(255, 222, 77, 0.1);
+}
