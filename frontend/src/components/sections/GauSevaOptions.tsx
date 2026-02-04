@@ -1,5 +1,5 @@
-import React from "react";
-import DonateNow from "../common/button/DonateNow";
+import React from 'react';
+import DonateNow from '../common/button/DonateNow';
 
 interface DonationOption {
   id: number;
@@ -13,61 +13,61 @@ const GauSevaOptions: React.FC = () => {
   const donationOptions: DonationOption[] = [
     {
       id: 1,
-      title: "First Roti for Cow",
-      description: "Provide the first meal of the day to hungry cows",
-      image: "https://placehold.co/600x400",
-      amount: "₹51",
+      title: 'First Roti for Cow',
+      description: 'Provide the first meal of the day to hungry cows',
+      image: 'https://placehold.co/600x400',
+      amount: '₹51',
     },
     {
       id: 2,
-      title: "Adopt Cow for 1 Month",
-      description: "Sponsor complete care for a cow including food and shelter",
-      image: "https://placehold.co/600x400",
-      amount: "₹2,100",
+      title: 'Adopt Cow for 1 Month',
+      description: 'Sponsor complete care for a cow including food and shelter',
+      image: 'https://placehold.co/600x400',
+      amount: '₹2,100',
     },
     {
       id: 3,
-      title: "Cow Treatment Seva",
+      title: 'Cow Treatment Seva',
       description:
-        "Support medical treatment and emergency care for injured cows",
-      image: "https://placehold.co/600x400",
-      amount: "₹1,100",
+        'Support medical treatment and emergency care for injured cows',
+      image: 'https://placehold.co/600x400',
+      amount: '₹1,100',
     },
     {
       id: 4,
-      title: "Cow Shed Seva",
-      description: "Help build and maintain safe shelters for rescued cows",
-      image: "https://placehold.co/600x400",
-      amount: "₹5,100",
+      title: 'Cow Shed Seva',
+      description: 'Help build and maintain safe shelters for rescued cows',
+      image: 'https://placehold.co/600x400',
+      amount: '₹5,100',
     },
     {
       id: 5,
-      title: "Feed 20 Cows",
-      description: "Provide nutritious meals for multiple cows for a day",
-      image: "https://placehold.co/600x400",
-      amount: "₹501",
+      title: 'Feed 20 Cows',
+      description: 'Provide nutritious meals for multiple cows for a day',
+      image: 'https://placehold.co/600x400',
+      amount: '₹501',
     },
     {
       id: 6,
-      title: "Adopt Calf for 1 Month",
-      description: "Support the growth and care of young calves",
-      image: "https://placehold.co/600x400",
-      amount: "₹1,500",
+      title: 'Adopt Calf for 1 Month',
+      description: 'Support the growth and care of young calves',
+      image: 'https://placehold.co/600x400',
+      amount: '₹1,500',
     },
     {
       id: 7,
-      title: "Medicines Kit for Cows",
-      description: "Provide essential medical supplies and medicines",
-      image: "https://placehold.co/600x400",
-      amount: "₹3,100",
+      title: 'Medicines Kit for Cows',
+      description: 'Provide essential medical supplies and medicines',
+      image: 'https://placehold.co/600x400',
+      amount: '₹3,100',
     },
     {
       id: 8,
-      title: "Green Fodder Seva",
+      title: 'Green Fodder Seva',
       description:
-        "Supply fresh, nutritious green fodder for healthy digestion",
-      image: "https://placehold.co/600x400",
-      amount: "₹751",
+        'Supply fresh, nutritious green fodder for healthy digestion',
+      image: 'https://placehold.co/600x400',
+      amount: '₹751',
     },
   ];
 

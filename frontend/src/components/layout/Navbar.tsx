@@ -1,4 +1,4 @@
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from 'react-icons/fa';
 
 function Navbar() {
   return (

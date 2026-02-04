@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 html {
   font-size: 16px;
@@ -9,7 +9,7 @@ html {
   height: 100%;
 }
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
@@ -19,6 +19,18 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+/* Chrome, Edge, Safari */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
