@@ -1,5 +1,5 @@
 import React from "react";
-import DonateNow from "../common/button/DonateNow";
+import DonateNowShimmer from "../common/button/DonateNowShimmer";
 
 function SupportGauSeva() {
   return (
@@ -30,7 +30,7 @@ function SupportGauSeva() {
             dignity. At Gau Raksha Seva Sansthan, we work every day to rescue,
             treat, and protect cows in need.
           </p>
-          <DonateNow />
+          <DonateNowShimmer />
         </div>
       </div>
     </section>
