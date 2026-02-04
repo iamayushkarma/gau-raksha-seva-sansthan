@@ -1,3 +1,4 @@
+import GauSevaOptions from "../components/sections/GauSevaOptions";
 import HeroSection from "../components/sections/HeroSection";
 import SupportGauSeva from "../components/sections/SupportGauSeva";
 
@@ -6,6 +7,7 @@ function Home() {
     <div className="bg-background">
       <HeroSection />
       <SupportGauSeva />
+      <GauSevaOptions />
     </div>
   );
 }
