@@ -7,7 +7,7 @@ const amounts = [501, 1001, 1501, 2101, 5101, 10001];
 
 function AmountSelect({ selectedAmount, onSelect }: AmountSelectProps) {
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 mt-4 w-full">
+    <div className="grid grid-cols-3 lg:grid-cols-6 gap-3 mt-4 w-full">
       {amounts.map((amount) => {
         const isSelected = selectedAmount === String(amount);
         return (

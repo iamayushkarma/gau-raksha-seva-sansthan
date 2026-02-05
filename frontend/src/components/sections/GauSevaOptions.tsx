@@ -125,7 +125,10 @@ const GauSevaOptions: React.FC = () => {
                 </p>
 
                 {/* Donate Button */}
-                <DonateNow />
+                <DonateNow
+                  scrollToId="donation-form"
+                  className="md:group-hover:translate-y-0 md:translate-y-2 lg:opacity-0 md:group-hover:opacity-100"
+                />
               </div>
             </div>
           ))}

@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import GauSevaSelect from '../common/form/GauSevaSelect';
 import AmountSelect from '../common/form/AmountSelect';
+import DonateNow from '../common/button/DonateNow';
+
+type InputFormPropType = {
+  label: string;
+  onChangeFunction?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 function DonationForm() {
   const [amount, setAmount] = useState<string>('');
@@ -35,8 +41,8 @@ function DonationForm() {
         Support Gau Seva and help us care for cows in need
       </h2>
       {/* Form */}
-      <div className="bg-background rounded-lg mt-16 w-full flex flex-row px-4 md:px-6 py-6">
-        <div className="lg:w-1/2 flex flex-row">
+      <div className="bg-background rounded-lg mt-16 content-center md:w-full grid md:grid-cols-2 px-4 md:px-6 py-6">
+        <div className="w-full lg:flex lg:flex-row">
           <form id="donation-form" action="">
             <div className="flex flex-col lg:flex-row md:gap-3">
               <div>
@@ -50,22 +56,15 @@ function DonationForm() {
                 <GauSevaSelect />
               </div>
               <div className="max-sm:mt-4">
-                <label className="font-medium" htmlFor="amount">
-                  Amount
-                </label>
-                <input
-                  type="text"
+                <FormInput
+                  label="Amount"
+                  type="string"
+                  value={amount}
+                  onChangeFunction={(e) => handleAmountChange(e.target.value)}
+                  placeholder="Any amount"
+                  className={error && 'border-error'}
                   inputMode="numeric"
                   pattern="[0-9]*"
-                  value={amount}
-                  onChange={(e) => handleAmountChange(e.target.value)}
-                  placeholder="Any amount"
-                  className={`w-full rounded-lg font-medium mt-2 border-2 bg-surface px-4 py-2 focus:outline-none
-                  ${
-                    error
-                      ? 'border-error'
-                      : 'border-text-primary/30 focus:border-text-secondary'
-                  }`}
                 />
 
                 {error && <p className="text-error text-sm mt-1">{error}</p>}
@@ -75,12 +74,66 @@ function DonationForm() {
               onSelect={handleAmountChange}
               selectedAmount={amount}
             />
+            {/* Other inputs */}
+            <div className="mt-8 grid md:grid-cols-2 gap-4">
+              {/* Name */}
+              <FormInput label="Name" placeholder="Your Name" />
+              {/* Number */}
+              <FormInput label="Number" placeholder="Your Number" />
+              {/* Email */}
+              <FormInput label="Email" type="email" placeholder="Your Email" />
+              {/* Pincode */}
+              <FormInput
+                label="Pincode"
+                placeholder="Your City Pincode"
+                max={6}
+                min={6}
+              />
+            </div>
+            {/* Submit button */}
+            <div className="mt-6">
+              <DonateNow />
+            </div>
           </form>
         </div>
-        <div className=""></div>
+        <div className="bg-primary/15 rounded-lg px-6 py-4 max-sm:mt-6 w-full">
+          <div>
+            <div>
+              <h3 className="font-bold text-[0.9rem] sm:text-md md:text-lg">
+                For UPI & QR
+              </h3>
+              <img
+                className="size-40 mt-3"
+                src="https://placehold.co/400x400"
+              />
+            </div>
+            <div></div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 export default DonationForm;
+
+function FormInput({
+  onChangeFunction,
+  className,
+  label,
+  ...rest
+}: InputFormPropType) {
+  return (
+    <div className="flex flex-col">
+      <label className="font-medium" htmlFor={label.toLowerCase()}>
+        {label}
+      </label>
+      <input
+        id={label.toLowerCase()}
+        onChange={onChangeFunction}
+        className={`${className} placeholder:text-sm w-full rounded-lg font-medium mt-2 border-2 border-text-primary/30 focus:border-text-secondary bg-surface px-4 py-2 focus:outline-none`}
+        {...rest}
+      />
+    </div>
+  );
+}

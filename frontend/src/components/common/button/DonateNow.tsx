@@ -1,10 +1,33 @@
-function DonateNow() {
+type DonateNowProp = {
+  className?: string;
+  onClick?: () => void;
+  scrollToId?: string;
+};
+
+function DonateNow({ className, onClick, scrollToId }: DonateNowProp) {
+  function handleClick() {
+    onClick?.();
+    if (scrollToId) {
+      document.getElementById(scrollToId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
+
   return (
-    <a href="#donation-form">
-      <button className="w-full bg-text-primary text-primary-dark active:scale-[0.98] font-semibold py-3 rounded-lg hover:bg-text-secondary transition-all duration-300 transform md:group-hover:translate-y-0 md:translate-y-2 lg:opacity-0 md:group-hover:opacity-100">
-        Donate Now
-      </button>
-    </a>
+    <button
+      type="button"
+      onClick={handleClick}
+      className={`${className} w-full text-center
+      bg-text-primary text-primary-dark
+      font-semibold py-3 rounded-lg
+      hover:bg-text-secondary
+      active:scale-[0.98]
+      transition-all duration-300`}
+    >
+      Donate Now
+    </button>
   );
 }
 
