@@ -71,10 +71,10 @@ const GauSevaOptions: React.FC = () => {
     },
   ];
 
-  const handleDonate = (option: DonationOption): void => {
-    console.log(`Donating for: ${option.title}`);
-    // Add your donation logic here
-  };
+  // const handleDonate = (option: DonationOption): void => {
+  //   console.log(`Donating for: ${option.title}`);
+  //   // Add your donation logic here
+  // };
 
   return (
     <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">

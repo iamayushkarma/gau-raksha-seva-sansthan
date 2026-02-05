@@ -1,9 +1,12 @@
 function DonateNowShimmer() {
   return (
     <>
-      <button className="donate-btn mt-2">
-        <span className="donate-text">Donate Now</span>
-      </button>
+      <a href="#donation-form">
+        <button className="donate-btn mt-2">
+          <span className="donate-text">Donate Now</span>
+        </button>
+      </a>
+
       <style>{`
         .donate-btn {
           position: relative;
