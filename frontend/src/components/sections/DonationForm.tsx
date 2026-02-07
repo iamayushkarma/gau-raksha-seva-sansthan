@@ -2,6 +2,7 @@ import { useState } from 'react';
 import GauSevaSelect from '../common/form/GauSevaSelect';
 import AmountSelect from '../common/form/AmountSelect';
 import DonateNow from '../common/button/DonateNow';
+import CopyField from '../ui/CopyField';
 
 type InputFormPropType = {
   label: string;
@@ -106,6 +107,10 @@ function DonationForm() {
                 className="size-40 mt-3"
                 src="https://placehold.co/400x400"
               />
+              {/* copy feild */}
+              <div className="w-38 mt-2">
+                <CopyField text="demobank@bank" />
+              </div>
             </div>
             <div></div>
           </div>
