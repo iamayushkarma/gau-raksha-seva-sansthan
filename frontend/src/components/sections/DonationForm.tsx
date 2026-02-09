@@ -98,7 +98,7 @@ function DonationForm() {
           </form>
         </div>
         <div className="bg-primary/15 rounded-lg px-6 py-4 max-sm:mt-6 w-full">
-          <div>
+          <div className="flex justify-between ">
             <div>
               <h3 className="font-bold text-[0.9rem] sm:text-md md:text-lg">
                 For UPI & QR
@@ -108,11 +108,15 @@ function DonationForm() {
                 src="https://placehold.co/400x400"
               />
               {/* copy feild */}
-              <div className="w-38 mt-2">
+              <div className="w-36 mt-2">
                 <CopyField text="demobank@bank" />
               </div>
             </div>
-            <div></div>
+            <div>
+              <h3 className="font-bold text-[0.9rem] sm:text-md md:text-lg">
+                For Bank Transfer
+              </h3>
+            </div>
           </div>
         </div>
       </div>
