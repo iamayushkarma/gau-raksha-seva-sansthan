@@ -9,11 +9,6 @@ function SupportGauSeva() {
         <div className="lg:w-1/2 p-2 md:p-5">
           <img
             src="https://placehold.co/1000x667" // (3:2 ratio)
-            // srcSet="
-            //     /images/support-gau-seva-sm.jpg 480w,   // 480x320 for mobile
-            //     /images/support-gau-seva-md.jpg 768w,   // 768x512 for tablet
-            //     /images/support-gau-seva-lg.jpg 1000w   // 1000x667 for desktop
-            //   "
             sizes="(max-width: 768px) 100vw, 50vw"
             alt="Gau Mata being cared for at our shelter"
             loading="lazy"
