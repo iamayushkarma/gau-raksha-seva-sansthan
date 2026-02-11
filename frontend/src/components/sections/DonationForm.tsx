@@ -32,7 +32,7 @@ function DonationForm() {
         Support Gau Seva and help us care for cows in need
       </h2>
       {/* Form */}
-      <div className="bg-background rounded-lg mt-16 content-center md:w-full grid md:grid-cols-2 px-4 md:px-6 py-6">
+      <div className="bg-background rounded-lg mt-16 content-center md:w-full grid lg:grid-cols-2 px-4 md:px-6 py-6">
         <div className="w-full lg:flex lg:flex-row">
           <form id="donation-form" action="">
             <DonarInformation />

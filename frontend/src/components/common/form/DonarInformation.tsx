@@ -22,7 +22,7 @@ function DonarInformation() {
           min={6}
         />
         {/* Anonymous donation */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center">
           <Checkbox id="anonymous" />
           <label
             className="ml-2 block text-sm text-text-muted"

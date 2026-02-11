@@ -52,7 +52,7 @@ const StyledWrapper = styled.div`
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke: #c8ccd4;
+    stroke: #c0baa6;
     stroke-width: 1.5;
     transform: translate3d(0, 0, 0);
     transition: all 0.2s ease;
