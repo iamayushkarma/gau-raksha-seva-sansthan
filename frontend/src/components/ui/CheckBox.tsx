@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import type { CheckBoxType } from '@/types/formtypes';
 
-const Checkbox = ({ id }: CheckBoxType) => {
+const Checkbox = ({ id, checked, onChange }: CheckBoxType) => {
   return (
     <StyledWrapper>
       <div className="container">
@@ -9,6 +9,8 @@ const Checkbox = ({ id }: CheckBoxType) => {
           type="checkbox"
           className="checkbox-input"
           id={id}
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
           style={{ display: 'none' }}
         />
         <label htmlFor={id} className="check cbx">

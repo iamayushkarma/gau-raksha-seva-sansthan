@@ -1,36 +1,56 @@
 import Checkbox from '@/components/ui/CheckBox';
 import { FormInput } from '@/components/common/form/FormInput';
+import { useState } from 'react';
 
 function DonarInformation() {
+  const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
+
   return (
     <section className="bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
       <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
         <h2 className="text-xl font-bold text-text-deep">Donor Information</h2>
       </div>
-      <div className="mt-8 grid  md:grid-cols-2 gap-4 ">
-        {/* Name */}
-        <FormInput label="Name" placeholder="Your Name" />
-        {/* Number */}
-        <FormInput label="Number" placeholder="Your Number" />
-        {/* Email */}
-        <FormInput label="Email" type="email" placeholder="Your Email" />
-        {/* Pincode */}
+
+      <fieldset
+        disabled={isAnonymous}
+        className={`mt-8 grid md:grid-cols-2 gap-4 
+          ${isAnonymous ? 'opacity-50' : ''}`}
+      >
+        <FormInput
+          label="Name"
+          placeholder="Your Name"
+          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
+        />
+        <FormInput
+          label="Number"
+          placeholder="Your Number"
+          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
+        />
+        <FormInput
+          label="Email"
+          type="email"
+          placeholder="Your Email"
+          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
+        />
         <FormInput
           label="Pincode"
           placeholder="Your City Pincode"
-          max={6}
-          min={6}
+          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
         />
-        {/* Anonymous donation */}
-        <div className="flex items-center">
-          <Checkbox id="anonymous" />
-          <label
-            className="ml-2 block text-sm text-text-muted"
-            htmlFor="anonymous"
-          >
-            Make this donation anonymous
-          </label>
-        </div>
+      </fieldset>
+
+      <div className="flex items-center mt-4">
+        <Checkbox
+          id="anonymous"
+          checked={isAnonymous}
+          onChange={setIsAnonymous}
+        />
+        <label
+          className="ml-2 text-sm text-text-muted select-none"
+          htmlFor="anonymous"
+        >
+          Make this donation anonymous
+        </label>
       </div>
     </section>
   );

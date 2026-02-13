@@ -6,6 +6,8 @@ type InputFormPropType = {
 
 type CheckBoxType = {
   id: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 };
 
 type DonationDetailsProp = {

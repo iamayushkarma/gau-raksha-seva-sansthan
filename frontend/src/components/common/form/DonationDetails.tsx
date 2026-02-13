@@ -9,7 +9,7 @@ function DonationDetails({
   onAmountChange,
 }: DonationDetailsProp) {
   return (
-    <section className="mt-8 bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
+    <section className="mt-8 select-none bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
       <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
         <h2 className="text-xl font-bold text-text-deep">Donation Details</h2>
       </div>

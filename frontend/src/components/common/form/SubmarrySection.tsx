@@ -12,7 +12,7 @@ const bankDetails = [
 function SubmarrySection() {
   const { sevaValue, amount } = useDonationFormContext();
   return (
-    <div className="bg-surface relative shadow-md lg:max-w-lg overflow-hidden mx-auto rounded-lg px-6 py-4 max-sm:mt-6 w-full">
+    <div className="bg-surface border border-divider  relative shadow-md lg:max-w-lg overflow-hidden mx-auto rounded-lg px-6 py-4 max-sm:mt-6 w-full">
       <div className="absolute inset-0 h-1.5 bg-linear-to-r from-primary to-secondary"></div>
       {/* User detail */}
       <div className="py-6 border-b-2 border-dashed border-divider">
