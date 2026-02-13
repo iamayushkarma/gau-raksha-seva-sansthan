@@ -1,4 +1,3 @@
-import React from 'react';
 import DonateNowShimmer from '../common/button/DonateNowShimmer';
 
 function SupportGauSeva() {

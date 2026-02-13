@@ -1,3 +1,4 @@
+import AboutOurGaushala from '@/components/sections/AboutOurGaushala';
 import DonationForm from '../components/sections/DonationForm';
 import GauSevaOptions from '../components/sections/GauSevaOptions';
 import HeroSection from '../components/sections/HeroSection';
@@ -8,6 +9,7 @@ function Home() {
     <div className="bg-background">
       <HeroSection />
       <SupportGauSeva />
+      <AboutOurGaushala />
       <GauSevaOptions />
       <DonationForm />
     </div>
