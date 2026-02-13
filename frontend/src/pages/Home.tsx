@@ -3,6 +3,7 @@ import DonationForm from '../components/sections/DonationForm';
 import GauSevaOptions from '../components/sections/GauSevaOptions';
 import HeroSection from '../components/sections/HeroSection';
 import SupportGauSeva from '../components/sections/SupportGauSeva';
+import OurServices from '@/components/sections/OurServices';
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <SupportGauSeva />
       <AboutOurGaushala />
       <GauSevaOptions />
+      <OurServices />
       <DonationForm />
     </div>
   );
