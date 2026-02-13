@@ -1,11 +1,13 @@
-export interface Service {
+interface Service {
   title: string;
   description: string;
   img: string;
 }
 
-export interface SectionHeaderProps {
+interface SectionHeaderProps {
   badge: string;
   title: string;
   description?: string;
 }
+
+export type { Service, SectionHeaderProps };

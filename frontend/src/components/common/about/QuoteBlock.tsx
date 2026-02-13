@@ -1,5 +1,3 @@
-import React from 'react';
-
 function QuoteBlock() {
   return (
     <div className="relative bg-surface-light p-6 rounded-xl border border-primary/20 flex gap-4 items-center">

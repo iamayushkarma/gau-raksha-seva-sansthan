@@ -1,5 +1,5 @@
 import { ChevronsUpDown } from 'lucide-react';
-import { useRef, useState, useLayoutEffect, useEffect } from 'react';
+import { useRef, useLayoutEffect, useEffect } from 'react';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 
 const sevas = [

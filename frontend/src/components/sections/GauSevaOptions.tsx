@@ -1,5 +1,5 @@
 import React from 'react';
-import DonateNow from '../common/button/DonateNow';
+import DonateNow from '@/components/common/button/DonateNow';
 
 interface DonationOption {
   id: number;

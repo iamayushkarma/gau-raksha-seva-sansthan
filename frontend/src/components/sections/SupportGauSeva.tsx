@@ -1,4 +1,4 @@
-import DonateNowShimmer from '../common/button/DonateNowShimmer';
+import DonateNowShimmer from '@/components/common/button/DonateNowShimmer';
 
 function SupportGauSeva() {
   return (

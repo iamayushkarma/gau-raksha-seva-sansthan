@@ -1,5 +1,3 @@
-import React from 'react';
-
 function OurJourney() {
   return (
     <div className="relative pl-8 border-l-2 border-primary/20 space-y-6">

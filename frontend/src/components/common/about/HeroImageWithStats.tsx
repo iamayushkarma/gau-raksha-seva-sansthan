@@ -1,5 +1,3 @@
-import React from 'react';
-
 function HeroImageWithStats() {
   return (
     <div className="relative group h-125 lg:h-150 w-full rounded-2xl overflow-hidden shadow-lg">

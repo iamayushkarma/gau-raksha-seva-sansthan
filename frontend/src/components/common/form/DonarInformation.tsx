@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import Checkbox from '@/components/ui/CheckBox';
 import { FormInput } from '@/components/common/form/FormInput';
-import { useState } from 'react';
 
 function DonarInformation() {
   const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
