@@ -26,7 +26,7 @@ function DonarInformation() {
           placeholder="Your Number"
           className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
         />
-        <FormInput
+        {/* <FormInput
           label="Email"
           type="email"
           placeholder="Your Email"
@@ -36,7 +36,7 @@ function DonarInformation() {
           label="Pincode"
           placeholder="Your City Pincode"
           className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
-        />
+        /> */}
       </fieldset>
 
       <div className="flex items-center mt-4">

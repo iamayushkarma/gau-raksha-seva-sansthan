@@ -1,19 +1,18 @@
+import { UPI_PAYMENT_CONFIG } from '@/config/payment';
+import toast from 'react-hot-toast';
+
 export function payNow(amount: number) {
   if (!amount || amount <= 0) {
-    alert('Enter valid amount');
+    toast.error('Enter valid amount');
     return;
   }
 
-  const upiID = 'ravikarma2020@okicici';
-  const name = 'Ravi Gau Care';
-  const note = 'Cow Support';
-
   const url =
-    `upi://pay?pa=${upiID}` +
-    `&pn=${encodeURIComponent(name)}` +
+    `upi://pay?pa=${UPI_PAYMENT_CONFIG.upiId}` +
+    `&pn=${encodeURIComponent(UPI_PAYMENT_CONFIG.payeeName)}` +
     `&am=${amount}` +
     `&cu=INR` +
-    `&tn=${encodeURIComponent(note)}`;
+    `&tn=${encodeURIComponent(UPI_PAYMENT_CONFIG.transactionNote)}`;
 
   window.location.href = url;
 }
