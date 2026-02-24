@@ -38,20 +38,6 @@ function DonationDetails({
 
           {error && <p className="text-error text-sm mt-1">{error}</p>}
           <AmountSelect onSelect={onAmountChange} selectedAmount={amount} />
-          <div className="mt-8">
-            <label
-              className="block text-sm font-semibold text-text-deep mb-2"
-              htmlFor="message"
-            >
-              Message of Support (Optional)
-            </label>
-            <textarea
-              className="w-full px-4 py-3 h-28 resize-none rounded-lg border-2 border-text-primary/30 focus:border-text-secondary bg-background text-text-deep placeholder-text-muted/50"
-              id="message"
-              placeholder="Add any message, prayer, or special request..."
-              rows={3}
-            ></textarea>
-          </div>
         </div>
       </div>
     </section>

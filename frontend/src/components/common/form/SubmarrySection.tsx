@@ -1,14 +1,7 @@
-import CopyField from '@/components/ui/CopyField';
 import { QrCode } from 'lucide-react';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 import DonateNow from '@/components/common/button/DonateNow';
 import { payNow } from '@/utils/functions/payNow';
-
-const bankDetails = [
-  { label: 'Account Name', value: 'Hare Krishna Movement Jaipur Account' },
-  { label: 'Number', value: '854154150175684' },
-  { label: 'Bank Name', value: 'ICICI Bank' },
-];
 
 function SubmarrySection() {
   const { sevaValue, amount } = useDonationFormContext();
@@ -46,21 +39,6 @@ function SubmarrySection() {
         <p className="text-center mt-4 text-sm text-text-secondary font-medium">
           Supports Google Pay, Phone Pay & Banking Apps
         </p>
-      </div>
-      {/* Bank transfer */}
-      <div className="p-4 bg-divider/30 mt-4 rounded-lg border-2 border-divider">
-        <h3 className="mt-4 text-md text-text-primary font-semibold">
-          Bank Transfer
-        </h3>
-        {bankDetails.map((item) => (
-          <div key={item.label} className="flex flex-col mt-3">
-            {/* label */}
-            <span className="text-sm text-text-muted font-medium">
-              {item.label}
-            </span>
-            <CopyField text={item.value} />
-          </div>
-        ))}
       </div>
       {/* Submit button */}
       <div className="mt-6">
