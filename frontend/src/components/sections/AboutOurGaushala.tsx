@@ -59,7 +59,7 @@ function AboutOurGaushala() {
 
           {/* CTA & Trust Badges */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
-            <DonateNow />
+            <DonateNow scrollToId="donation-form" />
             <div className="flex items-center gap-4 text-xs font-medium text-text-tertiary">
               <div className="flex items-center gap-1.5 min-w-36 bg-surface px-3 py-1.5 rounded-full border border-border">
                 <Shield className="text-success w-4 h-4" />
