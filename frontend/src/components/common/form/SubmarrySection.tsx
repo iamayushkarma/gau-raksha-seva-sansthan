@@ -2,6 +2,7 @@ import CopyField from '@/components/ui/CopyField';
 import { QrCode } from 'lucide-react';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 import DonateNow from '@/components/common/button/DonateNow';
+import { payNow } from '@/utils/functions/payNow';
 
 const bankDetails = [
   { label: 'Account Name', value: 'Hare Krishna Movement Jaipur Account' },
@@ -63,7 +64,7 @@ function SubmarrySection() {
       </div>
       {/* Submit button */}
       <div className="mt-6">
-        <DonateNow />
+        <DonateNow onClick={() => payNow(Number(amount))} />
       </div>
     </div>
   );

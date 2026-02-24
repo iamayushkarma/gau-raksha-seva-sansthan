@@ -1,11 +1,5 @@
-import useDonationFormContext from '@/hooks/useDonationFormContext';
-
-export function payNow() {
-  const { amount } = useDonationFormContext();
-
-  const numericAmount = Number(amount);
-
-  if (!numericAmount || numericAmount <= 0 || isNaN(numericAmount)) {
+export function payNow(amount: number) {
+  if (!amount || amount <= 0) {
     alert('Enter valid amount');
     return;
   }
@@ -17,7 +11,7 @@ export function payNow() {
   const url =
     `upi://pay?pa=${upiID}` +
     `&pn=${encodeURIComponent(name)}` +
-    `&am=${numericAmount}` +
+    `&am=${amount}` +
     `&cu=INR` +
     `&tn=${encodeURIComponent(note)}`;
 
