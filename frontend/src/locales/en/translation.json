@@ -111,5 +111,39 @@
     "title": "Support Gau Mata Through Your Help",
     "description": "Cows need care, food, and medical support to live safely and with dignity. At Gau Raksha Seva Sansthan, we work every day to rescue, treat, and protect cows in need.",
     "imageAlt": "Gau Mata being cared for at our shelter"
+  },
+  "donationForm": {
+    "main_title": "Support Gau Seva and help us care for cows in need",
+
+    "donor_info_title": "Donor Information",
+    "name": "Name",
+    "name_placeholder": "Your Name",
+    "number": "Number",
+    "number_placeholder": "Your Number",
+    "anonymous": "Make this donation anonymous",
+
+    "donation_details_title": "Donation Details",
+    "select_seva": "Select Seva",
+    "amount": "Amount",
+    "amount_placeholder": "Any amount",
+    "seva_options": [
+      "Donate Where Needed Most",
+      "First Roti for Cow",
+      "Adopt Cow for 1 Month",
+      "Cow Treatment Seva",
+      "Cow Shed Seva",
+      "Feed 20 Cows",
+      "Adopt Calf for 1 Month",
+      "Medicines Kit for Cows",
+      "Green Fodder Seva"
+    ],
+    "summary": {
+      "title": "Summary",
+      "support_category": "Support Category",
+      "select_one": "Select one",
+      "total_contribution": "Total Contribution",
+      "scan_to_pay": "Scan to Pay Instantly",
+      "payment_methods": "Supports Google Pay, Phone Pay & Banking Apps"
+    }
   }
 }

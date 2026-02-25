@@ -1,18 +1,7 @@
 import { ChevronsUpDown } from 'lucide-react';
 import { useRef, useLayoutEffect, useEffect } from 'react';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
-
-const sevas = [
-  'Donate Where Needed Most',
-  'First Roti for Cow',
-  'Adopt Cow for 1 Month',
-  'Cow Treatment Seva',
-  'Cow Shed Seva',
-  'Feed 20 Cows',
-  'Adopt Calf for 1 Month',
-  'Medicines Kit for Cows',
-  'Green Fodder Seva',
-];
+import { useTranslation } from 'react-i18next';
 
 function GauSevaSelect() {
   const {
@@ -23,9 +12,14 @@ function GauSevaSelect() {
     openUpwards,
     setOpenUpwards,
   } = useDonationFormContext();
-
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const sevas = t('donationForm.seva_options', {
+    returnObjects: true,
+  }) as string[];
+
   function toggleDropdown() {
     setShowDropdown((value) => !value);
   }
@@ -67,7 +61,7 @@ function GauSevaSelect() {
         type="text"
         readOnly
         value={sevaValue}
-        placeholder="Select seva"
+        placeholder={t('donationForm.select_seva')}
         onClick={toggleDropdown}
         className="w-full rounded-lg font-medium cursor-pointer relative border-2 border-text-primary/30 bg-surface pr-6 px-4 py-2 text-text-primary focus:outline-none
           focus:border-text-secondary"

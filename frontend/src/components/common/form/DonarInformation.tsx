@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import Checkbox from '@/components/ui/CheckBox';
 import { FormInput } from '@/components/common/form/FormInput';
+import { useTranslation } from 'react-i18next';
 
 function DonarInformation() {
+  const { t } = useTranslation();
   const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
 
   return (
     <section className="bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
       <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
-        <h2 className="text-xl font-bold text-text-deep">Donor Information</h2>
+        <h2 className="text-xl font-bold text-text-deep">
+          {t('donationForm.donor_info_title')}
+        </h2>
       </div>
 
       <fieldset
@@ -17,26 +21,15 @@ function DonarInformation() {
           ${isAnonymous ? 'opacity-50' : ''}`}
       >
         <FormInput
-          label="Name"
-          placeholder="Your Name"
+          label={t('donationForm.name')}
+          placeholder={t('donationForm.name_placeholder')}
           className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
         />
         <FormInput
-          label="Number"
-          placeholder="Your Number"
+          label={t('donationForm.number')}
+          placeholder={t('donationForm.number_placeholder')}
           className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
         />
-        {/* <FormInput
-          label="Email"
-          type="email"
-          placeholder="Your Email"
-          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
-        />
-        <FormInput
-          label="Pincode"
-          placeholder="Your City Pincode"
-          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
-        /> */}
       </fieldset>
 
       <div className="flex items-center mt-4">
@@ -49,7 +42,7 @@ function DonarInformation() {
           className="ml-2 text-sm text-text-muted select-none"
           htmlFor="anonymous"
         >
-          Make this donation anonymous
+          {t('donationForm.anonymous')}
         </label>
       </div>
     </section>

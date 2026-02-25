@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import GauSevaSelect from '@/components/common/form/GauSevaSelect';
 import { FormInput } from '@/components/common/form/FormInput';
 import AmountSelect from '@/components/common/form/AmountSelect';
@@ -8,10 +9,13 @@ function DonationDetails({
   error,
   onAmountChange,
 }: DonationDetailsProp) {
+  const { t } = useTranslation();
   return (
     <section className="mt-8 select-none bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
       <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
-        <h2 className="text-xl font-bold text-text-deep">Donation Details</h2>
+        <h2 className="text-xl font-bold text-text-deep">
+          {t('donationForm.donation_details_title')}
+        </h2>
       </div>
       <div className="flex flex-col gap-4">
         <div>
@@ -19,18 +23,18 @@ function DonationDetails({
             htmlFor="seva"
             className="block mb-2 font-medium text-text-primary"
           >
-            Select Seva
+            {t('donationForm.select_seva')}
           </label>
 
           <GauSevaSelect />
         </div>
         <div className="max-sm:mt-4">
           <FormInput
-            label="Amount"
+            label={t('donationForm.amount')}
+            placeholder={t('donationForm.amount_placeholder')}
             type="string"
             value={amount}
             onChangeFunction={(e) => onAmountChange(e.target.value)}
-            placeholder="Any amount"
             className={error && 'border-error'}
             inputMode="numeric"
             pattern="[0-9]*"
