@@ -1,0 +1,39 @@
+{
+  "welcome": "Welcome",
+  "donate": "Donate Now",
+  "change_language": "Change Language",
+
+  "about": {
+    "who_we_are": "Who We Are",
+    "title": "About Our",
+    "gaushala": "Gaushala",
+    "description": "At Gau Raksha Seva Sansthan, we believe that serving cows is serving humanity. Since our inception, we have been a sanctuary for abandoned, sick, and injured cows, providing them with a loving home, medical care, and dignity.",
+
+    "registered_ngo": "Registered NGO",
+    "tax_exempt": "80G Tax Exempt",
+
+    "mission_title": "Our Mission",
+    "mission_desc": "To protect and serve every stray cow, ensuring they live a life free from hunger, cruelty, and neglect through dedicated rescue operations.",
+
+    "vision_title": "Our Vision",
+    "vision_desc": "A compassionate world where no cow goes hungry or homeless, and traditional values of cow protection are upheld with modern care.",
+
+    "journey_title": "Our Journey",
+    "journey_desc": "Started in 2015 with just 2 rescued cows in a small shed, we have grown into a family of over 500+ cattle, supported by a dedicated team of veterinarians and volunteers. Our journey is a testament to the community's trust and support.",
+
+    "different_title": "What Makes Us Different",
+    "feature1_title": "24/7 Emergency Rescue & Medical Care",
+    "feature1_desc": "Immediate ambulance service for injured street cows.",
+    "feature2_title": "Organic Fodder & Clean Environment",
+    "feature2_desc": "Nutritious, chemical-free diet and hygienic shelters.",
+    "feature3_title": "Lifetime Sanctuary",
+    "feature3_desc": "Old and non-milking cows are cared for until their last breath.",
+
+    "cows_rescued": "Cows Rescued",
+    "acres_land": "Acres Land",
+    "vet_care": "Vet Care",
+
+    "quote": "The greatness of a nation and its moral progress can be judged by the way its animals are treated.",
+    "mahathma": "Mahatma Gandhi"
+  }
+}

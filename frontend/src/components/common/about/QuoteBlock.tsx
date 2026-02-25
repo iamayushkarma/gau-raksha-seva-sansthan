@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 function QuoteBlock() {
+  const { t } = useTranslation();
   return (
     <div className="relative bg-surface-light p-6 rounded-xl border border-primary/20 flex gap-4 items-center">
       <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden border-2 border-surface shadow-md">
@@ -9,12 +12,9 @@ function QuoteBlock() {
         />
       </div>
       <div>
-        <p className="text-sm italic text-text-secondary">
-          "The greatness of a nation and its moral progress can be judged by the
-          way its animals are treated."
-        </p>
+        <p className="text-sm italic text-text-secondary">{t('about.quote')}</p>
         <span className="block mt-1 text-xs font-bold text-primary">
-          - Mahatma Gandhi
+          - {t('about.mahathma')}
         </span>
       </div>
     </div>

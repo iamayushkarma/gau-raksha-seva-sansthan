@@ -1,4 +1,5 @@
 import { FaWhatsapp } from 'react-icons/fa';
+import ChangeLanguage from '../common/button/ChangeLanguage';
 
 function Navbar() {
   return (
@@ -9,6 +10,7 @@ function Navbar() {
         </p>
       </div>
       <div className="flex gap-3 items-center">
+        <ChangeLanguage />
         <a
           href="https://wa.me/number"
           target="_blank"

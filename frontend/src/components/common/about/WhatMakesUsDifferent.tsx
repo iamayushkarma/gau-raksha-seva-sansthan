@@ -1,11 +1,13 @@
 import { Heart, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function WhatMakesUsDifferent() {
+  const { t } = useTranslation();
   return (
     <div className="bg-primary/5 p-6 sm:p-8 rounded-xl">
       <h3 className="text-xl font-bold text-text-primary mb-6 flex items-center gap-2">
         <Heart className="text-primary" />
-        What Makes Us Different
+        {t('about.different_title')}
       </h3>
       <ul className="space-y-4">
         <li className="flex items-start gap-3">
@@ -14,10 +16,10 @@ function WhatMakesUsDifferent() {
           </span>
           <div>
             <strong className="block text-text-primary">
-              24/7 Emergency Rescue & Medical Care
+              {t('about.feature1_title')}
             </strong>
             <span className="text-sm text-text-tertiary">
-              Immediate ambulance service for injured street cows.
+              {t('about.feature1_desc')}
             </span>
           </div>
         </li>
@@ -27,10 +29,10 @@ function WhatMakesUsDifferent() {
           </span>
           <div>
             <strong className="block text-text-primary">
-              Organic Fodder & Clean Environment
+              {t('about.feature2_title')}
             </strong>
             <span className="text-sm text-text-tertiary">
-              Nutritious, chemical-free diet and hygienic shelters.
+              {t('about.feature2_desc')}
             </span>
           </div>
         </li>
@@ -40,10 +42,10 @@ function WhatMakesUsDifferent() {
           </span>
           <div>
             <strong className="block text-text-primary">
-              Lifetime Sanctuary
+              {t('about.feature3_title')}
             </strong>
             <span className="text-sm text-text-tertiary">
-              Old and non-milking cows are cared for until their last breath.
+              {t('about.feature3_desc')}
             </span>
           </div>
         </li>

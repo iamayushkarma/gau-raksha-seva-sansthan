@@ -4,6 +4,7 @@ import App from '@/App';
 import '@/App.css';
 import { DonationFormContextProvider } from '@/context/DonationFormContext.tsx';
 import { Toaster } from 'react-hot-toast';
+import '@/config/i18n';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

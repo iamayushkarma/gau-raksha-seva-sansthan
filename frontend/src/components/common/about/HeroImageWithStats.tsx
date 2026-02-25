@@ -1,4 +1,6 @@
+import { useTranslation } from 'react-i18next';
 function HeroImageWithStats() {
+  const { t } = useTranslation();
   return (
     <div className="relative group h-125 lg:h-150 w-full rounded-2xl overflow-hidden shadow-lg">
       <img
@@ -14,19 +16,19 @@ function HeroImageWithStats() {
           <div className="px-2 w-1/3">
             <span className="block text-2xl font-bold text-primary">500+</span>
             <span className="text-xs uppercase tracking-wide text-text-tertiary font-semibold">
-              Cows Rescued
+              {t('about.cows_rescued')}
             </span>
           </div>
           <div className="px-2 w-1/3">
             <span className="block text-2xl font-bold text-primary">15+</span>
             <span className="text-xs uppercase tracking-wide text-text-tertiary font-semibold">
-              Acres Land
+              {t('about.acres_land')}
             </span>
           </div>
           <div className="px-2 w-1/3">
             <span className="block text-2xl font-bold text-primary">24/7</span>
             <span className="text-xs uppercase tracking-wide text-text-tertiary font-semibold">
-              Vet Care
+              {t('about.vet_care')}
             </span>
           </div>
         </div>
