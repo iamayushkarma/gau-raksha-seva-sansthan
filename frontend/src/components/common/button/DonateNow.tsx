@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 type DonateNowProp = {
   className?: string;
   onClick?: () => void;
@@ -5,6 +6,7 @@ type DonateNowProp = {
 };
 
 function DonateNow({ className, onClick, scrollToId }: DonateNowProp) {
+  const { t } = useTranslation();
   function handleClick() {
     onClick?.();
     if (scrollToId) {
@@ -26,7 +28,7 @@ function DonateNow({ className, onClick, scrollToId }: DonateNowProp) {
       active:scale-[0.98]
       transition-all duration-300`}
     >
-      Donate Now
+      {t('buttons.donate_now')}
     </button>
   );
 }

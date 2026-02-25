@@ -164,5 +164,8 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "designed": "Designed with ❤️ for Gau Mata"
+  },
+  "buttons": {
+    "donate_now": "Donate Now"
   }
 }

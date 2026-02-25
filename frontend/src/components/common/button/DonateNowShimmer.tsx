@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next';
 function DonateNowShimmer() {
+  const { t } = useTranslation();
   return (
     <>
       <a href="#donation-form">
         <button className="donate-btn mt-2">
-          <span className="donate-text">Donate Now</span>
+          <span className="donate-text"> {t('buttons.donate_now')}</span>
         </button>
       </a>
 
