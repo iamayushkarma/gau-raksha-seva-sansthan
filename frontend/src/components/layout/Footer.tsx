@@ -1,13 +1,13 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
-
-const quickLinks = [
-  'About Us',
-  'Support Out Cause',
-  'Donation Options',
-  'Contact Us',
-];
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
+
+  // translated quick links
+  const quickLinks = t('footer.quick_links', {
+    returnObjects: true,
+  }) as string[];
   return (
     <footer className="bg-surface-light border-t border-t-border">
       {/* MAIN FOOTER GRID */}
@@ -15,19 +15,19 @@ function Footer() {
         {/* Heading and sub heading section */}
         <div className="lg:p-2 col-span-1 flex flex-col">
           <h2 className="font-semibold text-lg md:text-xl lg:text-2xl">
-            Gau Raksha Seva Sansthan
+            {t('footer.title')}
           </h2>
 
           <p className="mt-6 md:mt-7 lg:mt-8 text-text-secondary">
-            Dedicated to the protection and welfare of cows. We provide shelter,
-            food, and medical care to abandoned and injured cows across the
-            region. Every life matters.
+            {t('footer.description')}
           </p>
         </div>
 
         {/* Quick Links */}
         <div className="flex flex-col col-span-1">
-          <h3 className="font-semibold text-[1.1rem]">Quick Links</h3>
+          <h3 className="font-semibold text-[1.1rem]">
+            {t('footer.quick_links_title')}
+          </h3>
 
           <ul className="mt-5">
             {quickLinks.map((link, index) => (
@@ -43,7 +43,9 @@ function Footer() {
 
         {/* Contact Us */}
         <div className="flex flex-col col-span-1">
-          <h3 className="font-semibold text-[1.1rem]">Contact Us</h3>
+          <h3 className="font-semibold text-[1.1rem]">
+            {t('footer.contact_title')}
+          </h3>
 
           <div className="mt-5 space-y-3 text-text-secondary">
             <div className="flex items-center gap-2">
@@ -67,21 +69,21 @@ function Footer() {
       {/* FOOTER BAR (BOTTOM SECTION) */}
       <div className="border-t border-border px-8 lg:px-16 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-text-secondary gap-3">
         <p>
-          © {new Date().getFullYear()} Gau Raksha Seva Sansthan. All rights
-          reserved.
+          © {new Date().getFullYear()} {t('footer.title')}.{' '}
+          {t('footer.copyright')}
         </p>
 
         <div className="flex gap-6">
           <span className="cursor-pointer hover:text-text-primary">
-            Privacy Policy
+            {t('footer.privacy')}
           </span>
 
           <span className="cursor-pointer hover:text-text-primary">
-            Terms of Service
+            {t('footer.terms')}
           </span>
         </div>
 
-        <p>Designed with ❤️ for Gau Mata</p>
+        <p>{t('footer.designed')}</p>
       </div>
     </footer>
   );
