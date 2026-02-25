@@ -1,7 +1,9 @@
 import { FaWhatsapp } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import ChangeLanguage from '../common/button/ChangeLanguage';
 
 function Navbar() {
+  const { t } = useTranslation();
   return (
     <nav className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center border-b border-divider bg-transparent">
       <div className="flex items-center">
@@ -22,7 +24,7 @@ function Navbar() {
         </a>
         <a href="#donation-form">
           <button className="bg-primary hover:bg-hover active:bg-active px-4 py-2 font-medium rounded-md border border-primary-dark transition-colors duration-200">
-            Donate
+            {t('buttons.donate_now')}
           </button>
         </a>
       </div>
