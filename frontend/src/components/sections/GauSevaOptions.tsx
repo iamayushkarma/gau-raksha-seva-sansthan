@@ -1,5 +1,6 @@
 import React from 'react';
 import DonateNow from '@/components/common/button/DonateNow';
+import { useTranslation } from 'react-i18next';
 
 interface DonationOption {
   id: number;
@@ -10,66 +11,19 @@ interface DonationOption {
 }
 
 const GauSevaOptions: React.FC = () => {
-  const donationOptions: DonationOption[] = [
-    {
-      id: 1,
-      title: 'First Roti for Cow',
-      description: 'Provide the first meal of the day to hungry cows',
+  const { t } = useTranslation();
+  // Get translated donation options
+  const translatedOptions = t('gauSeva.options', {
+    returnObjects: true,
+  }) as Omit<DonationOption, 'image'>[];
+
+  // Add image separately (since image doesn’t change per language)
+  const donationOptions: DonationOption[] = translatedOptions.map(
+    (option, index) => ({
+      ...option,
       image: 'https://placehold.co/600x400',
-      amount: '₹51',
-    },
-    {
-      id: 2,
-      title: 'Adopt Cow for 1 Month',
-      description: 'Sponsor complete care for a cow including food and shelter',
-      image: 'https://placehold.co/600x400',
-      amount: '₹2,100',
-    },
-    {
-      id: 3,
-      title: 'Cow Treatment Seva',
-      description:
-        'Support medical treatment and emergency care for injured cows',
-      image: 'https://placehold.co/600x400',
-      amount: '₹1,100',
-    },
-    {
-      id: 4,
-      title: 'Cow Shed Seva',
-      description: 'Help build and maintain safe shelters for rescued cows',
-      image: 'https://placehold.co/600x400',
-      amount: '₹5,100',
-    },
-    {
-      id: 5,
-      title: 'Feed 20 Cows',
-      description: 'Provide nutritious meals for multiple cows for a day',
-      image: 'https://placehold.co/600x400',
-      amount: '₹501',
-    },
-    {
-      id: 6,
-      title: 'Adopt Calf for 1 Month',
-      description: 'Support the growth and care of young calves',
-      image: 'https://placehold.co/600x400',
-      amount: '₹1,500',
-    },
-    {
-      id: 7,
-      title: 'Medicines Kit for Cows',
-      description: 'Provide essential medical supplies and medicines',
-      image: 'https://placehold.co/600x400',
-      amount: '₹3,100',
-    },
-    {
-      id: 8,
-      title: 'Green Fodder Seva',
-      description:
-        'Supply fresh, nutritious green fodder for healthy digestion',
-      image: 'https://placehold.co/600x400',
-      amount: '₹751',
-    },
-  ];
+    })
+  );
 
   // TODO
   // const handleDonate = (option: DonationOption): void => {
@@ -83,19 +37,18 @@ const GauSevaOptions: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            Ways to Support Gau Seva
+            {t('gauSeva.title')}
           </h2>
           <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-            Choose a seva that resonates with your heart. Every contribution
-            helps save and nurture Gau Mata
+            {t('gauSeva.description')}
           </p>
         </div>
 
         {/* Donation Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {donationOptions.map((option) => (
+          {donationOptions.map((option, index) => (
             <div
-              key={option.id}
+              key={index}
               className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer bg-white"
             >
               {/* Image Container */}

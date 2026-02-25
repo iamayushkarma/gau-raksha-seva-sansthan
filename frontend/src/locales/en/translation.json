@@ -59,5 +59,52 @@
         "description": "Sponsor a cow and contribute to their lifelong care with our adoption program."
       }
     ]
+  },
+  "gauSeva": {
+    "title": "Ways to Support Gau Seva",
+    "description": "Choose a seva that resonates with your heart. Every contribution helps save and nurture Gau Mata",
+
+    "options": [
+      {
+        "title": "First Roti for Cow",
+        "description": "Provide the first meal of the day to hungry cows",
+        "amount": "₹51"
+      },
+      {
+        "title": "Adopt Cow for 1 Month",
+        "description": "Sponsor complete care for a cow including food and shelter",
+        "amount": "₹2,100"
+      },
+      {
+        "title": "Cow Treatment Seva",
+        "description": "Support medical treatment and emergency care for injured cows",
+        "amount": "₹1,100"
+      },
+      {
+        "title": "Cow Shed Seva",
+        "description": "Help build and maintain safe shelters for rescued cows",
+        "amount": "₹5,100"
+      },
+      {
+        "title": "Feed 20 Cows",
+        "description": "Provide nutritious meals for multiple cows for a day",
+        "amount": "₹501"
+      },
+      {
+        "title": "Adopt Calf for 1 Month",
+        "description": "Support the growth and care of young calves",
+        "amount": "₹1,500"
+      },
+      {
+        "title": "Medicines Kit for Cows",
+        "description": "Provide essential medical supplies and medicines",
+        "amount": "₹3,100"
+      },
+      {
+        "title": "Green Fodder Seva",
+        "description": "Supply fresh, nutritious green fodder for healthy digestion",
+        "amount": "₹751"
+      }
+    ]
   }
 }
