@@ -8,15 +8,19 @@ export function payNow(amount: number, note: string) {
   }
   const safeNote = note?.trim() || 'Donation';
 
+  //- Only for moblie version
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobile) {
+    toast.error('UPI payment works only on mobile devices');
+    return;
+  }
+
   const url =
     `upi://pay?pa=${UPI_PAYMENT_CONFIG.upiId}` +
     `&pn=${encodeURIComponent(UPI_PAYMENT_CONFIG.payeeName)}` +
     `&am=${amount}` +
     `&cu=INR` +
     `&tn=${encodeURIComponent(safeNote)}`;
-
-  console.log('Amount:', amount);
-  console.log('Note:', note);
 
   window.location.href = url;
 }

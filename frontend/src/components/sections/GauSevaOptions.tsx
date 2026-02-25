@@ -71,6 +71,7 @@ const GauSevaOptions: React.FC = () => {
     },
   ];
 
+  // TODO
   // const handleDonate = (option: DonationOption): void => {
   //   console.log(`Donating for: ${option.title}`);
   //   // Add your donation logic here
