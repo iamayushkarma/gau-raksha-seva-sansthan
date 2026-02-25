@@ -1,8 +1,4 @@
 {
-  "welcome": "Welcome",
-  "donate": "Donate Now",
-  "change_language": "Change Language",
-
   "about": {
     "who_we_are": "Who We Are",
     "title": "About Our",
@@ -35,5 +31,33 @@
 
     "quote": "The greatness of a nation and its moral progress can be judged by the way its animals are treated.",
     "mahathma": "Mahatma Gandhi"
+  },
+  "services": {
+    "badge": "Our Seva",
+    "title": "Services We Provide",
+    "description": "Dedicated to the lifelong care, protection, and medical treatment of stray and abandoned cows. We provide a sanctuary where every soul is treated with reverence.",
+
+    "list": [
+      {
+        "title": "Cow Rescue",
+        "description": "Our rapid response team rescues abandoned cattle from streets and highways, providing immediate care."
+      },
+      {
+        "title": "Medical Care",
+        "description": "24/7 veterinary team providing emergency treatment, surgeries, and routine health checkups."
+      },
+      {
+        "title": "Daily Feeding",
+        "description": "Nutritious green fodder and mineral mixtures served daily to all our rescued cows."
+      },
+      {
+        "title": "Shelter Care",
+        "description": "Spacious, clean shelters equipped with fans, fresh water, and comfortable resting areas."
+      },
+      {
+        "title": "Adoption Program",
+        "description": "Sponsor a cow and contribute to their lifelong care with our adoption program."
+      }
+    ]
   }
 }

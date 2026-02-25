@@ -2,6 +2,7 @@ import { SectionHeader } from '@/components/common/ourservices/SectionHeader';
 import { MobileServiceCarousel } from '@/components/common/ourservices/MobileServiceCarousel';
 import { DesktopServiceAccordion } from '@/components/common/ourservices/DesktopServiceAccordion';
 import type { Service } from '@/types/servicestypes';
+import { useTranslation } from 'react-i18next';
 
 const services: Service[] = [
   {
@@ -37,12 +38,14 @@ const services: Service[] = [
 ];
 
 export default function OurServices() {
+  const { t } = useTranslation();
+  const services = t('services.list', { returnObjects: true }) as Service[];
   return (
     <section className="py-20 lg:py-28 relative overflow-hidden">
       <SectionHeader
-        badge="Our Seva"
-        title="Services We Provide"
-        description="Dedicated to the lifelong care, protection, and medical treatment of stray and abandoned cows. We provide a sanctuary where every soul is treated with reverence."
+        badge={t('services.badge')}
+        title={t('services.title')}
+        description={t('services.description')}
       />
 
       <div className="w-full max-w-7xl mx-auto px-4">
