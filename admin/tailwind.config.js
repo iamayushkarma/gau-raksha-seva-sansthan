@@ -1,0 +1,61 @@
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        dm: ['DM Sans', 'sans-serif'],
+        mono: ['DM Mono', 'monospace'],
+      },
+      colors: {
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          light: 'var(--color-primary-light)',
+          dark: 'var(--color-primary-dark)',
+        },
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        border: 'var(--color-border)',
+        divider: 'var(--color-divider)',
+        sidebar: 'var(--color-sidebar)',
+        text: {
+          primary: 'var(--color-text-primary)',
+          secondary: 'var(--color-text-secondary)',
+          tertiary: 'var(--color-text-tertiary)',
+          disabled: 'var(--color-text-disabled)',
+          onPrimary: 'var(--color-text-on-primary)',
+        },
+        success: 'var(--color-success)',
+        warning: 'var(--color-warning)',
+        error: 'var(--color-error)',
+        info: 'var(--color-info)',
+        hover: 'var(--color-hover)',
+        active: 'var(--color-active)',
+        focus: 'var(--color-focus)',
+        disabled: 'var(--color-disabled)',
+        dark: {
+          background: 'var(--color-dark-background)',
+          surface: 'var(--color-dark-surface)',
+          border: 'var(--color-dark-border)',
+          divider: 'var(--color-dark-divider)',
+          hover: 'var(--color-dark-hover)',
+          disabled: 'var(--color-dark-disabled)',
+          text: {
+            primary: 'var(--color-dark-text-primary)',
+            secondary: 'var(--color-dark-text-secondary)',
+            tertiary: 'var(--color-dark-text-tertiary)',
+            disabled: 'var(--color-dark-text-disabled)',
+          },
+        },
+      },
+      boxShadow: {
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        'dark-sm': 'var(--shadow-dark-sm)',
+        'dark-md': 'var(--shadow-dark-md)',
+        'dark-lg': 'var(--shadow-dark-lg)',
+      },
+    },
+  },
+};
