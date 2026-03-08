@@ -6,16 +6,16 @@ import { ApiResponse } from '../utils/api-response.js';
 
 const adminLogin = asyncHandler(async (req, res) => {
   // extracting email and password for request body
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  if (!email || !password) {
-    throw new ApiError(400, 'Email and password are required');
+  if (!username || !password) {
+    throw new ApiError(400, 'Username and password are required');
   }
 
   // database query
   const [rows] = await connection_pool.query(
-    'SELECT * FROM admin WHERE email = ?',
-    [email]
+    'SELECT * FROM admin WHERE username = ?',
+    [username]
   );
 
   if (rows.length === 0) {
