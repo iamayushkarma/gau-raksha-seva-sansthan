@@ -29,6 +29,18 @@ const createDonation = asyncHandler(async (req, res) => {
     ]
   );
 
+  // update stats table
+  await connection_pool.query(
+    `
+    UPDATE donation_stats SET
+      total_donors = total_donors + 1,
+      total_amount = total_amount + ?,
+      anonymous_count = anonymous_count + ?
+    WHERE id = 1
+  `,
+    [amount, is_anonymous ? 1 : 0]
+  );
+
   return res
     .status(201)
     .json(
@@ -50,27 +62,10 @@ const getAllDonations = asyncHandler(async (req, res) => {
 
 // Get donation stats for bashboard stats card
 const getDonationStats = asyncHandler(async (req, res) => {
-  const [[stats]] = await connection_pool.query(`
-    SELECT
-      COUNT(*) AS total_donors,
-      SUM(amount) AS total_amount,
-      COUNT(DISTINCT seva) AS total_sevas,
-      SUM(is_anonymous = 1) AS anonymous_count
-    FROM donations
-  `);
-
-  return res.status(200).json(
-    new ApiResponse(
-      200,
-      {
-        total_donors: stats.total_donors,
-        total_amount: stats.total_amount,
-        total_sevas: stats.total_sevas,
-        anonymous_count: stats.anonymous_count,
-      },
-      'Success'
-    )
+  const [[stats]] = await connection_pool.query(
+    'SELECT * FROM donation_stats WHERE id = 1'
   );
+  return res.status(200).json(new ApiResponse(200, stats, 'Success'));
 });
 
 export { createDonation, getAllDonations, getDonationStats };
