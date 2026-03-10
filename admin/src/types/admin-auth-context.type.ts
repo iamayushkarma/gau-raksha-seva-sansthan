@@ -1,7 +1,15 @@
-interface AdminAuthContextType {
-  token: string | null;
-  login: (token: string) => void;
-  logout: () => void;
-}
+type AdminUser = {
+  id: number;
+  username: string;
+  email: string;
+  role: string;
+};
 
-export type { AdminAuthContextType };
+type AdminAuthContextType = {
+  token: string | null;
+  admin: AdminUser | null;
+  login: (token: string, admin: AdminUser) => void;
+  logout: () => void;
+};
+
+export type { AdminUser, AdminAuthContextType };

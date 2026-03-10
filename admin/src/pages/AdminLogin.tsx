@@ -37,9 +37,9 @@ function AdminLogin() {
         username,
         password,
       });
-      console.log('response data:', data);
-      console.log('token:', data.data.token);
-      login(data.data.token);
+      login(data.data.token, data.data.admin);
+      console.log(data.data.admin);
+
       navigate('/admin/dashboard');
     } catch (err) {
       if (axios.isAxiosError(err)) {

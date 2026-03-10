@@ -42,8 +42,9 @@ const adminLogin = asyncHandler(async (req, res) => {
         token,
         admin: {
           id: admin.id,
-          name: admin.name,
+          username: admin.username,
           email: admin.email,
+          role: admin.role,
         },
       },
       'Login successful'

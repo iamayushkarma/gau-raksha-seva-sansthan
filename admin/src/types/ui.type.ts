@@ -15,4 +15,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export type { InputProps, ButtonProps };
+// type for dashboard home page card
+type StatCardType = {
+  label: string;
+  value: string | number | undefined;
+  icon: ReactNode;
+  info?: string;
+  iconBg?: string;
+};
+
+// type for donation
+type DonationStats = {
+  total_donors: number;
+  total_amount: number;
+  total_sevas: number;
+  anonymous_count: number;
+};
+export type { InputProps, ButtonProps, StatCardType, DonationStats };
