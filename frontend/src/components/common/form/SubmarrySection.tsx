@@ -6,7 +6,8 @@ import { payNow } from '@/utils/functions/payNow';
 
 function SubmarrySection() {
   const { t } = useTranslation();
-  const { sevaValue, amount } = useDonationFormContext();
+  const { sevaValue, amount, name, phone, isAnonymous } =
+    useDonationFormContext();
   return (
     <div className="bg-surface border border-divider  relative shadow-md lg:max-w-lg overflow-hidden mx-auto rounded-lg px-6 py-4 max-sm:mt-6 w-full">
       <div className="absolute inset-0 h-1.5 bg-linear-to-r from-primary to-secondary"></div>
@@ -48,7 +49,11 @@ function SubmarrySection() {
       </div>
       {/* Submit button */}
       <div className="mt-6">
-        <DonateNow onClick={() => payNow(Number(amount), sevaValue)} />
+        <DonateNow
+          onClick={() =>
+            payNow(Number(amount), sevaValue, name, phone, isAnonymous)
+          }
+        />
       </div>
     </div>
   );

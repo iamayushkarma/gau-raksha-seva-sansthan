@@ -43,6 +43,9 @@ type DonationFormContextType = {
   showDropdown: boolean;
   setShowDropdown: Dispatch<SetStateAction<boolean>>;
 
+  isAnonymous: boolean;
+  setIsAnonymous: (val: boolean) => void;
+
   toggleDropdown: () => void;
 };
 

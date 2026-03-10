@@ -19,6 +19,7 @@ const DonationFormContextProvider = ({ children }: ProviderProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [sevaValue, setSevaValue] = useState('');
   const [openUpwards, setOpenUpwards] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(false);
   const MIN_DONATION = 1;
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -97,6 +98,8 @@ const DonationFormContextProvider = ({ children }: ProviderProps) => {
     setOpenUpwards,
     showDropdown,
     setShowDropdown,
+    isAnonymous,
+    setIsAnonymous,
   };
   return (
     <DonationFormContext.Provider value={value}>

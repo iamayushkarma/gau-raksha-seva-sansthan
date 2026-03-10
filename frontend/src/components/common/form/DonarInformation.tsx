@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Checkbox from '@/components/ui/CheckBox';
 import { FormInput } from '@/components/common/form/FormInput';
 import { useTranslation } from 'react-i18next';
+import useDonationFormContext from '@/hooks/useDonationFormContext';
 
 function DonarInformation() {
   const { t } = useTranslation();
+  const { name, setName, phone, setPhone } = useDonationFormContext();
   const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
 
   return (
@@ -14,24 +16,25 @@ function DonarInformation() {
           {t('donationForm.donor_info_title')}
         </h2>
       </div>
-
       <fieldset
         disabled={isAnonymous}
-        className={`mt-8 grid md:grid-cols-2 gap-4 
-          ${isAnonymous ? 'opacity-50' : ''}`}
+        className={`mt-8 grid md:grid-cols-2 gap-4 ${isAnonymous ? 'opacity-50' : ''}`}
       >
         <FormInput
           label={t('donationForm.name')}
           placeholder={t('donationForm.name_placeholder')}
-          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
+          value={name}
+          onChangeFunction={(e) => setName(e.target.value)}
+          className={isAnonymous ? 'cursor-not-allowed' : ''}
         />
         <FormInput
           label={t('donationForm.number')}
           placeholder={t('donationForm.number_placeholder')}
-          className={` ${isAnonymous ? 'cursor-not-allowed' : ''}`}
+          value={phone}
+          onChangeFunction={(e) => setPhone(e.target.value)}
+          className={isAnonymous ? 'cursor-not-allowed' : ''}
         />
       </fieldset>
-
       <div className="flex items-center mt-4">
         <Checkbox
           id="anonymous"
