@@ -72,27 +72,67 @@ const getDonations = asyncHandler(async (req, res) => {
   const limit = Math.min(parseInt(req.query.limit) || 10, 100);
   const cursor = req.query.cursor ? parseInt(req.query.cursor) : null;
   const search = req.query.search?.trim() || '';
+  const sortBy = req.query.sortBy || 'id';
+  const sortOrder = req.query.sortOrder === 'asc' ? 'ASC' : 'DESC';
+  const filterType = req.query.filterType || ''; // week, month, year, custom
+  const dateFrom = req.query.dateFrom || '';
+  const dateTo = req.query.dateTo || '';
+  const sevaFilter = req.query.seva || '';
+  const typeFilter = req.query.type || ''; // anonymous, named
 
   const conditions = [];
   const params = [];
 
+  // cursor
   if (cursor) {
     conditions.push('id < ?');
     params.push(cursor);
   }
 
+  // search
   if (search) {
     conditions.push('(name LIKE ? OR phone LIKE ? OR seva LIKE ?)');
     params.push(`%${search}%`, `%${search}%`, `%${search}%`);
   }
 
+  // date filters
+  if (filterType === 'week') {
+    conditions.push('created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)');
+  } else if (filterType === 'month') {
+    conditions.push(
+      'MONTH(created_at) = MONTH(NOW()) AND YEAR(created_at) = YEAR(NOW())'
+    );
+  } else if (filterType === 'year') {
+    conditions.push('YEAR(created_at) = YEAR(NOW())');
+  } else if (filterType === 'custom' && dateFrom && dateTo) {
+    conditions.push('DATE(created_at) BETWEEN ? AND ?');
+    params.push(dateFrom, dateTo);
+  }
+
+  // seva filter
+  if (sevaFilter) {
+    conditions.push('seva = ?');
+    params.push(sevaFilter);
+  }
+
+  // type filter
+  if (typeFilter === 'anonymous') {
+    conditions.push('is_anonymous = 1');
+  } else if (typeFilter === 'named') {
+    conditions.push('is_anonymous = 0');
+  }
+
   const where =
     conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+
+  // validate sortBy to prevent SQL injection
+  const allowedSortFields = ['id', 'amount', 'created_at'];
+  const safeSortBy = allowedSortFields.includes(sortBy) ? sortBy : 'id';
 
   params.push(limit + 1);
 
   const [rows] = await connection_pool.query(
-    `SELECT * FROM donations ${where} ORDER BY id DESC LIMIT ?`,
+    `SELECT * FROM donations ${where} ORDER BY ${safeSortBy} ${sortOrder} LIMIT ?`,
     params
   );
 
@@ -100,9 +140,21 @@ const getDonations = asyncHandler(async (req, res) => {
   const donations = hasNextPage ? rows.slice(0, limit) : rows;
   const nextCursor = hasNextPage ? donations[donations.length - 1].id : null;
 
-  const [[stats]] = await connection_pool.query(
-    'SELECT total_donors FROM donation_stats WHERE id = 1'
-  );
+  // get total — use COUNT for filtered queries, stats table for unfiltered
+  let total;
+  if (search || filterType || sevaFilter || typeFilter) {
+    const countParams = params.slice(0, -1); // remove limit param
+    const [[countResult]] = await connection_pool.query(
+      `SELECT COUNT(*) as total FROM donations ${where}`,
+      countParams
+    );
+    total = countResult.total;
+  } else {
+    const [[stats]] = await connection_pool.query(
+      'SELECT total_donors FROM donation_stats WHERE id = 1'
+    );
+    total = stats.total_donors;
+  }
 
   return res.status(200).json(
     new ApiResponse(
@@ -111,7 +163,7 @@ const getDonations = asyncHandler(async (req, res) => {
         donations,
         nextCursor,
         hasNextPage,
-        total: stats.total_donors,
+        total,
       },
       'Success'
     )

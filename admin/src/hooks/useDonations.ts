@@ -13,34 +13,60 @@ export type Donation = {
   created_at: string;
 };
 
-type PaginationState = {
-  hasNextPage: boolean;
-  nextCursor: number | null;
-  total: number;
+export type DonationFilters = {
+  search: string;
+  sortBy: 'id' | 'amount' | 'created_at';
+  sortOrder: 'asc' | 'desc';
+  filterType: '' | 'week' | 'month' | 'year' | 'custom';
+  dateFrom: string;
+  dateTo: string;
+  seva: string;
+  type: '' | 'anonymous' | 'named';
+};
+
+const DEFAULT_FILTERS: DonationFilters = {
+  search: '',
+  sortBy: 'id',
+  sortOrder: 'desc',
+  filterType: '',
+  dateFrom: '',
+  dateTo: '',
+  seva: '',
+  type: '',
 };
 
 function useDonations(limit = 10) {
   const { token } = useAdminAuth();
   const [donations, setDonations] = useState<Donation[]>([]);
-  const [pagination, setPagination] = useState<PaginationState>({
+  const [pagination, setPagination] = useState({
     hasNextPage: false,
-    nextCursor: null,
+    nextCursor: null as number | null,
     total: 0,
   });
   const [cursorHistory, setCursorHistory] = useState<(number | null)[]>([null]);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [search, setSearch] = useState('');
+  const [filters, setFilters] = useState<DonationFilters>(DEFAULT_FILTERS);
 
   const fetchDonations = useCallback(
-    async (cursor: number | null, searchTerm: string) => {
+    async (cursor: number | null, currentFilters: DonationFilters) => {
       setLoading(true);
       try {
         const params = new URLSearchParams();
         params.set('limit', String(limit));
         if (cursor) params.set('cursor', String(cursor));
-        if (searchTerm) params.set('search', searchTerm);
+        if (currentFilters.search) params.set('search', currentFilters.search);
+        if (currentFilters.sortBy) params.set('sortBy', currentFilters.sortBy);
+        if (currentFilters.sortOrder)
+          params.set('sortOrder', currentFilters.sortOrder);
+        if (currentFilters.filterType)
+          params.set('filterType', currentFilters.filterType);
+        if (currentFilters.dateFrom)
+          params.set('dateFrom', currentFilters.dateFrom);
+        if (currentFilters.dateTo) params.set('dateTo', currentFilters.dateTo);
+        if (currentFilters.seva) params.set('seva', currentFilters.seva);
+        if (currentFilters.type) params.set('type', currentFilters.type);
 
         const { data } = await axios.get(
           `${API_ENDPOINTS.donations}?${params.toString()}`,
@@ -64,8 +90,13 @@ function useDonations(limit = 10) {
 
   useEffect(() => {
     const cursor = cursorHistory[currentPageIndex];
-    fetchDonations(cursor, search);
-  }, [currentPageIndex, search]);
+    fetchDonations(cursor, filters);
+  }, [currentPageIndex, filters]);
+
+  function resetPagination() {
+    setCurrentPageIndex(0);
+    setCursorHistory([null]);
+  }
 
   function goToNextPage() {
     if (!pagination.hasNextPage || !pagination.nextCursor) return;
@@ -83,9 +114,18 @@ function useDonations(limit = 10) {
   }
 
   function handleSearch(term: string) {
-    setSearch(term);
-    setCurrentPageIndex(0);
-    setCursorHistory([null]);
+    setFilters((prev) => ({ ...prev, search: term }));
+    resetPagination();
+  }
+
+  function handleFilterChange(newFilters: Partial<DonationFilters>) {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+    resetPagination();
+  }
+
+  function clearFilters() {
+    setFilters(DEFAULT_FILTERS);
+    resetPagination();
   }
 
   return {
@@ -93,12 +133,14 @@ function useDonations(limit = 10) {
     pagination,
     loading,
     error,
+    filters,
     currentPage: currentPageIndex + 1,
-    totalPages: Math.ceil(pagination.total / limit),
+    totalPages: Math.max(1, Math.ceil(pagination.total / limit)),
     goToNextPage,
     goToPrevPage,
     handleSearch,
-    search,
+    handleFilterChange,
+    clearFilters,
   };
 }
 

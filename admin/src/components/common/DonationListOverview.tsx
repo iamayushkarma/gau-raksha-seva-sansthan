@@ -14,7 +14,6 @@ const DonationListOverview = React.memo(function DonationListOverview() {
     goToNextPage,
     goToPrevPage,
     handleSearch,
-    search,
   } = useDonations(10);
 
   function formatDate(dateStr: string) {
