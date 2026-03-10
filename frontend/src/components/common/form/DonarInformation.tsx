@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Checkbox from '@/components/ui/CheckBox';
 import { FormInput } from '@/components/common/form/FormInput';
 import { useTranslation } from 'react-i18next';
@@ -6,8 +5,8 @@ import useDonationFormContext from '@/hooks/useDonationFormContext';
 
 function DonarInformation() {
   const { t } = useTranslation();
-  const { name, setName, phone, setPhone } = useDonationFormContext();
-  const [isAnonymous, setIsAnonymous] = useState<boolean>(false);
+  const { name, setName, phone, setPhone, isAnonymous, setIsAnonymous } =
+    useDonationFormContext();
 
   return (
     <section className="bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
