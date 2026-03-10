@@ -33,48 +33,42 @@ input[type='number'] {
 }
 
 @theme {
-  --color-primary: #0ea5e9;
-  --color-primary-light: #38bdf8;
-  --color-primary-dark: #0284c7;
-
+  --color-primary: #0000ff;
+  --color-primary-light: #3333ff;
+  --color-primary-dark: #0000cc;
   --color-background: #f1f5f9;
   --color-surface: #ffffff;
   --color-border: #e2e8f0;
   --color-divider: #f8fafc;
-  --color-sidebar: #0f172a;
-
-  --color-text-primary: #0f172a;
+  --color-sidebar: #00003d;
+  --color-text-primary: #00003d;
   --color-text-secondary: #475569;
   --color-text-tertiary: #94a3b8;
   --color-text-disabled: #cbd5e1;
   --color-text-on-primary: #ffffff;
-
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #8b5cf6;
-
-  --color-hover: #f1f5f9;
-  --color-active: #0284c7;
-  --color-focus: #0ea5e9;
+  --color-hover: #f0f0ff;
+  --color-active: #0000cc;
+  --color-focus: #0000ff;
   --color-disabled: #f8fafc;
-  --overlay: rgba(14, 165, 233, 0.08);
-
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 10px 20px rgba(15, 23, 42, 0.1);
-
-  --color-dark-background: #0b1120;
-  --color-dark-surface: #111827;
-  --color-dark-border: #1f2937;
-  --color-dark-divider: #0f172a;
+  --overlay: rgba(0, 0, 255, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 61, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 61, 0.08);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 61, 0.1);
+  --color-dark-background: #00001a;
+  --color-dark-surface: #000033;
+  --color-dark-border: #000066;
+  --color-dark-divider: #00003d;
   --color-dark-text-primary: #f8fafc;
   --color-dark-text-secondary: #94a3b8;
   --color-dark-text-tertiary: #475569;
   --color-dark-text-disabled: #334155;
-  --color-dark-hover: #1e293b;
-  --color-dark-disabled: #1e293b;
-  --color-dark-overlay: rgba(14, 165, 233, 0.12);
+  --color-dark-hover: #000052;
+  --color-dark-disabled: #000052;
+  --color-dark-overlay: rgba(0, 0, 255, 0.12);
   --shadow-dark-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-dark-md: 0 4px 6px rgba(0, 0, 0, 0.4);
   --shadow-dark-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
