@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AdminLogin from '@/pages/AdminLogin';
 import MainLayout from '@/layouts/MainLayout';
 import AdminDashboard from '@/pages/AdminDashboard';
-import Donors from '@/pages/Donars';
+import Donors from '@/pages/Donors';
 import SevaManagement from '@/pages/SevaManagement';
 import SiteSettings from '@/pages/SiteSettings';
 import Profile from '@/pages/Profile';

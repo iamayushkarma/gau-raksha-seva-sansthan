@@ -4,4 +4,5 @@ export const API_ENDPOINTS = {
   donationStats: `${API_BASE_URL}/donations/stats`,
   donationOptions: `${API_BASE_URL}/donation-options`,
   adminLogin: `${API_BASE_URL}/admin/login`,
+  donations: `${API_BASE_URL}/donations`,
 };

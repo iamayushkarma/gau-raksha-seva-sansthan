@@ -1,3 +1,4 @@
+import DonationListOverview from '@/components/common/DonationListOverview';
 import StatCard from '@/components/common/StatCard';
 import StatCardSkeleton from '@/components/common/StatCardSkeleton';
 import useDonationStats from '@/hooks/useDonationStats';
@@ -64,6 +65,9 @@ function AdminDashboard() {
           </>
         )}
       </div>
+
+      {/* Donation list overview */}
+      <DonationListOverview />
     </div>
   );
 }

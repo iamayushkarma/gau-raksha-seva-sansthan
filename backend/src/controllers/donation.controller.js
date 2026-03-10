@@ -67,5 +67,55 @@ const getDonationStats = asyncHandler(async (req, res) => {
   );
   return res.status(200).json(new ApiResponse(200, stats, 'Success'));
 });
+// Get all donation with cursor based pagination to display in frontend
+const getDonations = asyncHandler(async (req, res) => {
+  const limit = Math.min(parseInt(req.query.limit) || 10, 100);
+  const cursor = req.query.cursor ? parseInt(req.query.cursor) : null;
+  const search = req.query.search?.trim() || '';
 
-export { createDonation, getAllDonations, getDonationStats };
+  const conditions = [];
+  const params = [];
+
+  if (cursor) {
+    conditions.push('id < ?');
+    params.push(cursor);
+  }
+
+  if (search) {
+    conditions.push('(name LIKE ? OR phone LIKE ? OR seva LIKE ?)');
+    params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+  }
+
+  const where =
+    conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+
+  params.push(limit + 1);
+
+  const [rows] = await connection_pool.query(
+    `SELECT * FROM donations ${where} ORDER BY id DESC LIMIT ?`,
+    params
+  );
+
+  const hasNextPage = rows.length > limit;
+  const donations = hasNextPage ? rows.slice(0, limit) : rows;
+  const nextCursor = hasNextPage ? donations[donations.length - 1].id : null;
+
+  const [[stats]] = await connection_pool.query(
+    'SELECT total_donors FROM donation_stats WHERE id = 1'
+  );
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        donations,
+        nextCursor,
+        hasNextPage,
+        total: stats.total_donors,
+      },
+      'Success'
+    )
+  );
+});
+
+export { createDonation, getAllDonations, getDonationStats, getDonations };
