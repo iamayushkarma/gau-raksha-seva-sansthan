@@ -1,6 +1,5 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 const connection_pool = mysql.createPool({
@@ -10,6 +9,8 @@ const connection_pool = mysql.createPool({
   database: process.env.DB_NAME,
   waitForConnections: process.env.DB_WAIT_FOR_CONNECTIONS === 'true',
   connectionLimit: Number(process.env.DB_CONNECTION_LIMIT),
+  charset: 'utf8mb4',
+  timezone: '+00:00',
 });
 
 export default connection_pool;

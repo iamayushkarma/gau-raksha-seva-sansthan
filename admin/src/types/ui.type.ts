@@ -31,4 +31,22 @@ type DonationStats = {
   total_sevas: number;
   anonymous_count: number;
 };
-export type { InputProps, ButtonProps, StatCardType, DonationStats };
+export interface DonationOption {
+  id: number;
+  title_en: string;
+  title_hi: string;
+  description_en: string;
+  description_hi: string;
+  amount: string;
+  image: string;
+}
+type FormData = Omit<DonationOption, 'id'>;
+export const emptyForm: FormData = {
+  title_en: '',
+  title_hi: '',
+  description_en: '',
+  description_hi: '',
+  amount: '',
+  image: '',
+};
+export type { InputProps, ButtonProps, StatCardType, DonationStats, FormData };

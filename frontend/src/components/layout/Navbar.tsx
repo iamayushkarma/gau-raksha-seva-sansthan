@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center border-b border-divider bg-transparent">
       <div className="flex items-center gap-2">
         <img className="size-12" src="/logo/logo-192x192.png" />
-        <h2 className="font-semibold text-md md:text-lg lg:text-xl">
+        <h2 className="hidden md:block font-semibold text-md md:text-lg lg:text-xl">
           {t('footer.title')}
         </h2>
       </div>

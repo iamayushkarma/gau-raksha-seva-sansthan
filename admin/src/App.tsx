@@ -7,6 +7,7 @@ import SevaManagement from '@/pages/SevaManagement';
 import SiteSettings from '@/pages/SiteSettings';
 import Profile from '@/pages/Profile';
 import useAdminAuth from '@/hooks/useAdminAuth';
+import { Toaster } from 'react-hot-toast';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { token } = useAdminAuth();
@@ -16,6 +17,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="bottom-right" toastOptions={{ duration: 3000 }} />
       <Routes>
         {/* Redirect root */}
         <Route path="/" element={<Navigate to="/admin/login" replace />} />
