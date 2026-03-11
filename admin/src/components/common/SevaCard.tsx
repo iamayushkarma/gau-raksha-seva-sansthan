@@ -14,14 +14,14 @@ const SevaCard: React.FC<SevaCardProps> = ({ option, onEdit, onDelete }) => {
       <div className="flex items-center justify-end gap-1 px-3 py-2 border-b border-gray-100 bg-gray-50">
         <button
           onClick={() => onEdit(option)}
-          className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition-colors"
+          className="flex cursor-pointer items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-2.5 py-1.5 rounded-lg transition-colors"
         >
           <Pencil size={13} />
           Edit
         </button>
         <button
           onClick={() => onDelete(option)}
-          className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-red-600 hover:bg-red-50 px-2.5 py-1.5 rounded-lg transition-colors"
+          className="flex cursor-pointer items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-red-600 hover:bg-red-50 px-2.5 py-1.5 rounded-lg transition-colors"
         >
           <Trash2 size={13} />
           Delete
@@ -29,7 +29,7 @@ const SevaCard: React.FC<SevaCardProps> = ({ option, onEdit, onDelete }) => {
       </div>
 
       {/* Image */}
-      <div className="h-44 w-full overflow-hidden bg-gray-100 flex-shrink-0">
+      <div className="h-44 w-full overflow-hidden bg-gray-100 shrink-0">
         <img
           src={option.image || 'https://placehold.co/600x400'}
           alt={option.title_en}

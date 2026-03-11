@@ -122,32 +122,45 @@ const SevaManagement: React.FC = () => {
 
   return (
     <>
-      <section className="py-10 lg:px-16 md:px-12 sm:px-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {options.map((option) => (
-              <SevaCard
-                key={option.id}
-                option={option}
-                onEdit={openEdit}
-                onDelete={handleDelete}
-              />
-            ))}
-            <SevaCreateCard onClick={openCreate} />
-          </div>
+      <div className="p-6 bg-background min-h-screen">
+        {/* Heading */}
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-text-primary tracking-tight">
+            Seva Management
+          </h2>
+          <p className="text-text-secondary text-sm mt-1">
+            Manage and monitor active cow welfare services and rescue
+            operations.
+          </p>
         </div>
-      </section>
 
-      {modalMode && (
-        <SevaModal
-          mode={modalMode}
-          form={form}
-          saving={saving}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          onClose={closeModal}
-        />
-      )}
+        <section className="mt-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {options.map((option) => (
+                <SevaCard
+                  key={option.id}
+                  option={option}
+                  onEdit={openEdit}
+                  onDelete={handleDelete}
+                />
+              ))}
+              <SevaCreateCard onClick={openCreate} />
+            </div>
+          </div>
+        </section>
+
+        {modalMode && (
+          <SevaModal
+            mode={modalMode}
+            form={form}
+            saving={saving}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            onClose={closeModal}
+          />
+        )}
+      </div>
     </>
   );
 };
