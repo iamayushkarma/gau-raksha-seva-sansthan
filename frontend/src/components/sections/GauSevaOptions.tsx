@@ -73,7 +73,7 @@ const GauSevaOptions: React.FC = () => {
                 <p className="text-sm text-gray-200 mb-4 line-clamp-2 opacity-90">
                   {getDescription(option)}
                 </p>
-                <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-in-out">
+                <div className="max-h-20 md:max-h-0 overflow-hidden md:group-hover:max-h-20 transition-all duration-500 ease-in-out">
                   <DonateNow scrollToId="donation-form" />
                 </div>
               </div>
