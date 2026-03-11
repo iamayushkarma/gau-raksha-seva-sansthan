@@ -6,10 +6,11 @@ function Navbar() {
   const { t } = useTranslation();
   return (
     <nav className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center border-b border-divider bg-transparent">
-      <div className="flex items-center">
-        <p className="text-xl md:text-2xl font-semibold text-text-primary">
-          Logo
-        </p>
+      <div className="flex items-center gap-2">
+        <img className="size-12" src="/logo/logo-192x192.png" />
+        <h2 className="font-semibold text-md md:text-lg lg:text-xl">
+          {t('footer.title')}
+        </h2>
       </div>
       <div className="flex gap-3 items-center">
         <ChangeLanguage />

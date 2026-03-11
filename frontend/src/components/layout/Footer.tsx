@@ -14,9 +14,12 @@ function Footer() {
       <section className="p-8 lg:p-16 mx-auto grid grid-cols-1 max-sm:gap-10 lg:grid-cols-3 lg:justify-items-center">
         {/* Heading and sub heading section */}
         <div className="lg:p-2 col-span-1 flex flex-col">
-          <h2 className="font-semibold text-lg md:text-xl lg:text-2xl">
-            {t('footer.title')}
-          </h2>
+          <div className="flex items-center gap-3">
+            <img className="size-12" src="/logo/logo-192x192.png" />
+            <h2 className="font-semibold text-lg md:text-xl lg:text-2xl">
+              {t('footer.title')}
+            </h2>
+          </div>
 
           <p className="mt-6 md:mt-7 lg:mt-8 text-text-secondary">
             {t('footer.description')}
