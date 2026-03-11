@@ -24,44 +24,53 @@ export function DesktopServiceAccordion({
             onHoverEnd={() => setHoveredIndex(null)}
             layout
             transition={{ duration: 0.5, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
             className={`
-              relative rounded-2xl overflow-hidden cursor-pointer
+              relative rounded-2xl cursor-pointer
               transition-all duration-500
               ${isHovered ? 'flex-4' : isAnyHovered ? 'flex-[0.5]' : 'flex-1'}
             `}
           >
-            <motion.img
-              src={item.img}
-              alt={item.title}
-              className="absolute w-full h-full object-cover"
-              animate={{
-                scale: isHovered ? 1.05 : 1,
-              }}
-              transition={{ duration: 0.5 }}
-            />
+            {/* Image wrapper — plain div prevents Framer from distorting the img */}
+            <div className="absolute inset-0 w-full h-full">
+              <motion.img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-full object-cover object-center"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                animate={{ scale: isHovered ? 1.05 : 1 }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+              />
+            </div>
+
+            {/* Overlay */}
             <div
               className={`absolute inset-0 transition-all duration-500 ${
                 isHovered
-                  ? 'bg-linear-to-t from-black/90 via-black/40 to-transparent'
-                  : 'bg-black/30'
+                  ? 'bg-gradient-to-t from-black/90 via-black/40 to-transparent'
+                  : 'bg-black/40'
               }`}
             />
 
-            {!isHovered && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <h3
-                  className="text-2xl font-bold text-white tracking-widest uppercase"
-                  style={{
-                    writingMode: 'vertical-rl',
-                    textOrientation: 'mixed',
-                    transform: 'rotate(180deg)',
-                  }}
-                >
-                  {item.title}
-                </h3>
-              </div>
-            )}
+            {/* Collapsed: vertical title */}
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              animate={{ opacity: isHovered ? 0 : 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3
+                className="text-lg font-bold text-white tracking-widest uppercase drop-shadow-lg"
+                style={{
+                  writingMode: 'vertical-rl',
+                  textOrientation: 'mixed',
+                  transform: 'rotate(180deg)',
+                }}
+              >
+                {item.title}
+              </h3>
+            </motion.div>
 
+            {/* Expanded: bottom content */}
             <motion.div
               className="absolute bottom-0 left-0 right-0 p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
@@ -69,13 +78,13 @@ export function DesktopServiceAccordion({
                 opacity: isHovered ? 1 : 0,
                 y: isHovered ? 0 : 20,
               }}
-              transition={{ duration: 0.3, delay: isHovered ? 0.2 : 0 }}
+              transition={{ duration: 0.3, delay: isHovered ? 0.25 : 0 }}
             >
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4">
                 <span className="text-text-on-primary text-2xl">🐄</span>
               </div>
-              <h3 className="text-3xl font-bold mb-4">{item.title}</h3>
-              <p className="text-lg text-neutral-200 leading-relaxed max-w-prose">
+              <h3 className="text-3xl font-bold mb-3">{item.title}</h3>
+              <p className="text-base text-neutral-200 leading-relaxed max-w-prose">
                 {item.description}
               </p>
             </motion.div>
