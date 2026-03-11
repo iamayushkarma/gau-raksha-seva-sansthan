@@ -19,12 +19,6 @@ const GauSevaOptions: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/v1/donation-options').then(({ data }) => {
-      setOptions(data.data);
-    });
-  }, []);
-
-  useEffect(() => {
     axios
       .get('/api/v1/donation-options')
       .then(({ data }) => {
@@ -38,7 +32,7 @@ const GauSevaOptions: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return null; // or a spinner
+  if (loading) return null;
 
   const getTitle = (option: DonationOption) =>
     i18n.language === 'hi'
@@ -71,6 +65,7 @@ const GauSevaOptions: React.FC = () => {
                   ₹{option.amount}
                 </div>
               </div>
+
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
                   {getTitle(option)}
@@ -78,10 +73,9 @@ const GauSevaOptions: React.FC = () => {
                 <p className="text-sm text-gray-200 mb-4 line-clamp-2 opacity-90">
                   {getDescription(option)}
                 </p>
-                <DonateNow
-                  scrollToId="donation-form"
-                  className="md:group-hover:translate-y-0 md:translate-y-2 lg:opacity-0 md:group-hover:opacity-100"
-                />
+                <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-in-out">
+                  <DonateNow scrollToId="donation-form" />
+                </div>
               </div>
             </div>
           ))}
