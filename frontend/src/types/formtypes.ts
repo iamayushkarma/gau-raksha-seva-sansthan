@@ -14,6 +14,7 @@ type DonationDetailsProp = {
   amount: string;
   error: string;
   onAmountChange: (value: string) => void;
+  prefilledSeva?: string;
 };
 
 type DonationFormContextType = {

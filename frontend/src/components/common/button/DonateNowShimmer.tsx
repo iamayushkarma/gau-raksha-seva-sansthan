@@ -1,13 +1,13 @@
+import { useDonateNavigate } from '@/hooks/useDonateNavigate';
 import { useTranslation } from 'react-i18next';
 function DonateNowShimmer() {
   const { t } = useTranslation();
+  const navigateToDonate = useDonateNavigate();
   return (
     <>
-      <a href="#donation-form">
-        <button className="donate-btn mt-2">
-          <span className="donate-text"> {t('buttons.donate_now')}</span>
-        </button>
-      </a>
+      <button onClick={navigateToDonate} className="donate-btn mt-2">
+        <span className="donate-text"> {t('buttons.donate_now')}</span>
+      </button>
 
       <style>{`
         .donate-btn {

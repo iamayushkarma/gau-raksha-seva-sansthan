@@ -8,6 +8,7 @@ function DonationDetails({
   amount,
   error,
   onAmountChange,
+  prefilledSeva,
 }: DonationDetailsProp) {
   const { t } = useTranslation();
   return (
@@ -18,16 +19,16 @@ function DonationDetails({
         </h2>
       </div>
       <div className="flex flex-col gap-4">
-        <div>
-          <label
-            htmlFor="seva"
-            className="block mb-2 font-medium text-text-primary"
-          >
-            {t('donationForm.select_seva')}
-          </label>
-
+        {prefilledSeva ? (
+          <FormInput
+            label={t('donationForm.select_seva')}
+            value={prefilledSeva}
+            readOnly
+            className="bg-gray-100 cursor-not-allowed opacity-70"
+          />
+        ) : (
           <GauSevaSelect />
-        </div>
+        )}
         <div className="max-sm:mt-4">
           <FormInput
             label={t('donationForm.amount')}

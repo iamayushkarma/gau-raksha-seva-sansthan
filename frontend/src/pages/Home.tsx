@@ -1,9 +1,9 @@
 import AboutOurGaushala from '@/components/sections/AboutOurGaushala';
-import DonationForm from '@/components/sections/DonationForm';
 import GauSevaOptions from '@/components/sections/GauSevaOptions';
 import HeroSection from '@/components/sections/HeroSection';
 import SupportGauSeva from '@/components/sections/SupportGauSeva';
 import OurServices from '@/components/sections/OurServices';
+import Donation from '@/components/sections/Donation';
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
       <OurServices />
       <GauSevaOptions />
       <SupportGauSeva />
-      <DonationForm />
+      <Donation />
     </div>
   );
 }

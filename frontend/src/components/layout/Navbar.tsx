@@ -1,12 +1,19 @@
 import { FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import ChangeLanguage from '../common/button/ChangeLanguage';
+import { useNavigate } from 'react-router-dom';
+import { useDonateNavigate } from '@/hooks/useDonateNavigate';
 
 function Navbar() {
   const { t } = useTranslation();
+  const navigateToDonate = useDonateNavigate();
+  const navigate = useNavigate();
   return (
     <nav className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center border-b border-divider bg-transparent">
-      <div className="flex items-center gap-2">
+      <div
+        onClick={() => navigate('/')}
+        className="flex cursor-pointer items-center gap-2"
+      >
         <img className="size-12" src="/logo/logo-192x192.png" />
         <h2 className="hidden md:block font-semibold text-md md:text-lg lg:text-xl">
           {t('footer.title')}
@@ -23,11 +30,13 @@ function Navbar() {
         >
           <FaWhatsapp className="w-5 h-5" />
         </a>
-        <a href="#donation-form">
-          <button className="bg-primary hover:bg-hover active:bg-active px-4 py-2 font-medium rounded-md border border-primary-dark transition-colors duration-200">
-            {t('buttons.donate_now')}
-          </button>
-        </a>
+
+        <button
+          onClick={navigateToDonate}
+          className="bg-primary hover:bg-hover active:bg-active px-4 py-2 font-medium rounded-md border border-primary-dark transition-colors duration-200"
+        >
+          {t('buttons.donate_now')}
+        </button>
       </div>
     </nav>
   );

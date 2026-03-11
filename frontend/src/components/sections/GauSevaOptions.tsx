@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DonateNow from '@/components/common/button/DonateNow';
 import { useTranslation } from 'react-i18next';
+import useDonationFormContext from '@/hooks/useDonationFormContext';
 
 interface DonationOption {
   id: number;
@@ -17,6 +18,7 @@ const GauSevaOptions: React.FC = () => {
   const { i18n } = useTranslation();
   const [options, setOptions] = useState<DonationOption[]>([]);
   const [loading, setLoading] = useState(true);
+  const { setSevaValue, handleAmountChange } = useDonationFormContext();
 
   useEffect(() => {
     axios
@@ -43,6 +45,14 @@ const GauSevaOptions: React.FC = () => {
     i18n.language === 'hi'
       ? option.description_hi || option.description_en
       : option.description_en;
+
+  const handleDonateClick = (option: DonationOption) => {
+    setSevaValue(getTitle(option));
+    handleAmountChange(option.amount);
+    document
+      .getElementById('donation-form')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
@@ -74,7 +84,7 @@ const GauSevaOptions: React.FC = () => {
                   {getDescription(option)}
                 </p>
                 <div className="max-h-20 md:max-h-0 overflow-hidden md:group-hover:max-h-20 transition-all duration-500 ease-in-out">
-                  <DonateNow scrollToId="donation-form" />
+                  <DonateNow onClick={() => handleDonateClick(option)} />
                 </div>
               </div>
             </div>

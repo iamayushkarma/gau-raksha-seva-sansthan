@@ -4,9 +4,10 @@ import DonationDetails from '@/components/common/form/DonationDetails';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 import SubmarrySection from '@/components/common/form/SubmarrySection';
 
-function DonationForm() {
+function Donation() {
   const { t } = useTranslation();
-  const { handleAmountChange, amount, error } = useDonationFormContext();
+  const { handleAmountChange, amount, error, sevaValue } =
+    useDonationFormContext();
   return (
     <section
       id="donation-form"
@@ -23,6 +24,7 @@ function DonationForm() {
             <DonationDetails
               amount={amount}
               error={error}
+              prefilledSeva={sevaValue}
               onAmountChange={handleAmountChange}
             />
           </form>
@@ -33,4 +35,4 @@ function DonationForm() {
   );
 }
 
-export default DonationForm;
+export default Donation;

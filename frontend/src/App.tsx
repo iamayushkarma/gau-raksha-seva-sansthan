@@ -2,6 +2,7 @@ import '@/App.css';
 import MainLayout from '@/layout/MainLayout';
 import Home from '@/pages/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import DonationForm from './pages/DonationForm';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/donation-form" element={<DonationForm />} />
           </Route>
         </Routes>
       </BrowserRouter>
