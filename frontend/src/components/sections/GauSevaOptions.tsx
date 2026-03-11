@@ -70,7 +70,7 @@ const GauSevaOptions: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+                {/* <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" /> */}
                 <div className="absolute top-4 right-4 bg-primary text-text-primary px-4 py-2 rounded-full font-bold text-sm shadow-lg">
                   ₹{option.amount}
                 </div>

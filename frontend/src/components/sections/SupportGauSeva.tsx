@@ -7,14 +7,21 @@ function SupportGauSeva() {
     <section className="mt-12 md:mt-10 lg:px-16 md:px-12 sm:px-8 px-4 py-6">
       <div className="flex flex-col lg:flex-row">
         {/* Video/image section */}
+        {/* YouTube video embed instead of placeholder image */}
         <div className="lg:w-1/2 p-2 md:p-5">
-          <img
-            src="https://placehold.co/1000x667" // (3:2 ratio)
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt={t('supportSection.imageAlt')}
-            loading="lazy"
-            className="w-full h-auto object-cover"
-          />
+          <div
+            className="relative w-full rounded-xl overflow-hidden shadow-lg"
+            style={{ paddingTop: '66.67%' }}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/9SqKQhdIJHA"
+              title={t('supportSection.imageAlt')}
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
         {/* Content section */}
         <div className="lg:w-1/2 p-2 md:p-5 mt-4">

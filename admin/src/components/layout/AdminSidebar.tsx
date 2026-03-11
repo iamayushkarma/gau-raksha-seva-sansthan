@@ -22,6 +22,11 @@ const NAV_LINKS = [
     link: '/admin/seva-management',
   },
   {
+    icon: <HandHeart size={18} />,
+    label: 'Video Management',
+    link: '/admin/video-management',
+  },
+  {
     icon: <Settings size={18} />,
     label: 'Site Settings',
     link: '/admin/site-settings',

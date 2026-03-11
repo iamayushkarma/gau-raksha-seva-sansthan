@@ -8,6 +8,7 @@ import SiteSettings from '@/pages/SiteSettings';
 import Profile from '@/pages/Profile';
 import useAdminAuth from '@/hooks/useAdminAuth';
 import { Toaster } from 'react-hot-toast';
+import VideoManagement from './pages/VideoManagement';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { token } = useAdminAuth();
@@ -39,6 +40,7 @@ function App() {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="donors" element={<Donors />} />
           <Route path="seva-management" element={<SevaManagement />} />
+          <Route path="video-management" element={<VideoManagement />} />
           <Route path="site-settings" element={<SiteSettings />} />
           <Route path="profile" element={<Profile />} />
         </Route>

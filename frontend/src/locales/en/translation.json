@@ -60,6 +60,12 @@
       }
     ]
   },
+  "videos": {
+    "badge": "Our Videos",
+    "title": "Watch Our Work in Action",
+    "description": "See how your donations are making a real difference in the lives of rescued cows at our gaushala.",
+    "view_all": "View All"
+  },
   "gauSeva": {
     "title": "Ways to Support Gau Seva",
     "description": "Choose a seva that resonates with your heart. Every contribution helps save and nurture Gau Mata",
