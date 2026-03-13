@@ -42,7 +42,7 @@ function AdminSidebar() {
       <div className="p-6 flex items-center gap-3">
         <img
           className="size-10 rounded-lg"
-          src="https://placehold.co/40x40"
+          src="/logo/logo-192x192.png"
           alt="logo"
         />
         <div>
