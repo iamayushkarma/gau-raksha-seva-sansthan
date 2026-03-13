@@ -5,8 +5,9 @@ import { videoApi } from '@/config/video-api';
 import { getYouTubeThumbnail, getYouTubeEmbed } from '@/types/video.types';
 import type { Video } from '@/types/video.types';
 import { useNavigate } from 'react-router-dom';
+import Button from '../ui/Button';
 
-const VideoCarousel: React.FC = () => {
+const VideoCarousel = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -104,12 +105,9 @@ const VideoCarousel: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* view all button aligned to the right */}
         <div className="flex justify-end mb-6">
-          <button
-            onClick={() => navigate('/videos')}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-primary px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
-          >
+          <Button className="gap-3" onClick={() => navigate('/videos')}>
             {t('videos.view_all') || 'View All'} →
-          </button>
+          </Button>
         </div>
 
         {/* carousel wrapper — relative so absolute buttons stay inside */}

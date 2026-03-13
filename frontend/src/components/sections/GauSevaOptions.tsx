@@ -14,7 +14,7 @@ interface DonationOption {
   image: string;
 }
 
-const GauSevaOptions: React.FC = () => {
+const GauSevaOptions = () => {
   const { i18n } = useTranslation();
   const [options, setOptions] = useState<DonationOption[]>([]);
   const [loading, setLoading] = useState(true);
@@ -57,6 +57,18 @@ const GauSevaOptions: React.FC = () => {
   return (
     <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
+        {/* section heading and subheading */}
+        {/* <div className="text-center mb-10">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+            {t('videos.badge')}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-2">
+            {t('videos.title')}
+          </h2>
+          <p className="text-text-secondary mt-3 max-w-xl mx-auto">
+            {t('videos.description')}
+          </p>
+        </div> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {options.map((option) => (
             <div

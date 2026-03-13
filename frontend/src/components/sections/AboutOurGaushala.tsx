@@ -8,12 +8,13 @@ const AboutOurGaushala = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 mt-30">
+    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 mt-30 overflow-hidden">
       <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
         {/* Image Side */}
-        <div className="w-full lg:w-1/2 relative">
+        <div className="w-full lg:w-1/2 relative overflow-hidden">
           <div className="relative z-10 w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2qYhUzoZXHgNOtzsvi8Rn7aHz_IAsP_UMCmEVUoUnZdOEYfdu48CM_Tjh2Rd1vx6UKotfIl2lB13-45o48VWZj76mrVf1pKy7TVw-C5chDGbwls8kCZWoIhJpzvp1uDSKx147_-Hx3Dlx4BEfMdhPJm1bCRHB7jQ8hEcbpcH44_Y4-k2mgc9z5u2EZ82qeChtdP8WDQjOPW0xvxfEK3XTLnLkc275FSeRlnwUnD7MLZnI702d9EWl9uz8SvRXZiiCnGvzCZiDY1k"
               alt="A gentle cow in a sunlit pasture"
@@ -21,8 +22,10 @@ const AboutOurGaushala = () => {
               loading="lazy"
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-          <div className="absolute -top-6 -left-6 w-48 h-48 border-4 border-primary/30 rounded-xl -z-0"></div>
+
+          {/* Decorative Elements */}
+          <div className="pointer-events-none absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="pointer-events-none absolute -top-4 -left-4 w-48 h-48 border-4 border-primary/30 rounded-xl"></div>
         </div>
 
         {/* Text Side */}
@@ -47,12 +50,14 @@ const AboutOurGaushala = () => {
               'Founded in 1998, our sanctuary began with just two rescued calves in a small shed. Over two decades of unwavering devotion, it has blossomed into a 50-acre haven dedicated to the protection and care of these divine creatures.'
             )}
           </p>
+
           <p className="text-text-secondary">
             {t(
               'about.section_desc_2',
               'Every corner of our grounds tells a story of compassion. We provide a lifetime of medical care, nourishing feed, and a peaceful environment where every soul is respected.'
             )}
           </p>
+
           <p className="text-text-secondary">
             {t(
               'about.section_desc_3',
@@ -68,6 +73,7 @@ const AboutOurGaushala = () => {
                 {t('about.stat_acres', 'Acres of Haven')}
               </span>
             </div>
+
             <div className="flex flex-col gap-1">
               <span className="text-3xl font-bold text-primary">500+</span>
               <span className="text-sm font-semibold uppercase tracking-wide text-text-secondary">
@@ -89,6 +95,7 @@ const AboutOurGaushala = () => {
             >
               {t('about.learn_more')}
             </Button>
+
             <Button
               icon={
                 <Play size={16} className="text-primary" fill="currentColor" />
