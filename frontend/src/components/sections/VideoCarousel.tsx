@@ -88,7 +88,7 @@ const VideoCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
+    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-primary-lighter/40">
       {/* section heading and subheading */}
       <div className="text-center mb-10">
         <span className="text-sm font-semibold uppercase tracking-widest text-primary">
