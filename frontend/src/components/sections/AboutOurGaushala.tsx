@@ -1,83 +1,107 @@
-import { Shield, FileText } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import DonateNow from '@/components/common/button/DonateNow';
-import MissionVisionCards from '@/components/common/about/MissionVisionCards';
-import OurJourney from '@/components/common/about/OurJourney';
-import WhatMakesUsDifferent from '@/components/common/about/WhatMakesUsDifferent';
-import HeroImageWithStats from '@/components/common/about/HeroImageWithStats';
-import QuoteBlock from '@/components/common/about/QuoteBlock';
-import { useDonateNavigate } from '@/hooks/useDonateNavigate';
+import { ArrowRight, Play } from 'lucide-react';
+import Button from '../ui/Button';
 
-function AboutOurGaushala() {
+const AboutOurGaushala = () => {
   const { t } = useTranslation();
-  const navigateToDonate = useDonateNavigate();
+  const navigate = useNavigate();
+
   return (
-    <section className="w-full max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start py-12 lg:py-20 px-4 lg:px-8">
-        {/* Left Column: Content (7 columns on large screens) */}
-        <div className="lg:col-span-7 flex flex-col space-y-10">
-          {/* Header Block */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <span className="h-1 w-12 bg-primary rounded-full"></span>
-              <span className="text-primary font-bold tracking-wider text-sm uppercase">
-                {t('about.who_we_are')}
-              </span>
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-text-primary leading-tight">
-              {t('about.title')}{' '}
-              <span className="text-primary relative inline-block">
-                {t('about.gaushala')}
-                <svg
-                  className="absolute w-full h-3 -bottom-1 left-0 text-primary/30"
-                  preserveAspectRatio="none"
-                  viewBox="0 0 100 10"
-                >
-                  <path
-                    d="M0 5 Q 50 10 100 5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  />
-                </svg>
-              </span>
-            </h2>
-            <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-              {t('about.description')}
-            </p>
+    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 mt-30">
+      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
+        {/* Image Side */}
+        <div className="w-full lg:w-1/2 relative">
+          <div className="relative z-10 w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2qYhUzoZXHgNOtzsvi8Rn7aHz_IAsP_UMCmEVUoUnZdOEYfdu48CM_Tjh2Rd1vx6UKotfIl2lB13-45o48VWZj76mrVf1pKy7TVw-C5chDGbwls8kCZWoIhJpzvp1uDSKx147_-Hx3Dlx4BEfMdhPJm1bCRHB7jQ8hEcbpcH44_Y4-k2mgc9z5u2EZ82qeChtdP8WDQjOPW0xvxfEK3XTLnLkc275FSeRlnwUnD7MLZnI702d9EWl9uz8SvRXZiiCnGvzCZiDY1k"
+              alt="A gentle cow in a sunlit pasture"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
-
-          {/* Info Cards / Mission & Vision */}
-          <MissionVisionCards />
-          {/* Our Journey Section */}
-          <OurJourney />
-          {/* What Makes Us Different */}
-          <WhatMakesUsDifferent />
-
-          {/* CTA & Trust Badges */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-4">
-            <DonateNow onClick={navigateToDonate} />
-            <div className="flex items-center gap-4 text-xs font-medium text-text-tertiary">
-              <div className="flex items-center gap-1.5 min-w-36 bg-surface px-3 py-1.5 rounded-full border border-border">
-                <Shield className="text-success w-4 h-4" />
-                {t('about.registered_ngo')}
-              </div>
-              <div className="flex items-center min-w-36 gap-1.5 bg-surface px-3 py-1.5 rounded-full border border-border">
-                <FileText className="text-info w-4 h-4" />
-                {t('about.tax_exempt')}
-              </div>
-            </div>
-          </div>
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="absolute -top-6 -left-6 w-48 h-48 border-4 border-primary/30 rounded-xl -z-0"></div>
         </div>
 
-        {/* Right Column */}
-        <div className="lg:col-span-5 h-full flex flex-col gap-6 lg:sticky lg:top-8">
-          <HeroImageWithStats /> {/* Main Hero Image */}
-          <QuoteBlock /> {/* Quote Block */}
+        {/* Text Side */}
+        <div className="w-full lg:w-1/2 flex flex-col gap-6">
+          {/* Badge */}
+          <div className="flex items-center gap-2">
+            <span className="h-1 w-12 bg-primary rounded-full"></span>
+            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+              {t('about.since', 'Since 1998')}
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
+            {t('about.section_title', 'Our Sacred Journey')}
+          </h2>
+
+          {/* Description */}
+          <p className="text-text-secondary mt-1">
+            {t(
+              'about.section_desc_1',
+              'Founded in 1998, our sanctuary began with just two rescued calves in a small shed. Over two decades of unwavering devotion, it has blossomed into a 50-acre haven dedicated to the protection and care of these divine creatures.'
+            )}
+          </p>
+          <p className="text-text-secondary">
+            {t(
+              'about.section_desc_2',
+              'Every corner of our grounds tells a story of compassion. We provide a lifetime of medical care, nourishing feed, and a peaceful environment where every soul is respected.'
+            )}
+          </p>
+          <p className="text-text-secondary">
+            {t(
+              'about.section_desc_3',
+              'Our daily operations are a labor of love, beginning before dawn with personalized health checks and the distribution of fresh, organic fodder. From specialized geriatric care for our elders to playful paddocks for the youngsters, our dedicated team ensures every cow receives genuine affection and a dignified life.'
+            )}
+          </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-6 pt-2">
+            <div className="flex flex-col gap-1">
+              <span className="text-3xl font-bold text-primary">50+</span>
+              <span className="text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                {t('about.stat_acres', 'Acres of Haven')}
+              </span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-3xl font-bold text-primary">500+</span>
+              <span className="text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                {t('about.stat_souls', 'Rescued Souls')}
+              </span>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-4 pt-2">
+            <Button
+              onClick={() => navigate('/about')}
+              icon={
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              }
+            >
+              {t('about.learn_more')}
+            </Button>
+            <Button
+              icon={
+                <Play size={16} className="text-primary" fill="currentColor" />
+              }
+              className="inline-flex items-center gap-2 border border-primary/30 bg-primary/10 hover:bg-primary/20 transition-all text-text-primary font-semibold px-6 py-3 rounded-full"
+            >
+              {t('about.watch_legacy')}
+            </Button>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default AboutOurGaushala;

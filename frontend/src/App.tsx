@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DonationForm from './pages/DonationForm';
 import Videos from './pages/Videos';
+import About from './pages/About';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/donation-form" element={<DonationForm />} />
             <Route path="/videos" element={<Videos />} />
+            <Route path="/about" element={<About />} />
           </Route>
         </Routes>
       </BrowserRouter>
