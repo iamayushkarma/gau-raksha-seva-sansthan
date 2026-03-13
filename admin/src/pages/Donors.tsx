@@ -6,6 +6,7 @@ import {
   X,
   ChevronDown,
 } from 'lucide-react';
+
 import useDonations from '@/hooks/useDonations';
 import type { DonationFilters } from '@/hooks/useDonations';
 import useSevaOptions from '@/hooks/useSevaOptions';
@@ -54,10 +55,10 @@ function Donors() {
   }
 
   return (
-    <div className="p-6 bg-background min-h-screen">
-      {/* Page Header */}
+    <div className="px-4 sm:px-6 lg:px-8 py-6 bg-background min-h-screen">
+      {/* Header */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-text-primary tracking-tight">
+        <h2 className="text-xl sm:text-2xl font-bold text-text-primary">
           Donors
         </h2>
         <p className="text-text-secondary text-sm mt-1">
@@ -67,9 +68,9 @@ function Donors() {
 
       <div className="bg-surface border border-border rounded-xl shadow-sm">
         {/* Toolbar */}
-        <div className="p-4 border-b border-border flex flex-wrap items-center gap-3">
+        <div className="p-4 border-b border-border flex flex-col sm:flex-row sm:items-center gap-3">
           {/* Search */}
-          <div className="relative flex-1 min-w-48">
+          <div className="relative w-full sm:flex-1">
             <input
               value={filters.search}
               onChange={(e) => handleSearch(e.target.value)}
@@ -100,7 +101,7 @@ function Donors() {
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-1 px-3 py-2 text-sm text-error hover:bg-error/10 rounded-lg transition-colors"
+              className="flex items-center gap-1 px-3 py-2 text-sm text-error hover:bg-error/10 rounded-lg"
             >
               <X size={14} />
               Clear
@@ -108,19 +109,20 @@ function Donors() {
           )}
 
           {/* Total */}
-          <span className="text-sm text-text-secondary ml-auto">
+          <span className="text-sm text-text-secondary sm:ml-auto">
             {pagination.total} donors
           </span>
         </div>
 
-        {/* Filter Panel */}
+        {/* Filters */}
         {showFilters && (
-          <div className="p-4 border-b border-border bg-background flex flex-wrap gap-4">
-            {/* Date filter */}
-            <div className="flex flex-col gap-1 min-w-36">
-              <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+          <div className="p-4 border-b border-border bg-background grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {/* Period */}
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-medium text-text-secondary uppercase">
                 Period
               </label>
+
               <div className="relative">
                 <select
                   value={filters.filterType}
@@ -140,152 +142,134 @@ function Donors() {
                   <option value="year">This year</option>
                   <option value="custom">Custom range</option>
                 </select>
-                <ChevronDown
-                  size={14}
-                  className="absolute right-2.5 top-2.5 text-text-tertiary pointer-events-none"
-                />
+
+                <ChevronDown className="absolute right-2.5 top-2.5 size-4 text-text-tertiary pointer-events-none" />
               </div>
             </div>
 
-            {/* Custom date range */}
+            {/* Custom dates */}
             {filters.filterType === 'custom' && (
               <>
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+                  <label className="text-xs text-text-secondary uppercase">
                     From
                   </label>
+
                   <input
                     type="date"
                     value={filters.dateFrom}
                     onChange={(e) =>
                       handleFilterChange({ dateFrom: e.target.value })
                     }
-                    className="pl-3 pr-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+                    className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
                   />
                 </div>
+
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+                  <label className="text-xs text-text-secondary uppercase">
                     To
                   </label>
+
                   <input
                     type="date"
                     value={filters.dateTo}
                     onChange={(e) =>
                       handleFilterChange({ dateTo: e.target.value })
                     }
-                    className="pl-3 pr-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+                    className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
                   />
                 </div>
               </>
             )}
 
-            {/* Seva filter */}
-            <div className="flex flex-col gap-1 min-w-48">
-              <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+            {/* Seva */}
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-text-secondary uppercase">
                 Seva
               </label>
-              <div className="relative">
-                <select
-                  value={filters.seva}
-                  onChange={(e) => handleFilterChange({ seva: e.target.value })}
-                  className="w-full appearance-none pl-3 pr-8 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
-                >
-                  <option value="">All sevas</option>
-                  {sevaOptions.map((s) => (
-                    <option key={s.id} value={s.title_en}>
-                      {s.title_en}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown
-                  size={14}
-                  className="absolute right-2.5 top-2.5 text-text-tertiary pointer-events-none"
-                />
-              </div>
+
+              <select
+                value={filters.seva}
+                onChange={(e) => handleFilterChange({ seva: e.target.value })}
+                className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+              >
+                <option value="">All sevas</option>
+
+                {sevaOptions.map((s) => (
+                  <option key={s.id} value={s.title_en}>
+                    {s.title_en}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {/* Type filter */}
-            <div className="flex flex-col gap-1 min-w-32">
-              <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+            {/* Type */}
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-text-secondary uppercase">
                 Type
               </label>
-              <div className="relative">
-                <select
-                  value={filters.type}
-                  onChange={(e) =>
-                    handleFilterChange({
-                      type: e.target.value as DonationFilters['type'],
-                    })
-                  }
-                  className="w-full appearance-none pl-3 pr-8 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
-                >
-                  <option value="">All</option>
-                  <option value="named">Named</option>
-                  <option value="anonymous">Anonymous</option>
-                </select>
-                <ChevronDown
-                  size={14}
-                  className="absolute right-2.5 top-2.5 text-text-tertiary pointer-events-none"
-                />
-              </div>
+
+              <select
+                value={filters.type}
+                onChange={(e) =>
+                  handleFilterChange({
+                    type: e.target.value as DonationFilters['type'],
+                  })
+                }
+                className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+              >
+                <option value="">All</option>
+                <option value="named">Named</option>
+                <option value="anonymous">Anonymous</option>
+              </select>
             </div>
 
-            {/* Sort by */}
-            <div className="flex flex-col gap-1 min-w-36">
-              <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+            {/* Sort */}
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-text-secondary uppercase">
                 Sort by
               </label>
-              <div className="relative">
-                <select
-                  value={filters.sortBy}
-                  onChange={(e) =>
-                    handleFilterChange({
-                      sortBy: e.target.value as DonationFilters['sortBy'],
-                    })
-                  }
-                  className="w-full appearance-none pl-3 pr-8 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
-                >
-                  <option value="id">Latest first</option>
-                  <option value="amount">Amount</option>
-                  <option value="created_at">Date</option>
-                </select>
-                <ChevronDown
-                  size={14}
-                  className="absolute right-2.5 top-2.5 text-text-tertiary pointer-events-none"
-                />
-              </div>
+
+              <select
+                value={filters.sortBy}
+                onChange={(e) =>
+                  handleFilterChange({
+                    sortBy: e.target.value as DonationFilters['sortBy'],
+                  })
+                }
+                className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+              >
+                <option value="id">Latest first</option>
+                <option value="amount">Amount</option>
+                <option value="created_at">Date</option>
+              </select>
             </div>
 
-            {/* Sort order */}
-            <div className="flex flex-col gap-1 min-w-32">
-              <label className="text-xs font-medium text-text-secondary uppercase tracking-wide">
+            {/* Order */}
+            <div className="flex flex-col gap-1">
+              <label className="text-xs text-text-secondary uppercase">
                 Order
               </label>
-              <div className="relative">
-                <select
-                  value={filters.sortOrder}
-                  onChange={(e) =>
-                    handleFilterChange({
-                      sortOrder: e.target.value as 'asc' | 'desc',
-                    })
-                  }
-                  className="w-full appearance-none pl-3 pr-8 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
-                >
-                  <option value="desc">High → Low / Newest</option>
-                  <option value="asc">Low → High / Oldest</option>
-                </select>
-                <ChevronDown
-                  size={14}
-                  className="absolute right-2.5 top-2.5 text-text-tertiary pointer-events-none"
-                />
-              </div>
+
+              <select
+                value={filters.sortOrder}
+                onChange={(e) =>
+                  handleFilterChange({
+                    sortOrder: e.target.value as 'asc' | 'desc',
+                  })
+                }
+                className="px-3 py-2 text-sm border border-border rounded-lg bg-surface outline-none focus:border-primary"
+              >
+                <option value="desc">High → Low / Newest</option>
+                <option value="asc">Low → High / Oldest</option>
+              </select>
             </div>
           </div>
         )}
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[900px]">
             <thead>
               <tr className="border-b border-border bg-background">
                 {[
@@ -299,20 +283,22 @@ function Donors() {
                 ].map((h) => (
                   <th
                     key={h}
-                    className={`px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider
-                      ${h === 'Action' ? 'text-right' : 'text-left'}`}
+                    className={`px-4 sm:px-6 py-3 text-xs font-semibold text-text-secondary uppercase tracking-wider ${
+                      h === 'Action' ? 'text-right' : 'text-left'
+                    }`}
                   >
                     {h}
                   </th>
                 ))}
               </tr>
             </thead>
+
             <tbody>
               {loading ? (
                 [...Array(10)].map((_, i) => (
                   <tr key={i} className="border-b border-border animate-pulse">
                     {[...Array(7)].map((_, j) => (
-                      <td key={j} className="px-6 py-4">
+                      <td key={j} className="px-4 sm:px-6 py-3 sm:py-4">
                         <div className="h-4 bg-border rounded w-24" />
                       </td>
                     ))}
@@ -331,34 +317,39 @@ function Donors() {
                 donations.map((d) => (
                   <tr
                     key={d.id}
-                    className="border-b border-border hover:bg-hover transition-colors"
+                    className="border-b border-border hover:bg-hover"
                   >
-                    <td className="px-6 py-4">
+                    <td className="px-4 sm:px-6 py-3 sm:py-4">
                       <div className="flex items-center gap-3">
                         <div className="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-semibold">
                           {getInitials(d.is_anonymous ? null : d.name)}
                         </div>
+
                         <span className="text-sm font-medium text-text-primary">
                           {d.is_anonymous ? 'Anonymous' : d.name}
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-text-secondary">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-sm text-text-secondary">
                       {d.is_anonymous ? '—' : d.phone}
                     </td>
-                    <td className="px-6 py-4 text-sm font-semibold text-text-primary">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-sm font-semibold text-text-primary">
                       ₹{Number(d.amount).toLocaleString('en-IN')}
                     </td>
-                    <td className="px-6 py-4 text-sm text-text-secondary">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-sm text-text-secondary">
                       {d.seva}
                     </td>
-                    <td className="px-6 py-4 text-sm text-text-secondary">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-sm text-text-secondary">
                       {formatDate(d.created_at)}
                     </td>
-                    <td className="px-6 py-4">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4">
                       <span
-                        className={`text-xs px-3 py-1 rounded-full font-medium
-                        ${
+                        className={`text-xs px-3 py-1 rounded-full font-medium ${
                           d.is_anonymous
                             ? 'bg-warning/10 text-warning'
                             : 'bg-success/10 text-success'
@@ -367,8 +358,9 @@ function Donors() {
                         {d.is_anonymous ? 'Anonymous' : 'Named'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
-                      <button className="text-text-tertiary hover:text-text-primary transition-colors">
+
+                    <td className="px-4 sm:px-6 py-3 sm:py-4 text-right">
+                      <button className="text-text-tertiary hover:text-text-primary">
                         <MoreVertical size={16} />
                       </button>
                     </td>
@@ -380,25 +372,28 @@ function Donors() {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-border">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 sm:px-6 py-4 border-t border-border">
           <p className="text-sm text-text-secondary">
             Page {currentPage} of {totalPages} · {pagination.total} total
           </p>
+
           <div className="flex items-center gap-2">
             <button
               onClick={goToPrevPage}
               disabled={currentPage === 1 || loading}
-              className="px-4 py-1.5 text-sm border border-border rounded-lg text-text-secondary hover:bg-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-1.5 text-sm border border-border rounded-lg text-text-secondary hover:bg-hover disabled:opacity-40"
             >
               ← Prev
             </button>
-            <span className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg font-medium min-w-8 text-center">
+
+            <span className="px-3 py-1.5 text-sm bg-primary text-white rounded-lg font-medium">
               {currentPage}
             </span>
+
             <button
               onClick={goToNextPage}
               disabled={!pagination.hasNextPage || loading}
-              className="px-4 py-1.5 text-sm border border-border rounded-lg text-text-secondary hover:bg-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-1.5 text-sm border border-border rounded-lg text-text-secondary hover:bg-hover disabled:opacity-40"
             >
               Next →
             </button>

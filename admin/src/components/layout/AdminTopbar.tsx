@@ -1,36 +1,41 @@
-import { Search } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import useAdminAuth from '@/hooks/useAdminAuth';
 import { useNavigate } from 'react-router-dom';
 
-function AdminTopbar() {
+interface AdminTopbarProps {
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function AdminTopbar({ setSidebarOpen }: AdminTopbarProps) {
   const navigate = useNavigate();
   const { admin } = useAdminAuth();
+
   return (
-    <header className="h-20 bg-surface border-b border-border flex justify-center">
+    <header className="h-16 bg-surface border-b border-border flex justify-center">
       <div className="w-[95%] flex items-center justify-between">
-        {/* Search Bar */}
-        <div className="relative">
-          <input
-            placeholder="Search doners and more..."
-            className="w-96 outline-none placeholder:text-sm shadow pl-10 rounded-lg h-10 bg-background"
-          ></input>
-          <div className="absolute bottom-2.5 left-2.5">
-            <Search className="size-4.5 text-text-secondary" />
-          </div>
+        {/* Left side */}
+        <div className="flex items-center gap-4">
+          <button onClick={() => setSidebarOpen(true)} className="md:hidden">
+            <Menu size={22} />
+          </button>
         </div>
-        {/* User Controls */}
+
+        {/* User */}
         <div
           onClick={() => navigate('/admin/profile')}
-          className="flex gap-3 border-l border-border pl-4 cursor-pointer"
+          className="flex items-center gap-3 cursor-pointer"
         >
-          <div className="size-10 flex items-center justify-center rounded-full bg-primary/70 text-text-on-primary">
-            <p className="uppercase font-semibold">{admin?.username[0]}</p>
+          <div className="size-9 flex items-center justify-center rounded-full bg-primary/70 text-text-on-primary">
+            <span className="uppercase font-semibold text-sm">
+              {admin?.username?.[0]}
+            </span>
           </div>
-          <div>
-            <h3 className="font-medium text-md text-text-primary">
+
+          <div className="hidden sm:block">
+            <h3 className="font-medium text-sm text-text-primary">
               {admin?.username}
             </h3>
-            <p className="text-text-secondary text-sm">{admin?.role}</p>
+            <p className="text-text-secondary text-xs">{admin?.role}</p>
           </div>
         </div>
       </div>
