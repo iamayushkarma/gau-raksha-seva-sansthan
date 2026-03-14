@@ -256,6 +256,9 @@
       { "title": "Contact Us", "href": "/contact-us" }
     ],
     "contact_title": "Contact Us",
+    "contact_phone": "+91 9876543210",
+    "contact_email": "support@gauraksha.org",
+    "contact_address": "Khargone, Madhya Pradesh",
     "copyright": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",

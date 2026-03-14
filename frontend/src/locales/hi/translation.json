@@ -253,6 +253,9 @@
       { "title": "संपर्क करें", "href": "/contact-us" }
     ],
     "contact_title": "संपर्क करें",
+    "contact_phone": "+91 9876543210",
+    "contact_email": "support@gauraksha.org",
+    "contact_address": "खरगोन, मध्य प्रदेश",
     "copyright": "सर्वाधिकार सुरक्षित।",
     "privacy": "गोपनीयता नीति",
     "terms": "सेवा की शर्तें",

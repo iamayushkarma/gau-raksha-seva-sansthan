@@ -18,7 +18,7 @@ function Footer() {
     returnObjects: true,
   }) as QuickLink[];
   return (
-    <footer className="bg-surface-light border-t border-t-border">
+    <footer className="bg-surface-light border-t border-t-border ">
       {/* MAIN FOOTER GRID */}
       <section className="p-8 lg:p-16 mx-auto grid grid-cols-1 max-sm:gap-10 lg:grid-cols-3 lg:justify-items-center">
         {/* Heading and sub heading section */}
@@ -37,7 +37,7 @@ function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div className="flex flex-col col-span-1">
+        <div className="flex flex-col col-span-1 select-none">
           <h3 className="font-semibold text-[1.1rem]">
             {t('footer.quick_links_title')}
           </h3>
@@ -56,7 +56,7 @@ function Footer() {
         </div>
 
         {/* Contact Us */}
-        <div className="flex flex-col col-span-1">
+        <div className="flex flex-col col-span-1 select-none">
           <h3 className="font-semibold text-[1.1rem]">
             {t('footer.contact_title')}
           </h3>

@@ -1,13 +1,14 @@
-// frontend/src/pages/Videos.tsx
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { Play, Search, X } from 'lucide-react';
+import { Play, Search, X, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { videoApi } from '@/config/video-api';
 import { getYouTubeThumbnail, getYouTubeEmbed } from '@/types/video.types';
 import type { Video } from '@/types/video.types';
 
 const Videos = () => {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -16,6 +17,7 @@ const Videos = () => {
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
   useEffect(() => {
     videoApi
       .getAll()
@@ -41,6 +43,20 @@ const Videos = () => {
   return (
     <main className="min-h-screen bg-background py-12 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
+        {/* Back Button */}
+        <div className="mb-6">
+          <button
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary font-semibold text-sm transition-colors group"
+          >
+            <ArrowLeft
+              size={18}
+              className="group-hover:-translate-x-1 transition-transform"
+            />
+            {i18n.language === 'hi' ? 'वापस जाएं' : 'Back'}
+          </button>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-10">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -54,30 +70,6 @@ const Videos = () => {
               ? 'गौशाला में हमारे कार्य और गायों की देखभाल के वीडियो देखें।'
               : 'Watch our rescue operations, cow care stories, and life at the gaushala.'}
           </p>
-        </div>
-
-        {/* Search */}
-        <div className="relative max-w-md mx-auto mb-10">
-          <Search
-            size={18}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-          />
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder={
-              i18n.language === 'hi' ? 'वीडियो खोजें...' : 'Search videos...'
-            }
-            className="w-full pl-11 pr-10 py-3 rounded-full border border-gray-200 bg-surface text-text-primary text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
-          />
-          {search && (
-            <button
-              onClick={() => setSearch('')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-            >
-              <X size={16} />
-            </button>
-          )}
         </div>
 
         {/* Loading skeleton */}
@@ -107,13 +99,12 @@ const Videos = () => {
 
         {/* Video grid */}
         {!loading && filtered.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid mt-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((video) => {
               const thumb =
                 video.thumbnail || getYouTubeThumbnail(video.youtube_url);
               const embedUrl = getYouTubeEmbed(video.youtube_url);
               const isPlaying = playingId === video.id;
-
               return (
                 <div key={video.id} className="flex flex-col gap-3 group">
                   {/* Thumbnail / Player */}
@@ -149,7 +140,6 @@ const Videos = () => {
                       </div>
                     )}
                   </div>
-
                   {/* Info */}
                   <div className="flex flex-col gap-1 px-1">
                     <h3 className="font-bold text-text-primary text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
