@@ -263,5 +263,119 @@
   },
   "buttons": {
     "donate_now": "Donate Now"
+  },
+  "privacyPolicy": {
+    "back": "Back",
+    "badge": "Legal",
+    "title": "Privacy Policy",
+    "subtitle": "At Gau Raksha Seva Sansthan, we are committed to protecting your privacy. This policy explains how we collect, use, and safeguard your personal information.",
+    "last_updated": "Last updated: March 2025",
+    "sections": {
+      "collection": {
+        "title": "Information We Collect",
+        "items": [
+          "Personal details you provide such as your name, phone number, and email address when submitting a contact form or making a donation.",
+          "Donation transaction details including amount, seva category, and payment reference ID.",
+          "Device and usage data such as browser type, IP address, and pages visited — collected automatically to improve our website."
+        ]
+      },
+      "usage": {
+        "title": "How We Use Your Information",
+        "items": [
+          "To process your donations and send you payment confirmations and tax receipts.",
+          "To respond to your queries and provide updates about our work and the cows in our care.",
+          "To improve our website experience and understand how our supporters interact with our content.",
+          "We never sell, rent, or share your personal information with third parties for marketing purposes."
+        ]
+      },
+      "security": {
+        "title": "Data Security",
+        "items": [
+          "We use industry-standard encryption (SSL/TLS) to protect data transmitted through our website.",
+          "Payment information is processed through secure, PCI-compliant payment gateways. We do not store your card or UPI details on our servers.",
+          "Access to personal data is restricted to authorized staff who need it to perform their duties."
+        ]
+      },
+      "cookies": {
+        "title": "Cookies",
+        "items": [
+          "We use essential cookies to make our website function correctly, such as remembering your language preference.",
+          "We do not use tracking or advertising cookies. You can disable cookies in your browser settings at any time."
+        ]
+      },
+      "rights": {
+        "title": "Your Rights",
+        "items": [
+          "You have the right to request access to the personal data we hold about you.",
+          "You may request correction or deletion of your personal data at any time by contacting us.",
+          "You can opt out of communications from us by clicking the unsubscribe link in any email or contacting us directly."
+        ]
+      },
+      "contact": {
+        "title": "Contact Us",
+        "items": [
+          "If you have any questions about this Privacy Policy or how we handle your data, please reach out to us at contact@sacredgaushala.org or call +91 98765 43210.",
+          "This policy was last updated in March 2025. We may update it periodically and will notify you of significant changes."
+        ]
+      }
+    }
+  },
+  "termsOfService": {
+    "back": "Back",
+    "badge": "Legal",
+    "title": "Terms of Service",
+    "subtitle": "Please read these terms carefully before using our website or making a donation. These terms govern your relationship with Gau Raksha Seva Sansthan.",
+    "last_updated": "Last updated: March 2025",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "items": [
+          "By accessing and using the Gau Raksha Seva Sansthan website, you accept and agree to be bound by these Terms of Service.",
+          "If you do not agree to these terms, please do not use our website or services.",
+          "We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the updated terms."
+        ]
+      },
+      "donations": {
+        "title": "Donations & Payments",
+        "items": [
+          "All donations made through our website are voluntary contributions to support our animal welfare mission.",
+          "Donations are non-refundable once processed, except in cases of duplicate or erroneous transactions. Contact us within 48 hours for such issues.",
+          "Tax exemption certificates under 80G will be issued for eligible donations. Please provide accurate PAN details when donating.",
+          "We use secure third-party payment gateways. We are not responsible for any issues arising from the payment processor."
+        ]
+      },
+      "usage": {
+        "title": "Use of Website",
+        "items": [
+          "You may use our website only for lawful purposes and in a manner that does not infringe the rights of others.",
+          "You must not use our website to transmit any unsolicited communications, malware, or harmful content.",
+          "We reserve the right to restrict access to our website for users who violate these terms."
+        ]
+      },
+      "ip": {
+        "title": "Intellectual Property",
+        "items": [
+          "All content on this website including text, images, logos, and videos is the property of Gau Raksha Seva Sansthan.",
+          "You may share our content for non-commercial purposes with proper attribution. Commercial use requires prior written permission.",
+          "Our name, logo, and branding may not be used without explicit consent."
+        ]
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "items": [
+          "We strive to keep the website accurate and up to date, but we make no warranties regarding the completeness or accuracy of content.",
+          "We are not liable for any indirect, incidental, or consequential damages arising from your use of our website.",
+          "Our total liability for any claim arising out of your use of our website shall not exceed the amount of your most recent donation."
+        ]
+      },
+      "disputes": {
+        "title": "Contact & Disputes",
+        "items": [
+          "These terms are governed by the laws of India. Any disputes shall be resolved in the courts of Varanasi, Uttar Pradesh.",
+          "For any questions about these Terms of Service, please contact us at contact@sacredgaushala.org or call +91 98765 43210.",
+          "This document was last updated in March 2025."
+        ]
+      }
+    }
   }
 }

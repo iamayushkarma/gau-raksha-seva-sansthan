@@ -3,12 +3,8 @@ import DonarInformation from '@/components/common/form/DonarInformation';
 import DonationDetails from '@/components/common/form/DonationDetails';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 import SubmarrySection from '@/components/common/form/SubmarrySection';
-import { useLayoutEffect } from 'react';
 
 function DonationForm() {
-  useLayoutEffect(() => {
-    window.scroll(0, 0);
-  }, []);
   const { t } = useTranslation();
   const { handleAmountChange, amount, error } = useDonationFormContext();
   return (

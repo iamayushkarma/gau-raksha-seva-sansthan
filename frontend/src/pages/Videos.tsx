@@ -6,7 +6,7 @@ import { videoApi } from '@/config/video-api';
 import { getYouTubeThumbnail, getYouTubeEmbed } from '@/types/video.types';
 import type { Video } from '@/types/video.types';
 
-const Videos: React.FC = () => {
+const Videos = () => {
   const { i18n } = useTranslation();
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);

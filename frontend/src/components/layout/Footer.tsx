@@ -84,11 +84,17 @@ function Footer() {
         </p>
 
         <div className="flex gap-6">
-          <span className="cursor-pointer hover:text-text-primary">
+          <span
+            onClick={() => navigate('/privacy-policy')}
+            className="cursor-pointer hover:text-text-primary"
+          >
             {t('footer.privacy')}
           </span>
 
-          <span className="cursor-pointer hover:text-text-primary">
+          <span
+            onClick={() => navigate('/terms-of-service')}
+            className="cursor-pointer hover:text-text-primary"
+          >
             {t('footer.terms')}
           </span>
         </div>

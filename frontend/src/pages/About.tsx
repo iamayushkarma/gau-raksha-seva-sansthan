@@ -9,7 +9,7 @@ import MeetTheHerd from '@/components/about/MeetTheHerd';
 import ImpactStats from '@/components/about/ImpactStats';
 import AboutCTA from '@/components/about/AboutCTA';
 
-const AboutPage: React.FC = () => {
+const AboutPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 

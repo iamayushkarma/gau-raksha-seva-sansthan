@@ -6,7 +6,7 @@ import ContactHero from '@/components/contact/ContactHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfo from '@/components/contact/ContactInfo';
 
-const ContactPage: React.FC = () => {
+const ContactPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
