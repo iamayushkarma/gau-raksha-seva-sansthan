@@ -6,7 +6,7 @@ import ContactHero from '@/components/contact/ContactHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfo from '@/components/contact/ContactInfo';
 
-const ContactPage = () => {
+const ContactPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -32,10 +32,10 @@ const ContactPage = () => {
       <ContactHero />
 
       {/* Form + Info */}
-      <section className="px-4 md:px-20 py-10 grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+      <div className="px-4 md:px-20 py-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
         <ContactForm />
         <ContactInfo />
-      </section>
+      </div>
     </div>
   );
 };
