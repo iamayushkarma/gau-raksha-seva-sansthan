@@ -49,7 +49,7 @@ const GauSevaOptions = () => {
   };
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
+    <section id="donation" className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-10">

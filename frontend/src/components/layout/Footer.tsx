@@ -1,13 +1,19 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 function Footer() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
+  type QuickLink = {
+    title: string;
+    href: string;
+  };
   // translated quick links
   const quickLinks = t('footer.quick_links', {
     returnObjects: true,
-  }) as string[];
+  }) as QuickLink[];
   return (
     <footer className="bg-surface-light border-t border-t-border">
       {/* MAIN FOOTER GRID */}
@@ -36,9 +42,10 @@ function Footer() {
             {quickLinks.map((link, index) => (
               <li
                 key={index}
+                onClick={() => navigate(link.href)}
                 className="py-1 cursor-pointer text-text-secondary hover:text-text-primary font-medium transition-all duration-100"
               >
-                {link}
+                {link.title}
               </li>
             ))}
           </ul>
