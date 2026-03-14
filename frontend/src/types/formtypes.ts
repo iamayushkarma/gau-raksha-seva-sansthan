@@ -54,10 +54,28 @@ type ProviderProps = {
   children: ReactNode;
 };
 
+// query form types
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  message?: string;
+}
+
 export type {
   InputFormPropType,
   CheckBoxType,
   DonationDetailsProp,
   DonationFormContextType,
   ProviderProps,
+  FormData,
+  FormErrors,
 };

@@ -6,20 +6,7 @@ import toast from 'react-hot-toast';
 import Button from '@/components/ui/Button';
 import { FormInput } from '@/components/common/form/FormInput';
 import { API_ENDPOINTS } from '@/config/api';
-
-interface FormData {
-  name: string;
-  phone: string;
-  email: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  phone?: string;
-  email?: string;
-  message?: string;
-}
+import type { FormData, FormErrors } from '@/types/formtypes';
 
 const ContactForm: React.FC = () => {
   const { t } = useTranslation();

@@ -1,10 +1,13 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import DonateNow from '../common/button/DonateNow';
+import { useDonateNavigate } from '@/hooks/useDonateNavigate';
 
 function Footer() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const navigateToDonate = useDonateNavigate();
 
   type QuickLink = {
     title: string;
@@ -30,6 +33,7 @@ function Footer() {
           <p className="mt-6 md:mt-7 lg:mt-8 text-text-secondary">
             {t('footer.description')}
           </p>
+          <DonateNow onClick={navigateToDonate} className="mt-4 max-w-40" />
         </div>
 
         {/* Quick Links */}
