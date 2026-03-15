@@ -9,7 +9,19 @@ const AboutOurGaushala = () => {
 
   return (
     <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 mt-30 overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
+      {/* Section heading */}
+      <div className="text-center mb-10">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+          {t('about.who_we_are')}
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-2">
+          {t('about.title')}
+        </h2>
+        <p className="text-text-secondary mt-3 max-w-xl mx-auto">
+          {t('about.description')}
+        </p>
+      </div>
+      <div className="flex mt-10 flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
         {/* Image Side */}
         <div className="w-full lg:w-1/2 relative overflow-hidden">
           <div className="relative z-10 w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
