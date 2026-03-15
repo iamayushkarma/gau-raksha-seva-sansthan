@@ -35,8 +35,7 @@ const VideoCarousel = () => {
     videos.length
   );
 
-  // ── smooth-slide geometry (mirrors DesktopServiceAccordion) ──
-  const gapPx = 24; // gap-6
+  const gapPx = 24;
   const cardWidthPercent = 100 / visibleCount;
   const maxIndex = Math.max(0, videos.length - visibleCount);
 
@@ -110,9 +109,7 @@ const VideoCarousel = () => {
             <ChevronLeft size={18} />
           </button>
 
-          {/* ── Clipped viewport ── */}
           <div className="overflow-hidden mx-6">
-            {/* ── Sliding track: all cards in one flex row ── */}
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
