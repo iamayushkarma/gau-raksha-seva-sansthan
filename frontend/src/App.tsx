@@ -2,13 +2,13 @@ import '@/App.css';
 import MainLayout from '@/layout/MainLayout';
 import Home from '@/pages/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import DonationForm from './pages/DonationForm';
-import Videos from './pages/Videos';
-import About from './pages/About';
-import ContactPage from './pages/ContactPage';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import ScrollToTop from './components/ui/ScrollToTop';
+import DonationForm from '@/pages/DonationForm';
+import Videos from '@/pages/Videos';
+import About from '@/pages/About';
+import ContactPage from '@/pages/ContactPage';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 function App() {
   return (
