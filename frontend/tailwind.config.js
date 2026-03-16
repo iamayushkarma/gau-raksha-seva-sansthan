@@ -66,6 +66,9 @@ export default {
           lighter: 'var(--color-primary-lighter)',
           dark: 'var(--color-primary-dark)',
           darker: 'var(--color-primary-darker)',
+          // #f15a24 — used for CtaBanner bg and rich CTA surfaces
+          cta: 'var(--color-primary-cta)',
+          ctaHover: 'var(--color-primary-cta-hover)',
         },
         secondary: {
           DEFAULT: 'var(--color-secondary)',
@@ -76,6 +79,14 @@ export default {
           DEFAULT: 'var(--color-accent)',
           light: 'var(--color-accent-light)',
           alt: 'var(--color-accent-alt)',
+        },
+        // Footer dark navy system
+        footer: {
+          DEFAULT: 'var(--color-footer)', // #0a1f3c — main footer bg
+          surface: 'var(--color-footer-surface)', // #0f2847 — card/column bg
+          border: 'var(--color-footer-border)', // #1a3a5c — dividers
+          text: 'var(--color-footer-text)', // #a8c4e0 — body text
+          muted: 'var(--color-footer-text-muted)', // #5a7fa0 — secondary text
         },
         background: 'var(--color-background)',
         surface: 'var(--color-surface)',

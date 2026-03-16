@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 import ChangeLanguage from '../common/button/ChangeLanguage';
 import { useNavigate } from 'react-router-dom';
 import { useDonateNavigate } from '@/hooks/useDonateNavigate';
-import Button from '../ui/Button';
-import DonateNowShimmer from '../common/button/DonateNowShimmer';
 import DonateNow from '../common/button/DonateNow';
 
 function Navbar() {
@@ -12,7 +10,10 @@ function Navbar() {
   const navigateToDonate = useDonateNavigate();
   const navigate = useNavigate();
   return (
-    <nav className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center border-b border-divider bg-transparent">
+    <nav
+      className="h-16 flex justify-between px-4 md:px-6 lg:px-8 items-center 
+  border-b border-border bg-background sticky top-0 z-50"
+    >
       <div
         onClick={() => navigate('/')}
         className="flex cursor-pointer items-center gap-2"

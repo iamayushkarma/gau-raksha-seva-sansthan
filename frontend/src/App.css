@@ -33,7 +33,6 @@ input[type='number'] {
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   /* Primary — Saffron Orange */
   --color-primary: #ff7300;
@@ -41,6 +40,10 @@ input[type='number'] {
   --color-primary-lighter: #ffbf80;
   --color-primary-dark: #e85d00;
   --color-primary-darker: #7a2e00;
+
+  /* Primary — CTA Orange (used in banners, CtaBanner bg) */
+  --color-primary-cta: #f15a24;
+  --color-primary-cta-hover: #d94d1a;
 
   /* Secondary — Crimson Red */
   --color-secondary: #c00707;
@@ -51,6 +54,13 @@ input[type='number'] {
   --color-accent: #134e8e;
   --color-accent-light: #1a73e8;
   --color-accent-alt: #7aa7e6;
+
+  /* Footer — Deep Navy */
+  --color-footer: #0a1f3c;
+  --color-footer-surface: #0f2847;
+  --color-footer-border: #1a3a5c;
+  --color-footer-text: #a8c4e0;
+  --color-footer-text-muted: #5a7fa0;
 
   /* Backgrounds */
   --color-background: #fff8f2;

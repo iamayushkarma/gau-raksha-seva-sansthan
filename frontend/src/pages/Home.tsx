@@ -8,6 +8,7 @@ import VideoCarousel from '@/components/sections/VideoCarousel';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import TestimonialSection from '@/components/sections/TestimonialSection';
+import CtaBanner from '@/components/sections/CtaBanner';
 
 function Home() {
   const useScrollToHash = () => {
@@ -29,10 +30,11 @@ function Home() {
       <AboutOurGaushala />
       <OurServices />
       <VideoCarousel />
+      <TestimonialSection />
       <GauSevaOptions />
       <SupportGauSeva />
       <Donation />
-      <TestimonialSection />
+      <CtaBanner />
     </div>
   );
 }
