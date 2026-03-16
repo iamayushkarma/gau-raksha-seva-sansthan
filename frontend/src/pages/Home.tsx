@@ -7,6 +7,7 @@ import Donation from '@/components/sections/Donation';
 import VideoCarousel from '@/components/sections/VideoCarousel';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import TestimonialSection from '@/components/sections/TestimonialSection';
 
 function Home() {
   const useScrollToHash = () => {
@@ -31,6 +32,7 @@ function Home() {
       <GauSevaOptions />
       <SupportGauSeva />
       <Donation />
+      <TestimonialSection />
     </div>
   );
 }

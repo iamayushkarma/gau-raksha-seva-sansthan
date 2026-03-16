@@ -3,6 +3,7 @@ import axios from 'axios';
 import DonateNow from '@/components/common/button/DonateNow';
 import { useTranslation } from 'react-i18next';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
+import { API_ENDPOINTS } from '@/config/api';
 
 interface DonationOption {
   id: number;
@@ -22,7 +23,7 @@ const GauSevaOptions = () => {
 
   useEffect(() => {
     axios
-      .get('/api/v1/donation-options')
+      .get(API_ENDPOINTS.donationOptions)
       .then(({ data }) => setOptions(data.data || []))
       .catch(() => setOptions([]))
       .finally(() => setLoading(false));
@@ -49,7 +50,7 @@ const GauSevaOptions = () => {
   };
 
   return (
-    <section id="donation" className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
+    <section id="donation" className="py-8 mt-8 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-10">
@@ -92,7 +93,10 @@ const GauSevaOptions = () => {
                   {getDescription(option)}
                 </p>
                 <div className="pt-3 mt-auto">
-                  <DonateNow onClick={() => handleDonateClick(option)} />
+                  <DonateNow
+                    size="md"
+                    onClick={() => handleDonateClick(option)}
+                  />
                 </div>
               </div>
             </div>

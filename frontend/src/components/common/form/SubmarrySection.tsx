@@ -12,7 +12,7 @@ function SubmarrySection() {
     <div className="bg-surface border border-divider  relative shadow-md lg:max-w-lg overflow-hidden mx-auto rounded-lg px-6 py-4 max-sm:mt-6 w-full">
       <div className="absolute inset-0 h-1.5 bg-linear-to-r from-primary to-secondary"></div>
       {/* User detail */}
-      <div className="py-6 border-b-2 border-dashed border-divider">
+      <div className="pb-6 border-b-2 border-dashed border-divider">
         <div className="flex items-center gap-3 mt-4">
           <h2 className="text-xl font-semibold text-text-primary">
             {t('donationForm.summary.title')}
@@ -48,8 +48,9 @@ function SubmarrySection() {
         </p>
       </div>
       {/* Submit button */}
-      <div className="mt-6">
+      <div className="mt-6 hidden sm:flex">
         <DonateNow
+          className="w-full"
           onClick={() =>
             payNow(Number(amount), sevaValue, name, phone, isAnonymous)
           }

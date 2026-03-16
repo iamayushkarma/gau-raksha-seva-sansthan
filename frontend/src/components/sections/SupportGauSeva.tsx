@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import DonateNowShimmer from '@/components/common/button/DonateNowShimmer';
+import DonateNow from '../common/button/DonateNow';
 
 function SupportGauSeva() {
   const { t } = useTranslation();
   return (
-    <section className="mt-12 md:mt-10 lg:px-16 md:px-12 sm:px-8 px-4 py-6">
+    <section className="lg:px-16 md:px-12 sm:px-8 px-4 py-6 mb-4">
       <div className="flex flex-col lg:flex-row">
-        {/* Video/image section */}
-        {/* YouTube video embed instead of placeholder image */}
         <div className="lg:w-1/2 p-2 md:p-5">
           <div
             className="relative w-full rounded-xl overflow-hidden shadow-lg"
@@ -29,7 +27,9 @@ function SupportGauSeva() {
             {t('supportSection.title')}
           </h2>
           <p className="mt-6">{t('supportSection.description')}</p>
-          <DonateNowShimmer />
+          <div className="mt-3">
+            <DonateNow shimmer />
+          </div>
         </div>
       </div>
     </section>

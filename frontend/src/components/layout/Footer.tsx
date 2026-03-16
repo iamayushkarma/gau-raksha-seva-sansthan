@@ -33,7 +33,12 @@ function Footer() {
           <p className="mt-6 md:mt-7 lg:mt-8 text-text-secondary">
             {t('footer.description')}
           </p>
-          <DonateNow onClick={navigateToDonate} className="mt-4 max-w-40" />
+          <DonateNow
+            shimmer
+            size="sm"
+            onClick={navigateToDonate}
+            className="mt-4 max-w-40"
+          />
         </div>
 
         {/* Quick Links */}
@@ -80,7 +85,6 @@ function Footer() {
         </div>
       </section>
 
-      {/* FOOTER BAR (BOTTOM SECTION) */}
       <div className="border-t border-border px-8 lg:px-16 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-text-secondary gap-3">
         <p>
           © {new Date().getFullYear()} {t('footer.title')}.{' '}

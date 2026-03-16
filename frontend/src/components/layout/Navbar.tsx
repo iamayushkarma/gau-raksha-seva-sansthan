@@ -4,6 +4,8 @@ import ChangeLanguage from '../common/button/ChangeLanguage';
 import { useNavigate } from 'react-router-dom';
 import { useDonateNavigate } from '@/hooks/useDonateNavigate';
 import Button from '../ui/Button';
+import DonateNowShimmer from '../common/button/DonateNowShimmer';
+import DonateNow from '../common/button/DonateNow';
 
 function Navbar() {
   const { t } = useTranslation();
@@ -31,7 +33,7 @@ function Navbar() {
         >
           <FaWhatsapp className="w-6 h-6 text-success" />
         </a>
-        <Button onClick={navigateToDonate}>{t('buttons.donate_now')}</Button>
+        <DonateNow size="sm" onClick={navigateToDonate} />
       </div>
     </nav>
   );

@@ -35,47 +35,36 @@ input[type='number'] {
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Primary Colors */
-  --color-primary: #ffde4d;
-  --color-primary-light: #ffeb80;
-  --color-primary-lighter: #fff5b3;
-  --color-primary-dark: #e6c61a;
-  --color-primary-darker: #ccad00;
+  /* Primary — Saffron Orange */
+  --color-primary: #ff7300;
+  --color-primary-light: #ff9500;
+  --color-primary-lighter: #ffbf80;
+  --color-primary-dark: #e85d00;
+  --color-primary-darker: #7a2e00;
 
-  /* Secondary/Accent Colors */
-  --color-secondary: #ff9d4d;
-  --color-accent: #4d9fff;
-  --color-accent-alt: #8d4dff;
+  /* Secondary — Crimson Red */
+  --color-secondary: #c00707;
+  --color-secondary-light: #e63030;
+  --color-secondary-lighter: #ffd0d0;
 
-  /* Neutral Colors */
-  --color-background: #fff9ee;
-  --color-surface: #fffaed;
-  --color-surface-light: #fffdeb;
-  --color-border: #f5e6b8;
-  --color-divider: #ede4cc;
+  /* Accent — Royal Navy */
+  --color-accent: #134e8e;
+  --color-accent-light: #1a73e8;
+  --color-accent-alt: #7aa7e6;
 
-  /* Text Colors */
-  --color-text-primary: #2d2400;
-  --color-text-secondary: #5c4d1a;
-  --color-text-tertiary: #8c7733;
-  --color-text-disabled: #b3a266;
-  --color-text-on-primary: #2d2400;
+  /* Backgrounds */
+  --color-background: #fff8f2;
+  --color-surface: #ffffff;
+  --color-border: #f0d5c0;
 
-  /* Semantic Colors */
-  --color-success: #6bc24d;
-  --color-warning: #ff9d4d;
-  --color-error: #ff4d4d;
-  --color-info: #4d9fff;
+  /* Text */
+  --color-text-primary: #2d0f00;
+  --color-text-secondary: #5c2c1c;
+  --color-text-tertiary: #8a5c4b;
 
-  /* Interactive States */
-  --color-hover: #ffe680;
-  --color-active: #e6c61a;
-  --color-focus: #4d9fff;
-  --color-disabled: #f5f0d9;
-
-  /* Shadows & Overlays */
-  --shadow-sm: 0 1px 2px rgba(230, 198, 26, 0.1);
-  --shadow-md: 0 4px 6px rgba(230, 198, 26, 0.15);
-  --shadow-lg: 0 10px 25px rgba(230, 198, 26, 0.2);
-  --overlay: rgba(255, 222, 77, 0.1);
+  /* Semantic */
+  --color-success: #2e9e4f;
+  --color-warning: #ff9500;
+  --color-error: #c00707;
+  --color-info: #134e8e;
 }

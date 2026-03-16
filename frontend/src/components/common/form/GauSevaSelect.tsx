@@ -2,6 +2,7 @@ import { ChevronsUpDown } from 'lucide-react';
 import { useRef, useLayoutEffect, useEffect } from 'react';
 import useDonationFormContext from '@/hooks/useDonationFormContext';
 import { useTranslation } from 'react-i18next';
+import { FormInput } from '@/components/common/form/FormInput';
 
 function GauSevaSelect() {
   const {
@@ -15,7 +16,6 @@ function GauSevaSelect() {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
   const sevas = t('donationForm.seva_options', {
     returnObjects: true,
   }) as string[];
@@ -23,10 +23,12 @@ function GauSevaSelect() {
   function toggleDropdown() {
     setShowDropdown((value) => !value);
   }
+
   function selectSeva(seva: string) {
     setSevaValue(seva);
     setShowDropdown(false);
   }
+
   useEffect(() => {
     function detectOutsideClick(e: MouseEvent) {
       if (
@@ -37,54 +39,48 @@ function GauSevaSelect() {
       }
     }
     document.addEventListener('click', detectOutsideClick);
-
     return () => document.removeEventListener('click', detectOutsideClick);
   }, []);
+
   useLayoutEffect(() => {
     if (!showDropdown) return;
     const container = containerRef.current;
     const dropdown = dropdownRef.current;
-
     if (!container || !dropdown) return;
-
     const containerRect = container.getBoundingClientRect();
     const dropdownHeight = dropdown.offsetHeight;
-
     const spaceBelow = window.innerHeight - containerRect.bottom;
     const spaceAbove = containerRect.top;
-
     setOpenUpwards(spaceBelow < dropdownHeight && spaceAbove > dropdownHeight);
   }, [showDropdown]);
+
   return (
     <div ref={containerRef} className="relative">
-      <input
-        type="text"
-        readOnly
-        value={sevaValue}
-        placeholder={t('donationForm.select_seva')}
-        onClick={toggleDropdown}
-        className="w-full rounded-lg font-medium cursor-pointer relative border-2 border-text-primary/30 bg-surface pr-6 px-4 py-2 text-text-primary focus:outline-none
-          focus:border-text-secondary"
-      />
-      <ChevronsUpDown
-        onClick={toggleDropdown}
-        className="size-5 cursor-pointer absolute top-[25%] right-[3%]"
-      />
-      {/* Select dropdown */}
+      {/* FormInput used as the trigger — readOnly + cursor-pointer */}
+      <div className="relative" onClick={toggleDropdown}>
+        <FormInput
+          label={t('donationForm.select_seva')}
+          value={sevaValue}
+          readOnly
+          placeholder={t('donationForm.select_seva')}
+          onChangeFunction={() => {}}
+          className="cursor-pointer pr-10"
+        />
+        <ChevronsUpDown className="size-5 text-text-secondary pointer-events-none absolute bottom-2.5 right-3" />
+      </div>
+
+      {/* Dropdown */}
       {showDropdown && (
         <div
           ref={dropdownRef}
-          className={`
-            absolute z-20 w-full rounded-md border border-text-primary/30
-            bg-background px-0.5 py-1.5 text-[0.9rem] font-medium shadow-lg
-            ${openUpwards ? 'bottom-full mb-1.5' : 'top-full mt-1'}
-          `}
+          className={`absolute z-20 w-full rounded-lg border border-text-primary/30 bg-background px-0.5 py-1.5 text-[0.9rem] font-medium shadow-lg
+            ${openUpwards ? 'bottom-full mb-1.5' : 'top-full mt-1'}`}
         >
           {sevas.map((seva) => (
             <div
-              onClick={() => selectSeva(seva)}
-              className="cursor-pointer rounded-sm font-medium hover:bg-text-secondary/10 px-2 py-1"
               key={seva}
+              onClick={() => selectSeva(seva)}
+              className="cursor-pointer rounded-md hover:bg-text-secondary/10 px-3 py-1.5 transition-colors duration-150"
             >
               {seva}
             </div>
