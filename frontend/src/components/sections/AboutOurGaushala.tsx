@@ -8,7 +8,10 @@ const AboutOurGaushala = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4overflow-hidden bg-background">
+    <section
+      className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 overflow-hidden
+  bg-linear-to-br from-background via-[#fff3e8] to-[#ffe8d0]"
+    >
       {/* Section heading */}
       <div className="text-center mb-10">
         <span className="text-sm font-semibold uppercase tracking-widest text-primary">

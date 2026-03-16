@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Heart } from 'lucide-react';
-import { MarqueeRow } from '@/components/MarqueeRow';
-import type { TestimonialItem } from '@/components/TestimonialCard';
+import { MarqueeRow } from '@/components/testimonials/MarqueeRow';
+import type { TestimonialItem } from '@/components/testimonials/TestimonialCard';
 
 export default function TestimonialsSection() {
   const { t } = useTranslation();

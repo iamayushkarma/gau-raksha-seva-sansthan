@@ -33,8 +33,6 @@ const VideoCarousel = () => {
   }, []);
 
   const isMobile = windowWidth < 640;
-
-  // desktop config
   const visibleCount = Math.min(windowWidth < 1024 ? 2 : 3, videos.length);
   const gapPx = 24;
   const cardWidthPercent = 100 / visibleCount;
@@ -47,7 +45,6 @@ const VideoCarousel = () => {
       ? v.description_hi || v.description_en
       : v.description_en;
 
-  // desktop arrows
   const prev = () => {
     setPlayingId(null);
     setStartIndex((i) => Math.max(0, i - 1));
@@ -57,7 +54,6 @@ const VideoCarousel = () => {
     setStartIndex((i) => Math.min(maxIndex, i + 1));
   };
 
-  // mobile scroll helpers
   const scrollToMobileIndex = (i: number) => {
     const container = mobileScrollRef.current;
     if (!container) return;
@@ -88,14 +84,18 @@ const VideoCarousel = () => {
     setMobileIndex(Math.min(Math.max(newIndex, 0), videos.length - 1));
   };
 
+  // ── Loading skeleton — dark bg version ──────────────────────────────────
   if (loading) {
     return (
-      <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4">
+      <section
+        className="py-16 lg:px-16 md:px-12 sm:px-8 px-4
+        bg-gradient-to-br from-text-primary via-primary-darker to-primary-dark"
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-6">
           {Array.from({ length: 3 }).map((_, i) => (
             <div
               key={i}
-              className="rounded-lg bg-gray-100 animate-pulse aspect-video"
+              className="rounded-lg bg-white/10 animate-pulse aspect-video"
             />
           ))}
         </div>
@@ -105,10 +105,12 @@ const VideoCarousel = () => {
 
   if (videos.length === 0) return null;
 
+  // ── Video card ────────────────────────────────────────────────────────────
   const VideoCard = ({ video }: { video: Video }) => {
     const thumb = video.thumbnail || getYouTubeThumbnail(video.youtube_url);
     const embedUrl = getYouTubeEmbed(video.youtube_url);
     const isPlaying = playingId === video.id;
+
     return (
       <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
         {isPlaying ? (
@@ -129,12 +131,13 @@ const VideoCarousel = () => {
               alt={getTitle(video)}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
+              {/* Play button — white circle, deep-brown icon */}
               <div className="w-12 h-12 rounded-full bg-white/80 group-hover:bg-white flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
                 <Play
                   size={18}
-                  className="text-gray-900 ml-0.5"
+                  className="text-text-primary ml-0.5"
                   fill="currentColor"
                 />
               </div>
@@ -145,42 +148,55 @@ const VideoCarousel = () => {
     );
   };
 
+  // ── Arrow button — dark bg variant ───────────────────────────────────────
+  const arrowBase =
+    'rounded-full border bg-white/10 border-white/20 text-white/70 flex items-center justify-center shadow-md transition-all duration-200 hover:bg-white/20 hover:border-primary hover:text-primary-light disabled:opacity-30 disabled:cursor-not-allowed';
+
   return (
-    <section className="overflow-hidden py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-primary-lighter/40">
-      {/* Heading */}
-      <div className="text-center mb-10">
-        <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+    <section
+      className="overflow-hidden py-16 lg:px-16 md:px-12 sm:px-8 px-4 relative
+      bg-gradient-to-br from-text-primary via-primary-darker to-primary-dark"
+    >
+      {/* Glow blobs */}
+      <div className="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+
+      {/* ── Section heading ── */}
+      <div className="text-center mb-10 relative z-10">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary-light">
           {t('videos.badge')}
         </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-2">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">
           {t('videos.title')}
         </h2>
-        <p className="text-text-secondary mt-3 max-w-xl mx-auto">
+        <p className="text-primary-lighter/80 mt-3 max-w-xl mx-auto">
           {t('videos.description')}
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Mobile */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* ── Mobile ── */}
         {isMobile && (
           <div>
-            {/* arrows + view all in one row */}
             <div className="flex items-center justify-between mb-3 px-1">
-              <Button onClick={() => navigate('/videos')}>
+              <Button
+                onClick={() => navigate('/videos')}
+                className="border-primary-light text-primary-light hover:bg-primary-light/10"
+              >
                 {t('videos.view_all') || 'View All'} →
               </Button>
               <div className="flex gap-2">
                 <button
                   onClick={mobilePrev}
                   disabled={mobileIndex === 0}
-                  className="w-8 h-8 rounded-full border border-border bg-white shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                  className={`w-8 h-8 ${arrowBase}`}
                 >
                   <ChevronLeft size={16} />
                 </button>
                 <button
                   onClick={mobileNext}
                   disabled={mobileIndex === videos.length - 1}
-                  className="w-8 h-8 rounded-full border border-border bg-white shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                  className={`w-8 h-8 ${arrowBase}`}
                 >
                   <ChevronRight size={16} />
                 </button>
@@ -201,10 +217,10 @@ const VideoCarousel = () => {
                 >
                   <VideoCard video={video} />
                   <div>
-                    <h3 className="font-bold text-text-primary text-sm uppercase tracking-wide leading-snug">
+                    <h3 className="font-bold text-white text-sm uppercase tracking-wide leading-snug">
                       {getTitle(video)}
                     </h3>
-                    <p className="text-text-secondary text-sm italic mt-1 line-clamp-3 leading-relaxed">
+                    <p className="text-primary-lighter/80 text-sm italic mt-1 line-clamp-3 leading-relaxed">
                       {getDescription(video)}
                     </p>
                   </div>
@@ -224,8 +240,8 @@ const VideoCarousel = () => {
                   }}
                   className={`rounded-full transition-all duration-300 ${
                     i === mobileIndex
-                      ? 'w-6 h-2 bg-primary'
-                      : 'w-2 h-2 bg-border hover:bg-primary/50'
+                      ? 'w-6 h-2 bg-primary-light'
+                      : 'w-2 h-2 bg-white/25 hover:bg-primary-light/60'
                   }`}
                 />
               ))}
@@ -233,11 +249,14 @@ const VideoCarousel = () => {
           </div>
         )}
 
-        {/*Desktop*/}
+        {/* ── Desktop ── */}
         {!isMobile && (
           <div>
             <div className="flex justify-end mb-6">
-              <Button onClick={() => navigate('/videos')}>
+              <Button
+                onClick={() => navigate('/videos')}
+                className="border-primary-light text-primary-light hover:bg-primary-light/10"
+              >
                 {t('videos.view_all') || 'View All'} →
               </Button>
             </div>
@@ -246,7 +265,7 @@ const VideoCarousel = () => {
               <button
                 onClick={prev}
                 disabled={startIndex === 0}
-                className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                className={`absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 ${arrowBase}`}
               >
                 <ChevronLeft size={18} />
               </button>
@@ -269,10 +288,10 @@ const VideoCarousel = () => {
                     >
                       <VideoCard video={video} />
                       <div>
-                        <h3 className="font-bold text-text-primary text-sm uppercase tracking-wide leading-snug">
+                        <h3 className="font-bold text-white text-sm uppercase tracking-wide leading-snug">
                           {getTitle(video)}
                         </h3>
-                        <p className="text-text-secondary text-sm italic mt-1 line-clamp-3 leading-relaxed">
+                        <p className="text-primary-lighter/80 text-sm italic mt-1 line-clamp-3 leading-relaxed">
                           {getDescription(video)}
                         </p>
                       </div>
@@ -284,12 +303,13 @@ const VideoCarousel = () => {
               <button
                 onClick={next}
                 disabled={startIndex === maxIndex}
-                className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                className={`absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 ${arrowBase}`}
               >
                 <ChevronRight size={18} />
               </button>
             </div>
 
+            {/* dots */}
             {videos.length > visibleCount && (
               <div className="flex justify-center gap-2 mt-8">
                 {Array.from({ length: maxIndex + 1 }).map((_, i) => (
@@ -301,8 +321,8 @@ const VideoCarousel = () => {
                     }}
                     className={`rounded-full transition-all duration-300 ${
                       i === startIndex
-                        ? 'w-6 h-2 bg-primary'
-                        : 'w-2 h-2 bg-border hover:bg-primary/50'
+                        ? 'w-6 h-2 bg-primary-light'
+                        : 'w-2 h-2 bg-white/25 hover:bg-primary-light/60'
                     }`}
                   />
                 ))}

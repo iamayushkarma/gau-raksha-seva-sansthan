@@ -82,7 +82,7 @@ export default {
         },
         // Footer dark navy system
         footer: {
-          DEFAULT: 'var(--color-footer)', // #0a1f3c — main footer bg
+          DEFAULT: 'var(--color-footer)', // #070F2B — main footer bg
           surface: 'var(--color-footer-surface)', // #0f2847 — card/column bg
           border: 'var(--color-footer-border)', // #1a3a5c — dividers
           text: 'var(--color-footer-text)', // #a8c4e0 — body text

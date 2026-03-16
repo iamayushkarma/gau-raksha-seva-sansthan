@@ -18,19 +18,19 @@ function Footer() {
     returnObjects: true,
   }) as QuickLink[];
   return (
-    <footer className="bg-surface-light border-t border-t-border ">
+    <footer className="bg-footer border-t border-t-border ">
       {/* MAIN FOOTER GRID */}
       <section className="p-8 lg:p-16 mx-auto grid grid-cols-1 max-sm:gap-10 lg:grid-cols-3 lg:justify-items-center">
         {/* Heading and sub heading section */}
         <div className="lg:p-2 col-span-1 flex flex-col">
           <div className="flex items-center gap-3">
             <img className="size-12" src="/logo/logo-192x192.png" />
-            <h2 className="font-semibold text-lg md:text-xl lg:text-2xl">
+            <h2 className="font-semibol text-white text-lg md:text-xl lg:text-2xl">
               {t('footer.title')}
             </h2>
           </div>
 
-          <p className="mt-6 md:mt-7 lg:mt-8 text-text-secondary">
+          <p className=" md:mt-7 lg:mt-8 text-gray-400">
             {t('footer.description')}
           </p>
           <DonateNow
@@ -43,7 +43,7 @@ function Footer() {
 
         {/* Quick Links */}
         <div className="flex flex-col col-span-1 select-none">
-          <h3 className="font-semibold text-[1.1rem]">
+          <h3 className="font-semibold text-white text-[1.1rem]">
             {t('footer.quick_links_title')}
           </h3>
 
@@ -52,7 +52,7 @@ function Footer() {
               <li
                 key={index}
                 onClick={() => navigate(link.href)}
-                className="py-1 cursor-pointer text-text-secondary hover:text-text-primary font-medium transition-all duration-100"
+                className="py-1 cursor-pointer text-gray-400 hover:text-gray-100 font-medium transition-all duration-100"
               >
                 {link.title}
               </li>
@@ -62,11 +62,11 @@ function Footer() {
 
         {/* Contact Us */}
         <div className="flex flex-col col-span-1 select-none">
-          <h3 className="font-semibold text-[1.1rem]">
+          <h3 className="font-semibold text-white text-[1.1rem]">
             {t('footer.contact_title')}
           </h3>
 
-          <div className="mt-5 space-y-3 text-text-secondary">
+          <div className="mt-5 space-y-3 text-gray-400">
             <div className="flex items-center gap-2">
               <Phone size={18} />
               <span>+91 9876543210</span>
@@ -85,7 +85,7 @@ function Footer() {
         </div>
       </section>
 
-      <div className="border-t border-border px-8 lg:px-16 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-text-secondary gap-3">
+      <div className="border-t border-border px-8 lg:px-16 py-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-200 gap-3">
         <p>
           © {new Date().getFullYear()} {t('footer.title')}.{' '}
           {t('footer.copyright')}
@@ -94,14 +94,14 @@ function Footer() {
         <div className="flex gap-6">
           <span
             onClick={() => navigate('/privacy-policy')}
-            className="cursor-pointer hover:text-text-primary"
+            className="cursor-pointer hover:text-white hover:underline"
           >
             {t('footer.privacy')}
           </span>
 
           <span
             onClick={() => navigate('/terms-of-service')}
-            className="cursor-pointer hover:text-text-primary"
+            className="cursor-pointer hover:text-white hover:underline"
           >
             {t('footer.terms')}
           </span>

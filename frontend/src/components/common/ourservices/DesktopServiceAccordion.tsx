@@ -28,7 +28,7 @@ export function DesktopServiceAccordion({
         <button
           onClick={prev}
           disabled={index === 0}
-          className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-surface shadow-md flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+          className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-surface shadow-md flex items-center justify-center text-text-tertiary hover:text-primary hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
         >
           <ChevronLeft size={18} />
         </button>
@@ -46,7 +46,7 @@ export function DesktopServiceAccordion({
             {services.map((service, i) => (
               <div
                 key={i}
-                className="group flex-shrink-0 rounded-2xl overflow-hidden border border-border bg-surface shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="group shrink-0 rounded-2xl overflow-hidden border border-border bg-surface shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 style={{
                   width: `calc(${cardWidthPercent}% - ${(gapPx * (visibleCount - 1)) / visibleCount}px)`,
                 }}
@@ -59,7 +59,7 @@ export function DesktopServiceAccordion({
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading={i === 0 ? 'eager' : 'lazy'}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
                 </div>
 
                 {/* Content */}
@@ -80,7 +80,7 @@ export function DesktopServiceAccordion({
         <button
           onClick={next}
           disabled={index === maxIndex}
-          className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-surface shadow-md flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+          className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-surface shadow-md flex items-center justify-center text-text-tertiary hover:text-primary hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
         >
           <ChevronRight size={18} />
         </button>
