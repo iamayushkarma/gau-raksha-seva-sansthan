@@ -21,7 +21,7 @@ export default function OurServices() {
   }));
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
       <SectionHeader
         badge={t('services.badge')}
         title={t('services.title')}

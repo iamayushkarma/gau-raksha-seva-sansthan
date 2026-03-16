@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+import { useState, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Service } from '@/types/servicestypes';
-import { ServiceCard } from './ServiceCard';
 
 interface MobileServiceCarouselProps {
   services: Service[];
@@ -9,148 +9,114 @@ interface MobileServiceCarouselProps {
 export function MobileServiceCarousel({
   services,
 }: MobileServiceCarouselProps) {
+  const [index, setIndex] = useState(0);
+  const total = services.length;
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
-  const userInteractionTimeoutRef = useRef<number | null>(null);
-  const scrollTimeoutRef = useRef<number | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const isSnappingRef = useRef(false);
 
-  const infiniteServices = [
-    ...services,
-    ...services,
-    ...services,
-    ...services,
-    ...services,
-  ];
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile) return;
-
-    const getCardWidth = () => {
-      const firstCard = scrollContainer.firstElementChild as HTMLElement;
-      return firstCard ? firstCard.offsetWidth + 16 : 0;
-    };
-
-    setTimeout(() => {
-      const cardWidth = getCardWidth();
-      scrollContainer.scrollLeft = cardWidth * services.length * 2;
-    }, 100);
-
-    let lastTime = performance.now();
-    const scrollSpeed = 30;
-
-    const autoScroll = (currentTime: number) => {
-      if (isUserInteracting || isSnappingRef.current) {
-        lastTime = currentTime;
-        animationFrameRef.current = requestAnimationFrame(autoScroll);
-        return;
-      }
-
-      const deltaTime = (currentTime - lastTime) / 1000;
-      lastTime = currentTime;
-
-      scrollContainer.scrollLeft += scrollSpeed * deltaTime;
-
-      const cardWidth = getCardWidth();
-      const sectionWidth = cardWidth * services.length;
-      const currentScroll = scrollContainer.scrollLeft;
-
-      if (currentScroll >= sectionWidth * 4) {
-        scrollContainer.scrollLeft = sectionWidth * 2;
-      } else if (currentScroll <= sectionWidth * 0.5) {
-        scrollContainer.scrollLeft = sectionWidth * 2.5;
-      }
-
-      animationFrameRef.current = requestAnimationFrame(autoScroll);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(autoScroll);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [isUserInteracting, services.length]);
-
-  const handleUserInteraction = () => {
-    setIsUserInteracting(true);
-
-    if (userInteractionTimeoutRef.current) {
-      clearTimeout(userInteractionTimeoutRef.current);
-    }
-
-    userInteractionTimeoutRef.current = window.setTimeout(() => {
-      setIsUserInteracting(false);
-    }, 2500);
+  const prev = () => {
+    const newIndex = Math.max(0, index - 1);
+    setIndex(newIndex);
+    scrollToIndex(newIndex);
   };
 
-  const handleTouchEnd = () => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer || isSnappingRef.current) return;
+  const next = () => {
+    const newIndex = Math.min(total - 1, index + 1);
+    setIndex(newIndex);
+    scrollToIndex(newIndex);
+  };
 
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
+  const scrollToIndex = (i: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const card = container.children[i] as HTMLElement;
+    if (card) {
+      container.scrollTo({ left: card.offsetLeft - 16, behavior: 'smooth' });
     }
+  };
 
-    scrollTimeoutRef.current = window.setTimeout(() => {
-      const firstCard = scrollContainer.firstElementChild as HTMLElement;
-      if (!firstCard) return;
-
-      isSnappingRef.current = true;
-
-      const cardWidth = firstCard.offsetWidth + 16;
-      const currentScroll = scrollContainer.scrollLeft;
-
-      const exactCardPosition = currentScroll / cardWidth;
-      const currentCardIndex = Math.floor(exactCardPosition);
-      const progressInCard = exactCardPosition - currentCardIndex;
-
-      let targetScroll;
-
-      if (progressInCard >= 0.6) {
-        targetScroll = (currentCardIndex + 1) * cardWidth;
-      } else if (progressInCard <= 0.4) {
-        targetScroll = currentCardIndex * cardWidth;
-      } else {
-        targetScroll =
-          progressInCard >= 0.5
-            ? (currentCardIndex + 1) * cardWidth
-            : currentCardIndex * cardWidth;
-      }
-
-      scrollContainer.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth',
-      });
-
-      setTimeout(() => {
-        isSnappingRef.current = false;
-      }, 400);
-    }, 100);
+  // sync dot index while user swipes
+  const handleScroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const scrollLeft = container.scrollLeft;
+    const cardWidth = (container.children[0] as HTMLElement)?.offsetWidth + 16;
+    const newIndex = Math.round(scrollLeft / cardWidth);
+    setIndex(Math.min(Math.max(newIndex, 0), total - 1));
   };
 
   return (
-    <div
-      ref={scrollRef}
-      onTouchStart={handleUserInteraction}
-      onTouchEnd={handleTouchEnd}
-      className="md:hidden flex gap-4 overflow-x-auto h-100 scrollbar-hide"
-      style={{
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-        WebkitOverflowScrolling: 'touch',
-        scrollSnapType: 'none',
-      }}
-    >
-      {infiniteServices.map((service, index) => (
-        <ServiceCard key={`mobile-${index}`} service={service} index={index} />
-      ))}
+    <div className="md:hidden">
+      {/* Arrows above */}
+      <div className="flex justify-end gap-2 mb-3 px-1">
+        <button
+          onClick={prev}
+          disabled={index === 0}
+          className="w-8 h-8 rounded-full border border-border bg-surface shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+        >
+          <ChevronLeft size={16} />
+        </button>
+        <button
+          onClick={next}
+          disabled={index === total - 1}
+          className="w-8 h-8 rounded-full border border-border bg-surface shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+        >
+          <ChevronRight size={16} />
+        </button>
+      </div>
+
+      {/* Scrollable track */}
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-hide"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {services.map((service, i) => (
+          <div
+            key={i}
+            className="group shrink-0 w-[85vw] snap-center rounded-2xl overflow-hidden border border-border bg-surface shadow-md flex flex-col"
+          >
+            {/* Image */}
+            <div className="relative h-52 overflow-hidden">
+              <img
+                src={service.img}
+                alt={service.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col flex-1 p-4 gap-2">
+              <h3 className="font-bold text-text-primary text-base leading-snug">
+                {service.title}
+              </h3>
+              <p className="text-text-secondary text-sm line-clamp-3 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-2 mt-4">
+        {services.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIndex(i);
+              scrollToIndex(i);
+            }}
+            className={`rounded-full transition-all duration-300 ${
+              i === index
+                ? 'w-6 h-2 bg-primary'
+                : 'w-2 h-2 bg-border hover:bg-primary/50'
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
