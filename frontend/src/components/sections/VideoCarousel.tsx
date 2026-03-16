@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { videoApi } from '@/config/video-api';
@@ -13,8 +13,10 @@ const VideoCarousel = () => {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
   const [playingId, setPlayingId] = useState<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     videoApi
@@ -30,35 +32,61 @@ const VideoCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const visibleCount = Math.min(
-    windowWidth < 640 ? 1 : windowWidth < 1024 ? 2 : 3,
-    videos.length
-  );
+  const isMobile = windowWidth < 640;
 
+  // desktop config
+  const visibleCount = Math.min(windowWidth < 1024 ? 2 : 3, videos.length);
   const gapPx = 24;
   const cardWidthPercent = 100 / visibleCount;
   const maxIndex = Math.max(0, videos.length - visibleCount);
 
   const getTitle = (v: Video) =>
     i18n.language === 'hi' ? v.title_hi || v.title_en : v.title_en;
-
   const getDescription = (v: Video) =>
     i18n.language === 'hi'
       ? v.description_hi || v.description_en
       : v.description_en;
 
+  // desktop arrows
   const prev = () => {
     setPlayingId(null);
     setStartIndex((i) => Math.max(0, i - 1));
   };
-
   const next = () => {
     setPlayingId(null);
     setStartIndex((i) => Math.min(maxIndex, i + 1));
   };
 
-  const canPrev = startIndex > 0;
-  const canNext = startIndex < maxIndex;
+  // mobile scroll helpers
+  const scrollToMobileIndex = (i: number) => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+    const card = container.children[i] as HTMLElement;
+    if (card)
+      container.scrollTo({ left: card.offsetLeft - 16, behavior: 'smooth' });
+  };
+
+  const mobilePrev = () => {
+    const newIndex = Math.max(0, mobileIndex - 1);
+    setMobileIndex(newIndex);
+    scrollToMobileIndex(newIndex);
+    setPlayingId(null);
+  };
+
+  const mobileNext = () => {
+    const newIndex = Math.min(videos.length - 1, mobileIndex + 1);
+    setMobileIndex(newIndex);
+    scrollToMobileIndex(newIndex);
+    setPlayingId(null);
+  };
+
+  const handleMobileScroll = () => {
+    const container = mobileScrollRef.current;
+    if (!container) return;
+    const cardWidth = (container.children[0] as HTMLElement)?.offsetWidth + 16;
+    const newIndex = Math.round(container.scrollLeft / cardWidth);
+    setMobileIndex(Math.min(Math.max(newIndex, 0), videos.length - 1));
+  };
 
   if (loading) {
     return (
@@ -77,9 +105,49 @@ const VideoCarousel = () => {
 
   if (videos.length === 0) return null;
 
+  const VideoCard = ({ video }: { video: Video }) => {
+    const thumb = video.thumbnail || getYouTubeThumbnail(video.youtube_url);
+    const embedUrl = getYouTubeEmbed(video.youtube_url);
+    const isPlaying = playingId === video.id;
+    return (
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
+        {isPlaying ? (
+          <iframe
+            src={embedUrl}
+            title={getTitle(video)}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <div
+            className="relative w-full h-full cursor-pointer group"
+            onClick={() => setPlayingId(video.id)}
+          >
+            <img
+              src={thumb}
+              alt={getTitle(video)}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-white/80 group-hover:bg-white flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
+                <Play
+                  size={18}
+                  className="text-gray-900 ml-0.5"
+                  fill="currentColor"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <section className="overflow-hidden py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-primary-lighter/40">
-      {/* heading */}
+      {/* Heading */}
       <div className="text-center mb-10">
         <span className="text-sm font-semibold uppercase tracking-widest text-primary">
           {t('videos.badge')}
@@ -93,120 +161,153 @@ const VideoCarousel = () => {
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-end mb-6">
-          <Button className="gap-3" onClick={() => navigate('/videos')}>
-            {t('videos.view_all') || 'View All'} →
-          </Button>
-        </div>
+        {/* Mobile */}
+        {isMobile && (
+          <div>
+            {/* arrows + view all in one row */}
+            <div className="flex items-center justify-between mb-3 px-1">
+              <Button onClick={() => navigate('/videos')}>
+                {t('videos.view_all') || 'View All'} →
+              </Button>
+              <div className="flex gap-2">
+                <button
+                  onClick={mobilePrev}
+                  disabled={mobileIndex === 0}
+                  className="w-8 h-8 rounded-full border border-border bg-white shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={mobileNext}
+                  disabled={mobileIndex === videos.length - 1}
+                  className="w-8 h-8 rounded-full border border-border bg-white shadow-sm flex items-center justify-center text-text-tertiary hover:text-text-primary hover:border-primary disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
 
-        <div className="relative">
-          {/* Left arrow */}
-          <button
-            onClick={prev}
-            disabled={!canPrev}
-            className="absolute left-0 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-          >
-            <ChevronLeft size={16} />
-          </button>
-
-          <div className="overflow-hidden mx-10 sm:mx-6">
+            {/* scrollable track */}
             <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                gap: `${gapPx}px`,
-                transform: `translateX(calc(-${startIndex * cardWidthPercent}% - ${startIndex * gapPx}px))`,
-              }}
+              ref={mobileScrollRef}
+              onScroll={handleMobileScroll}
+              className="flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {videos.map((video) => {
-                const thumb =
-                  video.thumbnail || getYouTubeThumbnail(video.youtube_url);
-                const embedUrl = getYouTubeEmbed(video.youtube_url);
-                const isPlaying = playingId === video.id;
-
-                return (
-                  <div
-                    key={video.id}
-                    className="shrink-0 flex flex-col gap-3"
-                    style={{
-                      width: `${100 / visibleCount}%`,
-                    }}
-                  >
-                    {/* video player or thumbnail */}
-                    <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
-                      {isPlaying ? (
-                        <iframe
-                          src={embedUrl}
-                          title={getTitle(video)}
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      ) : (
-                        <div
-                          className="relative w-full h-full cursor-pointer group"
-                          onClick={() => setPlayingId(video.id)}
-                        >
-                          <img
-                            src={thumb}
-                            alt={getTitle(video)}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-12 h-12 rounded-full bg-white/80 group-hover:bg-white flex items-center justify-center shadow-lg transition-all group-hover:scale-110">
-                              <Play
-                                size={18}
-                                className="text-gray-900 ml-0.5"
-                                fill="currentColor"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* title + description */}
-                    <div>
-                      <h3 className="font-bold text-text-primary text-sm uppercase tracking-wide leading-snug">
-                        {getTitle(video)}
-                      </h3>
-                      <p className="text-text-secondary text-sm italic mt-1 line-clamp-3 leading-relaxed">
-                        {getDescription(video)}
-                      </p>
-                    </div>
+              {videos.map((video) => (
+                <div
+                  key={video.id}
+                  className="shrink-0 w-[85vw] snap-center flex flex-col gap-3"
+                >
+                  <VideoCard video={video} />
+                  <div>
+                    <h3 className="font-bold text-text-primary text-sm uppercase tracking-wide leading-snug">
+                      {getTitle(video)}
+                    </h3>
+                    <p className="text-text-secondary text-sm italic mt-1 line-clamp-3 leading-relaxed">
+                      {getDescription(video)}
+                    </p>
                   </div>
-                );
-              })}
+                </div>
+              ))}
+            </div>
+
+            {/* dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {videos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setMobileIndex(i);
+                    scrollToMobileIndex(i);
+                    setPlayingId(null);
+                  }}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === mobileIndex
+                      ? 'w-6 h-2 bg-primary'
+                      : 'w-2 h-2 bg-border hover:bg-primary/50'
+                  }`}
+                />
+              ))}
             </div>
           </div>
+        )}
 
-          {/* Right arrow */}
-          <button
-            onClick={next}
-            disabled={!canNext}
-            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
+        {/*Desktop*/}
+        {!isMobile && (
+          <div>
+            <div className="flex justify-end mb-6">
+              <Button onClick={() => navigate('/videos')}>
+                {t('videos.view_all') || 'View All'} →
+              </Button>
+            </div>
 
-        {/* Dot indicators */}
-        {videos.length > visibleCount && (
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <div className="relative">
               <button
-                key={i}
-                onClick={() => {
-                  setStartIndex(i);
-                  setPlayingId(null);
-                }}
-                className={`rounded-full transition-all duration-300 ${
-                  i === startIndex
-                    ? 'w-6 h-2 bg-primary'
-                    : 'w-2 h-2 bg-border hover:bg-primary/50'
-                }`}
-              />
-            ))}
+                onClick={prev}
+                disabled={startIndex === 0}
+                className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <div className="overflow-hidden mx-6">
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{
+                    gap: `${gapPx}px`,
+                    transform: `translateX(calc(-${startIndex * cardWidthPercent}% - ${startIndex * gapPx}px))`,
+                  }}
+                >
+                  {videos.map((video) => (
+                    <div
+                      key={video.id}
+                      className="shrink-0 flex flex-col gap-3"
+                      style={{
+                        width: `calc(${cardWidthPercent}% - ${(gapPx * (visibleCount - 1)) / visibleCount}px)`,
+                      }}
+                    >
+                      <VideoCard video={video} />
+                      <div>
+                        <h3 className="font-bold text-text-primary text-sm uppercase tracking-wide leading-snug">
+                          {getTitle(video)}
+                        </h3>
+                        <p className="text-text-secondary text-sm italic mt-1 line-clamp-3 leading-relaxed">
+                          {getDescription(video)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                onClick={next}
+                disabled={startIndex === maxIndex}
+                className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+
+            {videos.length > visibleCount && (
+              <div className="flex justify-center gap-2 mt-8">
+                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setStartIndex(i);
+                      setPlayingId(null);
+                    }}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === startIndex
+                        ? 'w-6 h-2 bg-primary'
+                        : 'w-2 h-2 bg-border hover:bg-primary/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
