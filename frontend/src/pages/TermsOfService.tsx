@@ -9,7 +9,7 @@ import {
   Ban,
   Phone,
 } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import Button from '@/shared/components/ui/Button';
 
 const SECTION_ICONS = [
   <HandHeart size={20} />,

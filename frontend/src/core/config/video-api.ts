@@ -1,0 +1,23 @@
+import axios from 'axios';
+import type { Video, VideoFormData } from '@/shared/types/video.types';
+import { API_ENDPOINTS } from './api';
+
+export const videoApi = {
+  getAll: async (): Promise<Video[]> => {
+    const { data } = await axios.get(API_ENDPOINTS.videos);
+    return Array.isArray(data)
+      ? data
+      : Array.isArray(data.data)
+        ? data.data
+        : [];
+  },
+  create: async (form: VideoFormData): Promise<void> => {
+    await axios.post(API_ENDPOINTS.videos, form);
+  },
+  update: async (id: number, form: VideoFormData): Promise<void> => {
+    await axios.put(`${API_ENDPOINTS.videos}/${id}`, form);
+  },
+  remove: async (id: number): Promise<void> => {
+    await axios.delete(`${API_ENDPOINTS.videos}/${id}`);
+  },
+};

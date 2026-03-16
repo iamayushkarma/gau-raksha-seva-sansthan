@@ -9,7 +9,7 @@ import {
   Mail,
   RefreshCw,
 } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import Button from '@/shared/components/ui/Button';
 
 const SECTION_ICONS = [
   <Eye size={20} />,

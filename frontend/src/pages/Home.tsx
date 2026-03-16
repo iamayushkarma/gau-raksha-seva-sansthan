@@ -1,14 +1,14 @@
-import AboutOurGaushala from '@/components/sections/AboutOurGaushala';
-import GauSevaOptions from '@/components/sections/GauSevaOptions';
-import HeroSection from '@/components/sections/HeroSection';
-import SupportGauSeva from '@/components/sections/SupportGauSeva';
-import OurServices from '@/components/sections/OurServices';
-import Donation from '@/components/sections/Donation';
-import VideoCarousel from '@/components/sections/VideoCarousel';
+import AboutOurGaushala from '@/features/homepage/sections/AboutOurGaushala';
+import GauSevaOptions from '@/features/homepage/sections/GauSevaOptions';
+import HeroSection from '@/features/homepage/sections/HeroSection';
+import SupportGauSeva from '@/features/homepage/sections/SupportGauSeva';
+import OurServices from '@/features/homepage/sections/OurServices';
+import Donation from '@/features/homepage/sections/Donation';
+import VideoCarousel from '@/features/video/components/VideoCarousel';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import TestimonialSection from '@/components/sections/TestimonialSection';
-import CtaBanner from '@/components/sections/CtaBanner';
+import TestimonialSection from '@/features/testimonials/components/TestimonialSection';
+import CtaBanner from '@/features/homepage/sections/CtaBanner';
 
 function Home() {
   const useScrollToHash = () => {
