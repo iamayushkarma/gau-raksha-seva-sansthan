@@ -8,7 +8,7 @@ const AboutOurGaushala = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 mt-30 overflow-hidden">
+    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 overflow-hidden">
       {/* Section heading */}
       <div className="text-center mb-10">
         <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -24,11 +24,11 @@ const AboutOurGaushala = () => {
       <div className="flex mt-10 flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-7xl mx-auto">
         {/* Image Side */}
         <div className="w-full lg:w-1/2 relative overflow-hidden">
-          <div className="relative z-10 w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+          <div className="relative z-10 w-full aspect-4/5 rounded-xl overflow-hidden shadow-2xl">
+            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent z-10"></div>
 
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2qYhUzoZXHgNOtzsvi8Rn7aHz_IAsP_UMCmEVUoUnZdOEYfdu48CM_Tjh2Rd1vx6UKotfIl2lB13-45o48VWZj76mrVf1pKy7TVw-C5chDGbwls8kCZWoIhJpzvp1uDSKx147_-Hx3Dlx4BEfMdhPJm1bCRHB7jQ8hEcbpcH44_Y4-k2mgc9z5u2EZ82qeChtdP8WDQjOPW0xvxfEK3XTLnLkc275FSeRlnwUnD7MLZnI702d9EWl9uz8SvRXZiiCnGvzCZiDY1k"
+              src="https://images.pexels.com/photos/19840478/pexels-photo-19840478.jpeg?cs=srgb&dl=pexels-tango4567-19840478.jpg&fm=jpg"
               alt="A gentle cow in a sunlit pasture"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -42,14 +42,6 @@ const AboutOurGaushala = () => {
 
         {/* Text Side */}
         <div className="w-full lg:w-1/2 flex flex-col gap-6">
-          {/* Badge */}
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-12 bg-primary rounded-full"></span>
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-              {t('about.since', 'Since 1998')}
-            </span>
-          </div>
-
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
             {t('about.section_title', 'Our Sacred Journey')}
