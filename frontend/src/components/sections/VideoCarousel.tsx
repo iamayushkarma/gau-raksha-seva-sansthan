@@ -78,7 +78,7 @@ const VideoCarousel = () => {
   if (videos.length === 0) return null;
 
   return (
-    <section className="py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-primary-lighter/40">
+    <section className="overflow-hidden py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-primary-lighter/40">
       {/* heading */}
       <div className="text-center mb-10">
         <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -104,12 +104,12 @@ const VideoCarousel = () => {
           <button
             onClick={prev}
             disabled={!canPrev}
-            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            className="absolute left-0 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-border bg-white shadow-md flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-primary hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={16} />
           </button>
 
-          <div className="overflow-hidden mx-6">
+          <div className="overflow-hidden mx-10 sm:mx-6">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -126,9 +126,9 @@ const VideoCarousel = () => {
                 return (
                   <div
                     key={video.id}
-                    className="flex-shrink-0 flex flex-col gap-3"
+                    className="shrink-0 flex flex-col gap-3"
                     style={{
-                      width: `calc(${cardWidthPercent}% - ${(gapPx * (visibleCount - 1)) / visibleCount}px)`,
+                      width: `${100 / visibleCount}%`,
                     }}
                   >
                     {/* video player or thumbnail */}

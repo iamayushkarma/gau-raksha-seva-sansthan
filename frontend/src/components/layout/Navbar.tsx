@@ -15,7 +15,7 @@ function Navbar() {
         onClick={() => navigate('/')}
         className="flex cursor-pointer items-center gap-2"
       >
-        <img className="size-12" src="/logo/logo-192x192.png" />
+        <img className="size-10" src="/logo/logo-192x192.png" />
         <h2 className="hidden md:block font-semibold text-md md:text-lg lg:text-xl">
           {t('footer.title')}
         </h2>
@@ -26,10 +26,10 @@ function Navbar() {
           href="https://wa.me/number"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2.5 rounded-full bg-primary-lighter hover:bg-primary-light text-text-primary transition-colors duration-200"
+          className="p-1.5 rounded-full bg-primary-lighter hover:bg-primary-light text-text-primary transition-colors duration-200"
           aria-label="Contact on WhatsApp"
         >
-          <FaWhatsapp className="w-5 h-5" />
+          <FaWhatsapp className="w-6 h-6 text-success" />
         </a>
         <Button onClick={navigateToDonate}>{t('buttons.donate_now')}</Button>
       </div>

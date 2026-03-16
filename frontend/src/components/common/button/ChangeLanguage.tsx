@@ -25,7 +25,7 @@ function ChangeLanguage() {
       >
         <Languages className="size-4 text-text-secondary" />
         <span className="text-text-primary">
-          {i18n.language === 'hi' ? 'हिंदी' : 'English'}
+          {i18n.language === 'hi' ? 'हि' : 'EN'}
         </span>
         <ChevronDown
           className={`size-3.5 text-text-secondary transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
