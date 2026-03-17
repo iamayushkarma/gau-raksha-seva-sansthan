@@ -23,7 +23,7 @@ const OurStory = () => {
             />
           </div>
           <div className="absolute -bottom-5 -right-5 bg-secondary p-5 rounded-2xl text-white shadow-lg hidden md:block">
-            <p className="text-2xl font-bold">25+</p>
+            <p className="text-2xl font-bold">15+</p>
             <p className="text-xs uppercase tracking-widest font-semibold mt-0.5">
               {t('aboutPage.story.years')}
             </p>

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
 const stats = [
-  { value: '450+', labelKey: 'aboutPage.stats.cows' },
-  { value: '2.5k', labelKey: 'aboutPage.stats.meals' },
-  { value: '12k+', labelKey: 'aboutPage.stats.lives' },
-  { value: '50+', labelKey: 'aboutPage.stats.acres' },
+  { value: '110+', labelKey: 'aboutPage.stats.cows' },
+  { value: '150', labelKey: 'aboutPage.stats.meals' },
+  { value: '1k+', labelKey: 'aboutPage.stats.lives' },
+  { value: '25+', labelKey: 'aboutPage.stats.acres' },
 ];
 
 const ImpactStats = () => {

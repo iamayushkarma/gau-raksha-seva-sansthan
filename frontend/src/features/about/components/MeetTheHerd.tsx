@@ -5,22 +5,22 @@ import Button from '@/shared/components/ui/Button';
 const herd = [
   {
     name: 'Gauri',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDbuU4uDSLlLsr7xbi4l7lD1DpgVqEAlpl6Q42NRVroByNRgEg3rhARi7fcQ6QpS_kCGphwnC_NxmhE-CuW1ZWcTGXIvN5ZCCBCjiW5WaeL54vwX1BhSfqYN9097682fwu8FduzSbUCELHHl0GxEt6jPjFthwTgSk_y8bgsdrW19W4KtGDyNVBfC9xbAfmgwFsn1dIYjNK_bpXW9EVMTxTprEv7QnlwgPmzQ4zyxHWdrhTkH093i1fCsLMKsep6_-ati5F2uqarugU',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/6/65/Indian_Cow.jpg',
     storyKey: 'aboutPage.herd.gauri',
   },
   {
     name: 'Nandini',
-    img: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=800',
+    img: 'https://live.staticflickr.com/2859/33633878870_944933cdbd_z.jpg',
     storyKey: 'aboutPage.herd.nandini',
   },
   {
     name: 'Surabhi',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvaJSwa-M0xNyX5ez9e_WYqyS7dmYkLMN19IH8_XhLdQ-_OnTpSPCgzVD0yHJ_KhQp67qydrtjMhr_Rf4n-ZF3fCgI8w3l_LkYqcQKXHMGjsVkj-ApOEnZgKkxhYLJKHZjp-kOOBCEkLCK8Yud4PUY-luUyUeWUc358XKwedy6djFF0UZtMJ_Atz80QY0IM5DoazrPQNBv7hRbHoUGLAic1EmC8j5xhY_StN_05pe-_musMAC2I2tq9l2lDE4etArslS91t2efX0M',
+    img: 'https://cdn.pixabay.com/photo/2017/08/04/09/39/indian-cow-2579534_960_720.jpg',
     storyKey: 'aboutPage.herd.surabhi',
   },
   {
     name: 'Krishna',
-    img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBufEtWk2fdIXIkdQ02iL35b9pKh4vhnBucZ62aTsagSy8yYPwTHqaufHqypJ8IHIDAyfcBzhBEHCpLGzRnmI2EhxpXKbYoAKfbb8YT0H0kC2JFgF7koDNGQLi3zzxuiGVgwbZ4uMCPNZCq1Twzf32gKrT40kawlywrNTYu74msSfYIaAZWHmA5nh78A1VspOrNMIGdnGtT0OI52wtdKZxVp_6oMlxYf7sMPeoBIYbnjsQbS-q9GxLTPzrcs-Ivw1098Wm1-PzhiGE',
+    img: 'https://img.etimg.com/thumb/width-640,height-480,imgsize-37864,resizemode-75,msid-113815521/news/mumbai-news/maharashtra-declares-desi-cows-as-rajyamata-gomata-for-nutritional-milk-and-dung-benefits/native-indian-cow-breeds.jpg',
     storyKey: 'aboutPage.herd.krishna',
   },
 ];

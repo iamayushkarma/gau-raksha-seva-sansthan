@@ -74,7 +74,7 @@ const AboutOurGaushala = () => {
               </span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-3xl font-bold text-primary">500+</span>
+              <span className="text-3xl font-bold text-primary">110+</span>
               <span className="text-sm font-semibold uppercase tracking-wide text-text-secondary">
                 {t('about.stat_souls', 'Rescued Souls')}
               </span>

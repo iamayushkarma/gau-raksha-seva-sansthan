@@ -11,7 +11,7 @@ const AboutHero: React.FC = () => {
       <div
         className="relative overflow-hidden rounded-2xl md:rounded-3xl min-h-[420px] md:min-h-[520px] flex items-center justify-center text-center p-6 md:p-12 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(45, 36, 0, 0.4), rgba(45, 36, 0, 0.65)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8M5B-PfcLc_O-UBauMNtJwCeB1i_Ez7mc-6JZbUn0mv1w70CZ_pCBqrdrwZDMuBCXsgnPykIhbVFIYEYeAyqLx0MbUPJfoFvMPZYMGBINU_r1UKXeGduxKaiuTXKxWUbqCt2N3G7tdVa5SUkYF7p90MtrFDwHUbbjNEg1-bStdFfTrYYhJStYzm8hE4YeVgJ0FwH-0NNls8_wTQ-jGHrI2UKmM_Eh33197yLNgt6zravNZBapzdqWwlApdsrv4zcVEMMP_1rrQSM")`,
+          backgroundImage: `linear-gradient(rgba(45, 36, 0, 0.4), rgba(45, 36, 0, 0.65)), url("https://srisrigaushala.org/wp-content/uploads/2025/07/Desi-Cow-Breeds-of-India-1024x683.webp")`,
         }}
       >
         <div className="max-w-2xl">

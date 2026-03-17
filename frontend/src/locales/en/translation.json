@@ -5,33 +5,46 @@
     "description": "We rescue and care for cows, giving them safety, respect, and love.",
     "registered_ngo": "Registered NGO",
     "tax_exempt": "80G Tax Exempt",
+
     "mission_title": "Our Mission",
-    "mission_desc": "To protect and serve every stray cow, ensuring they live a life free from hunger, cruelty, and neglect through dedicated rescue operations.",
+    "mission_desc": "To rescue injured and abandoned cows, provide them proper medical care until they recover, and protect them from cruelty and illegal cow trafficking.",
+
     "vision_title": "Our Vision",
-    "vision_desc": "A compassionate world where no cow goes hungry or homeless, and traditional values of cow protection are upheld with modern care.",
+    "vision_desc": "A compassionate world where no cow is left injured, hungry, or unsafe, and every cow gets the care and protection it deserves.",
+
     "journey_title": "Our Journey",
-    "journey_desc": "Started in 2015 with just 2 rescued cows in a small shed, we have grown into a family of over 500+ cattle, supported by a dedicated team of veterinarians and volunteers. Our journey is a testament to the community's trust and support.",
+    "journey_desc": "Our Gaushala started in 2010 with a simple mission to help injured and helpless cows. Over the years, we have rescued many cows from accidents, streets, and unsafe conditions, provided them medical care, and looked after them until they become healthy. Along with this, we actively work to stop illegal cow trafficking and ensure their safety.",
+
     "different_title": "What Makes Us Different",
-    "feature1_title": "24/7 Emergency Rescue & Medical Care",
-    "feature1_desc": "Immediate ambulance service for injured street cows.",
-    "feature2_title": "Organic Fodder & Clean Environment",
-    "feature2_desc": "Nutritious, chemical-free diet and hygienic shelters.",
-    "feature3_title": "Lifetime Sanctuary",
-    "feature3_desc": "Old and non-milking cows are cared for until their last breath.",
+
+    "feature1_title": "24/7 Rescue & Medical Care",
+    "feature1_desc": "We rescue injured cows and provide timely treatment and care until they recover.",
+
+    "feature2_title": "Safe Shelter & Care",
+    "feature2_desc": "Cows are given a safe and clean environment where they can rest, heal, and live peacefully.",
+
+    "feature3_title": "Protection from Trafficking",
+    "feature3_desc": "We actively work against illegal cow transportation and protect them from harm.",
+
     "cows_rescued": "Cows Rescued",
     "acres_land": "Acres Land",
     "vet_care": "Vet Care",
+
     "quote": "The greatness of a nation and its moral progress can be judged by the way its animals are treated.",
     "mahathma": "Mahatma Gandhi",
-    "since": "Since 1998",
+
+    "since": "Since 2010",
+
     "section_title": "Our Sacred Journey",
-    "section_desc_1": "Founded in 1998, our sanctuary began with just two rescued calves in a small shed. Over two decades of unwavering devotion, it has blossomed into a 50-acre haven dedicated to the protection and care of these divine creatures.",
-    "section_desc_2": "Every corner of our grounds tells a story of compassion. We provide a lifetime of medical care, nourishing feed, and a peaceful environment where every soul is respected.",
-    "section_desc_3": "Our daily operations are a labor of love, beginning before dawn with personalized health checks and the distribution of fresh, organic fodder. From specialized geriatric care for our elders to playful paddocks for the youngsters, our dedicated team ensures every cow receives genuine affection and a dignified life.",
-    "stat_acres": "Acres of Haven",
-    "stat_souls": "Rescued Souls",
+    "section_desc_1": "Founded in 2010, our Gaushala began with a small effort to rescue injured cows and give them proper care and protection.",
+    "section_desc_2": "Every rescued cow is treated with compassion. We provide medical care, proper food, and a safe environment where they can recover and live peacefully.",
+    "section_desc_3": "Our daily work includes rescuing injured cows, providing treatment, and protecting them from illegal trafficking. Our team works with dedication to ensure every cow gets care, safety, and respect.",
+
+    "stat_acres": "Acres of Shelter",
+    "stat_souls": "Rescued Cows",
+
     "learn_more": "Learn More",
-    "watch_legacy": "Watch Legacy"
+    "watch_legacy": "Watch Our Work"
   },
   "aboutPage": {
     "back": "Back",
@@ -45,8 +58,8 @@
       "badge": "Our Story",
       "years": "Years of Care",
       "title": "Started Small, Grown with Love",
-      "desc_1": "Back in 1998, we started with just three abandoned calves and a small shed. Our founder believed every cow deserves a safe home - no matter how old or sick - and built this place with that one simple idea.",
-      "desc_2": "Today we have a 50-acre home for hundreds of cows, and a team of people who truly care. We do not just feed and shelter them - we treat every cow as family.",
+      "desc_1": "Back in 2010, we started with just two rescued cows and a small shed. Our goal was simple - to help injured and helpless cows and give them a safe place to recover and live with care.",
+      "desc_2": "Today, we have rescued and cared for 110+ cows. We provide them shelter, proper treatment, and a safe environment. Along with this, we actively work to stop illegal cow trafficking and protect them from harm.",
       "quote": "When you care for a cow, you care for the earth itself."
     },
     "pillars": {
@@ -54,26 +67,26 @@
       "description": "Three simple things drive everything we do here - care, responsibility, and community.",
       "compassion": {
         "title": "Genuine Care",
-        "desc": "Every cow here gets daily health checks, good food, and real attention - especially the old and sick ones who need it most."
+        "desc": "Every cow here gets proper treatment, good food, and personal attention - especially injured and weak cows who need it most."
       },
       "sustainability": {
         "title": "No Waste",
-        "desc": "We turn cow dung into natural fertilizer and biogas. Nothing goes to waste, and the land around us stays healthy."
+        "desc": "We make sure resources are used properly and maintain a clean and healthy environment for the cows."
       },
       "community": {
         "title": "People Together",
-        "desc": "Local volunteers, students, and families come here to help and learn. We grow together by taking care of something bigger than ourselves."
+        "desc": "Local people and volunteers support our mission and help us rescue and care for cows."
       }
     },
     "herd": {
       "badge": "Our Cows",
       "title": "Meet the Herd",
-      "description": "Every cow here has a name, a personality, and a story worth knowing.",
+      "description": "Every cow here has a story of rescue, care, and recovery.",
       "view_all": "See All Cows",
-      "gauri": "Rescued from a drought-hit area in 2021",
-      "nandini": "The calm, wise elder of the herd",
-      "surabhi": "Had a leg injury - now walks and runs freely",
-      "krishna": "Our youngest rescue, always full of energy"
+      "gauri": "Rescued from an injured condition and fully recovered",
+      "nandini": "A calm and healthy cow under our care",
+      "surabhi": "Recovered from a serious injury and now walks freely",
+      "krishna": "One of our youngest rescued cows, full of energy"
     },
     "stats": {
       "cows": "Cows in Our Care",
