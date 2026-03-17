@@ -250,8 +250,8 @@
     "quick_links": [
       { "title": "Home", "href": "/" },
       { "title": "About Us", "href": "/about" },
-      { "title": "Support Our Cause", "href": "/#donation-form" },
-      { "title": "Donation Options", "href": "/#donation" },
+      { "title": "Support Our Cause", "href": "/donation-form" },
+      { "title": "Donation Options", "href": "/#gau-seva" },
       { "title": "Contact Us", "href": "/contact-us" }
     ],
     "contact_title": "Contact Us",

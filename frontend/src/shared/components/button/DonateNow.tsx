@@ -14,12 +14,13 @@ function DonateNow({
 
   function handleClick() {
     onClick?.();
-    navigateToDonate();
+
     if (scrollToId) {
       document.getElementById(scrollToId)?.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
       });
+    } else {
+      navigateToDonate();
     }
   }
 

@@ -247,8 +247,8 @@
     "quick_links": [
       { "title": "होम", "href": "/" },
       { "title": "हमारे बारे में", "href": "/about" },
-      { "title": "हमारे कार्य का समर्थन करें", "href": "/#donation-form" },
-      { "title": "दान विकल्प", "href": "/#donation" },
+      { "title": "हमारे कार्य का समर्थन करें", "href": "/donation-form" },
+      { "title": "दान विकल्प", "href": "/#gau-seva" },
       { "title": "संपर्क करें", "href": "/contact-us" }
     ],
     "contact_title": "संपर्क करें",

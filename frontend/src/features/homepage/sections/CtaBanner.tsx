@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Heart, Gift } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import Button from '@/shared/components/ui/Button';
 import { useDonateNavigate } from '@/shared/hooks/useDonateNavigate';
 
@@ -13,7 +13,7 @@ export default function CtaBanner() {
         className="
           relative overflow-hidden
           max-w-6xl mx-auto
-          bg-[#f15a24] rounded-3xl
+          bg-primary rounded-3xl
           px-8 py-16 md:py-20
           text-center
         "

@@ -4,6 +4,7 @@ import DonateNow from '@/shared/components/button/DonateNow';
 import { useTranslation } from 'react-i18next';
 import useDonationFormContext from '@/shared/hooks/useDonationFormContext';
 import { API_ENDPOINTS } from '@/core/config/api';
+import Button from '@/shared/components/ui/Button';
 
 interface DonationOption {
   id: number;
@@ -44,13 +45,13 @@ const GauSevaOptions = () => {
   const handleDonateClick = (option: DonationOption) => {
     setSevaValue(getTitle(option));
     handleAmountChange(option.amount);
-    document
-      .getElementById('donation-form')
-      ?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById('donation');
+    console.log('Donation section:', el);
+    document.getElementById('donation')?.scrollIntoView();
   };
 
   return (
-    <section id="donation" className="py-8 mt-8 lg:px-16 md:px-12 sm:px-8 px-4">
+    <section id="gau-seva" className="py-8 mt-8 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
         <div className="text-center mb-10">
@@ -93,10 +94,12 @@ const GauSevaOptions = () => {
                   {getDescription(option)}
                 </p>
                 <div className="pt-3 mt-auto">
-                  <DonateNow
-                    size="md"
+                  <Button
+                    className="bg-text-primary text-primary!"
                     onClick={() => handleDonateClick(option)}
-                  />
+                  >
+                    Donate Now
+                  </Button>
                 </div>
               </div>
             </div>

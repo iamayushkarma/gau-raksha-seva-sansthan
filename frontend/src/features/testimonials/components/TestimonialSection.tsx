@@ -2,9 +2,12 @@ import { useTranslation } from 'react-i18next';
 import { Heart } from 'lucide-react';
 import { MarqueeRow } from '@/features/testimonials/components/MarqueeRow';
 import type { TestimonialItem } from '@/features/testimonials/components/TestimonialCard';
+import Button from '@/shared/components/ui/Button';
+import { useDonateNavigate } from '@/shared/hooks/useDonateNavigate';
 
 export default function TestimonialsSection() {
   const { t } = useTranslation();
+  const navigate = useDonateNavigate();
 
   const testimonials = t('testimonials.list', {
     returnObjects: true,
@@ -14,7 +17,7 @@ export default function TestimonialsSection() {
   const row2 = testimonials.slice(Math.ceil(testimonials.length / 2));
 
   return (
-    <section className="py-20 bg-[#fff8f2] overflow-hidden">
+    <section className="py-20 bg-background overflow-hidden">
       {/* ── Header ── */}
       <div className="max-w-7xl mx-auto px-4 mb-14 text-center">
         <span
@@ -44,30 +47,23 @@ export default function TestimonialsSection() {
         </p>
       </div>
 
-      {/* ── Row 1 — scrolls left ── */}
+      {/* Scroll Left */}
       <div className="mb-4">
         <MarqueeRow items={row1} direction="left" speed={35} />
       </div>
 
-      {/* ── Row 2 — scrolls right ── */}
+      {/* Scroll Right */}
       <MarqueeRow items={row2} direction="right" speed={42} />
 
-      {/* ── Bottom CTA ── */}
+      {/* CTA Button */}
       <div className="text-center mt-14">
         <p className="text-[#8A5C4B] text-sm mb-4">
           {t('testimonials.cta_sub')}
         </p>
-        <a
-          href="#donate"
-          className="inline-flex items-center gap-2 bg-[#FF7300] hover:bg-[#E85D00]
-            text-white font-semibold px-8 py-3 rounded-full
-            shadow-[0_4px_20px_rgba(255,115,0,0.35)]
-            hover:shadow-[0_6px_28px_rgba(255,115,0,0.5)]
-            transition-all duration-300 hover:-translate-y-0.5"
-        >
+        <Button className="text-white" onClick={navigate}>
           <Heart size={16} className="fill-white" />
           {t('testimonials.cta')}
-        </a>
+        </Button>
       </div>
     </section>
   );
