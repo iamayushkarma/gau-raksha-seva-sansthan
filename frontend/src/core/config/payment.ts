@@ -1,4 +1,4 @@
 export const UPI_PAYMENT_CONFIG = {
-  upiId: 'ravikarma2020@okicici',
-  payeeName: 'Ravi Gau Care',
+  upiId: '7748899838@ibl',
+  payeeName: 'Gau Raksha Seva Sansthan',
 };

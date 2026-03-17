@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import useDonationFormContext from '@/shared/hooks/useDonationFormContext';
 import DonateNow from '@/shared/components/button/DonateNow';
 import { payNow } from '@/shared/utils/payNow';
+import { useState } from 'react';
 
 function SubmarrySection() {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
   const { sevaValue, amount, name, phone, isAnonymous } =
     useDonationFormContext();
   return (
@@ -40,8 +42,13 @@ function SubmarrySection() {
           <QrCode className="size-4" />
           <p>{t('donationForm.summary.scan_to_pay')}</p>
         </div>
-        <div className="mx-auto mt-4 border-8 border-white rounded-lg overflow-hidden">
-          <img src="https://placehold.co/200x200" />
+        <div className="mx-auto max-w-60 mt-4 border-4  rounded-lg overflow-hidden">
+          <img
+            src="/images/payment-qr.png"
+            onClick={() => setOpen(true)}
+            className="cursor-pointer "
+            alt="QR Code"
+          />
         </div>
         <p className="text-center mt-4 text-sm text-text-secondary font-medium">
           {t('donationForm.summary.payment_methods')}
@@ -56,6 +63,32 @@ function SubmarrySection() {
           }
         />
       </div>
+      {/* QR modal */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="relative bg-white p-4 rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src="/images/payment-qr.png"
+              className="max-w-[80vw] max-h-[80vh] rounded-lg border-8 border-[#0d0d0d]"
+              alt="QR Full"
+            />
+
+            <a
+              href="/images/payment-qr.png"
+              download
+              className="mt-4 block text-center bg-primary text-white py-2 px-4 rounded-lg"
+            >
+              Download QR
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -54,14 +54,14 @@ const GauSevaOptions = () => {
     <section id="gau-seva" className="py-8 mt-8 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section heading */}
-        <div className="text-center mb-10">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+        <div className="text-center mb-10 md:mb-14">
+          <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-primary">
             {t('gauSeva.badge', 'Gau Seva')}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mt-2">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-text-primary mt-2 mb-4">
             {t('gauSeva.title')}
           </h2>
-          <p className="text-text-secondary mt-3 max-w-xl mx-auto">
+          <p className="text-base md:text-lg text-text-secondary leading-relaxed mt-3 max-w-xl mx-auto">
             {t('gauSeva.description')}
           </p>
         </div>

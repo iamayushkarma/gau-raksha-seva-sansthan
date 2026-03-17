@@ -36,54 +36,54 @@
   "aboutPage": {
     "back": "Back",
     "hero": {
-      "title": "Our Sacred Mission",
-      "description": "Dedicated to the protection, preservation, and welfare of our mother cows through timeless Vedic wisdom and modern compassion.",
-      "cta_primary": "Join Our Journey",
-      "cta_secondary": "Watch Story"
+      "title": "We Care for Cows",
+      "description": "We protect and look after cows every day - with love, proper care, and a safe place to live.",
+      "cta_primary": "Be a Part of This",
+      "cta_secondary": "Watch Our Story"
     },
     "story": {
-      "badge": "Our Legacy",
-      "years": "Years of Service",
-      "title": "Preserving the Heart of Bharat",
-      "desc_1": "Founded in 1998, Sacred Gaushala began as a humble shelter for just three abandoned calves. Our founder, inspired by the deep spiritual significance of Gau Seva (service to cows), envisioned a sanctuary where every cow—regardless of age or health—could live with dignity.",
-      "desc_2": "Today, we have grown into a 50-acre haven, fostering a community of caretakers, environmentalists, and spiritual seekers. We don't just provide shelter; we celebrate the divine presence that cows bring to our world.",
-      "quote": "Serving the cow is serving the divine essence of the Earth."
+      "badge": "Our Story",
+      "years": "Years of Care",
+      "title": "Started Small, Grown with Love",
+      "desc_1": "Back in 1998, we started with just three abandoned calves and a small shed. Our founder believed every cow deserves a safe home - no matter how old or sick - and built this place with that one simple idea.",
+      "desc_2": "Today we have a 50-acre home for hundreds of cows, and a team of people who truly care. We do not just feed and shelter them - we treat every cow as family.",
+      "quote": "When you care for a cow, you care for the earth itself."
     },
     "pillars": {
-      "title": "Our Core Pillars",
-      "description": "Our work is guided by three core principles that define our commitment to these sacred beings and our planet.",
+      "title": "What We Stand For",
+      "description": "Three simple things drive everything we do here - care, responsibility, and community.",
       "compassion": {
-        "title": "Compassion",
-        "desc": "Providing a lifelong home with 24/7 medical care, personalized nutrition, and unconditional love for rescued and elderly cattle."
+        "title": "Genuine Care",
+        "desc": "Every cow here gets daily health checks, good food, and real attention - especially the old and sick ones who need it most."
       },
       "sustainability": {
-        "title": "Sustainability",
-        "desc": "Promoting organic farming and zero-waste ecosystems by converting cow waste into natural fertilizers and clean energy."
+        "title": "No Waste",
+        "desc": "We turn cow dung into natural fertilizer and biogas. Nothing goes to waste, and the land around us stays healthy."
       },
       "community": {
-        "title": "Community",
-        "desc": "Educating the youth and involving local volunteers in spiritual Seva, fostering a culture of empathy and responsibility."
+        "title": "People Together",
+        "desc": "Local volunteers, students, and families come here to help and learn. We grow together by taking care of something bigger than ourselves."
       }
     },
     "herd": {
-      "badge": "Residents",
-      "title": "Meet Our Loved Ones",
-      "description": "Each resident here has a name, a personality, and a story of resilience.",
-      "view_all": "View All Herd",
-      "gauri": "Rescued from drought area in 2021",
-      "nandini": "The playful elder of the herd",
-      "surabhi": "Recovered from leg injury, now running free",
-      "krishna": "Youngest rescue, full of joy"
+      "badge": "Our Cows",
+      "title": "Meet the Herd",
+      "description": "Every cow here has a name, a personality, and a story worth knowing.",
+      "view_all": "See All Cows",
+      "gauri": "Rescued from a drought-hit area in 2021",
+      "nandini": "The calm, wise elder of the herd",
+      "surabhi": "Had a leg injury - now walks and runs freely",
+      "krishna": "Our youngest rescue, always full of energy"
     },
     "stats": {
-      "cows": "Cows Sheltered",
-      "meals": "Meals Daily",
-      "lives": "Lives Impacted",
-      "acres": "Acres of Green"
+      "cows": "Cows in Our Care",
+      "meals": "Meals Every Day",
+      "lives": "Lives Touched",
+      "acres": "Acres of Land"
     },
     "cta": {
-      "title": "Be a Part of the Change",
-      "description": "Your support provides food, medicine, and a loving home to those who cannot ask for it themselves. Every small contribution makes a giant difference.",
+      "title": "Help Us Care for Them",
+      "description": "Your support means food, medicine, and a safe home for cows who have no one else. Even a small amount goes a long way.",
       "donate": "Donate Now",
       "adopt": "Adopt a Cow"
     }

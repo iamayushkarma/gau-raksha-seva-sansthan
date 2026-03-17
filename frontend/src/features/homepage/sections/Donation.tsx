@@ -11,7 +11,7 @@ function Donation() {
   return (
     <section
       id="donation"
-      className="relative py-16 lg:px-16 md:px-12 sm:px-8 px-4 bg-linear-to-b from-primary-lighter/60 to-background"
+      className="relative py-10 pt-10 lg:px-16 md:px-12 sm:px-8 px-4 bg-linear-to-b from-primary-lighter/60 to-background"
     >
       <h2 className="text-center text-3xl lg:w-1/2 mx-auto md:text-5xl font-bold text-text-primary mb-4">
         {t('donationForm.main_title')}
