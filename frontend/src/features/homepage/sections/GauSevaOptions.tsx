@@ -45,9 +45,17 @@ const GauSevaOptions = () => {
   const handleDonateClick = (option: DonationOption) => {
     setSevaValue(getTitle(option));
     handleAmountChange(option.amount);
+
     const el = document.getElementById('donation');
-    console.log('Donation section:', el);
-    document.getElementById('donation')?.scrollIntoView();
+
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 60;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'auto',
+      });
+    }
   };
 
   return (

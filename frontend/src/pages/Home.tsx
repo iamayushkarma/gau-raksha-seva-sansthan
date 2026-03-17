@@ -28,10 +28,10 @@ function Home() {
     <div className="bg-background">
       <HeroSection />
       <AboutOurGaushala />
+      <GauSevaOptions />
       <OurServices />
       <VideoCarousel />
       <TestimonialSection />
-      <GauSevaOptions />
       <SupportGauSeva />
       <Donation />
       <CtaBanner />

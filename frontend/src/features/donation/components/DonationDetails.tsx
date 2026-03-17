@@ -23,7 +23,7 @@ function DonationDetails({
   const { t } = useTranslation();
   return (
     <section className="mt-2.5 md:mt-8 select-none bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
-      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
+      <div className="flex items-center gap-3 mb-4 pb-2 border-b border-divider">
         <h2 className="text-xl font-bold text-text-deep">
           {t('donationForm.donation_details_title')}
         </h2>

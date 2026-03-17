@@ -10,7 +10,7 @@ function DonarInformation() {
 
   return (
     <section className="bg-surface border rounded-xl shadow-sm border-divider p-6 sm:p-8">
-      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-divider">
+      <div className="flex items-center gap-3 mb-4 pb-2 border-b border-divider">
         <h2 className="text-[1.1rem] md:text-xl font-bold text-text-deep">
           {t('donationForm.donor_info_title')}
         </h2>
