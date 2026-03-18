@@ -4,6 +4,7 @@ import ChangeLanguage from '@/shared/components/button/ChangeLanguage';
 import { useNavigate } from 'react-router-dom';
 import { useDonateNavigate } from '@/shared/hooks/useDonateNavigate';
 import DonateNow from '@/shared/components/button/DonateNow';
+import logo from '/logo/logo-512x512.png';
 
 function Navbar() {
   const { t } = useTranslation();
@@ -18,7 +19,7 @@ function Navbar() {
         onClick={() => navigate('/')}
         className="flex cursor-pointer items-center gap-2"
       >
-        <img className="size-10" src="/logo/logo-192x192.png" />
+        <img className="size-10" src={logo} />
         <h2 className="hidden md:block font-semibold text-md md:text-lg lg:text-xl">
           {t('footer.title')}
         </h2>
