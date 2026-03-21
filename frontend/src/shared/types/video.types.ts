@@ -1,4 +1,4 @@
-export interface Video {
+interface Video {
   id: number;
   title_en: string;
   title_hi: string;
@@ -10,7 +10,7 @@ export interface Video {
   order_index?: number;
   created_at?: string;
 }
-export type VideoUI = {
+type VideoUI = {
   id: number;
   title_en: string;
   title_hi: string;
@@ -20,7 +20,7 @@ export type VideoUI = {
   thumbnail?: string;
 };
 
-export type VideoFormData = Omit<Video, 'id' | 'is_active' | 'created_at'>;
+type VideoFormData = Omit<Video, 'id' | 'is_active' | 'created_at'>;
 
 export const emptyVideoForm: VideoFormData = {
   title_en: '',
@@ -58,3 +58,5 @@ export function getYouTubeEmbed(url: string): string {
   const id = getYouTubeId(url);
   return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0` : '';
 }
+
+export type { Video, VideoUI, VideoFormData };
