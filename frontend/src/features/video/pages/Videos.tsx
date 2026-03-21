@@ -44,7 +44,7 @@ const Videos = () => {
   );
 
   return (
-    <main className="min-h-screen bg-background py-12 lg:px-16 md:px-12 sm:px-8 px-4">
+    <main className="min-h-screen bg-linear-to-b from-primary-lighter/60 to-background py-12 lg:px-16 md:px-12 sm:px-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">

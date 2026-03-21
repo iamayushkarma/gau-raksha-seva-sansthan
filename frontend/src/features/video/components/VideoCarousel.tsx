@@ -1,33 +1,36 @@
 import { useEffect, useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { videoApi } from '@/core/config/video-api';
+// import { videoApi } from '@/core/config/video-api';
+import { videoData } from '@/core/data/video';
 import {
   getYouTubeThumbnail,
   getYouTubeEmbed,
 } from '@/shared/types/video.types';
 import type { Video } from '@/shared/types/video.types';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../shared/components/ui/Button';
+import Button from '@/shared/components/ui/Button';
 
 const VideoCarousel = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [loading, setLoading] = useState(true);
+  // const [videos, setVideos] = useState<Video[]>([]);
+  const videos: Video[] = videoData;
+  // const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
   const [playingId, setPlayingId] = useState<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const mobileScrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    videoApi
-      .getAll()
-      .then((data) => setVideos(data.slice(0, 5)))
-      .catch(() => setVideos([]))
-      .finally(() => setLoading(false));
-  }, []);
+  //- Paused syncing from backend for now
+  // useEffect(() => {
+  //   videoApi
+  //     .getAll()
+  //     .then((data) => setVideos(data.slice(0, 5)))
+  //     .catch(() => setVideos([]))
+  //     .finally(() => setLoading(false));
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -88,23 +91,23 @@ const VideoCarousel = () => {
   };
 
   // ── Loading skeleton — dark bg version ──────────────────────────────────
-  if (loading) {
-    return (
-      <section
-        className="py-16 lg:px-16 md:px-12 sm:px-8 px-4
-        bg-gradient-to-br from-text-primary via-primary-darker to-primary-dark"
-      >
-        <div className="max-w-7xl mx-auto grid grid-cols-3 gap-6">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="rounded-lg bg-white/10 animate-pulse aspect-video"
-            />
-          ))}
-        </div>
-      </section>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <section
+  //       className="py-16 lg:px-16 md:px-12 sm:px-8 px-4
+  //       bg-gradient-to-br from-text-primary via-primary-darker to-primary-dark"
+  //     >
+  //       <div className="max-w-7xl mx-auto grid grid-cols-3 gap-6">
+  //         {Array.from({ length: 3 }).map((_, i) => (
+  //           <div
+  //             key={i}
+  //             className="rounded-lg bg-white/10 animate-pulse aspect-video"
+  //           />
+  //         ))}
+  //       </div>
+  //     </section>
+  //   );
+  // }
 
   if (videos.length === 0) return null;
 

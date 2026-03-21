@@ -5,11 +5,20 @@ export interface Video {
   description_en: string;
   description_hi: string;
   youtube_url: string; // full YouTube URL e.g. https://www.youtube.com/watch?v=XXX
-  thumbnail: string; // custom thumbnail URL or auto-generated
-  is_active: boolean;
-  order_index: number;
-  created_at: string;
+  thumbnail?: string; // custom thumbnail URL or auto-generated
+  is_active?: boolean;
+  order_index?: number;
+  created_at?: string;
 }
+export type VideoUI = {
+  id: number;
+  title_en: string;
+  title_hi: string;
+  description_en: string;
+  description_hi: string;
+  youtube_url: string;
+  thumbnail?: string;
+};
 
 export type VideoFormData = Omit<Video, 'id' | 'is_active' | 'created_at'>;
 

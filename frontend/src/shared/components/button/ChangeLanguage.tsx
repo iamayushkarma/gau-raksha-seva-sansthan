@@ -33,7 +33,7 @@ function ChangeLanguage() {
       </button>
 
       <div
-        className={`absolute right-0 top-[calc(100%+4px)] z-50 w-28 rounded-lg border border-border bg-surface-light shadow-md flex flex-col p-1 transition-all duration-200 origin-top-right ${open ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`absolute right-0 top-[calc(100%+4px)] z-50 w-28 rounded-lg border border-border bg-surface shadow-md flex flex-col p-1 transition-all duration-200 origin-top-right ${open ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         {options.map((opt) => (
           <button
