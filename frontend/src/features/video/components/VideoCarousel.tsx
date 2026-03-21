@@ -15,7 +15,7 @@ const VideoCarousel = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   // const [videos, setVideos] = useState<Video[]>([]);
-  const videos: Video[] = videoData;
+  const videos: Video[] = videoData.slice(0, 5);
   // const [loading, setLoading] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
@@ -90,7 +90,7 @@ const VideoCarousel = () => {
     setMobileIndex(Math.min(Math.max(newIndex, 0), videos.length - 1));
   };
 
-  // ── Loading skeleton — dark bg version ──────────────────────────────────
+  // Loading Skleton
   // if (loading) {
   //   return (
   //     <section
@@ -111,7 +111,7 @@ const VideoCarousel = () => {
 
   if (videos.length === 0) return null;
 
-  // ── Video card ────────────────────────────────────────────────────────────
+  // Video Card
   const VideoCard = ({ video }: { video: Video }) => {
     const thumb = video.thumbnail || getYouTubeThumbnail(video.youtube_url);
     const embedUrl = getYouTubeEmbed(video.youtube_url);
@@ -154,7 +154,7 @@ const VideoCarousel = () => {
     );
   };
 
-  // ── Arrow button — dark bg variant ───────────────────────────────────────
+  // Arrow button
   const arrowBase =
     'rounded-full border bg-white/10 border-white/20 text-white/70 flex items-center justify-center shadow-md transition-all duration-200 hover:bg-white/20 hover:border-primary hover:text-primary-light disabled:opacity-30 disabled:cursor-not-allowed';
 

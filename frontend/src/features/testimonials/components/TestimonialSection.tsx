@@ -13,8 +13,11 @@ export default function TestimonialsSection() {
     returnObjects: true,
   }) as TestimonialItem[];
 
-  const row1 = testimonials.slice(0, Math.ceil(testimonials.length / 2));
-  const row2 = testimonials.slice(Math.ceil(testimonials.length / 2));
+  const half = Math.ceil(testimonials.length / 2);
+
+  const row1 = [...testimonials.slice(0, half), ...testimonials.slice(0, half)];
+
+  const row2 = [...testimonials.slice(half), ...testimonials.slice(half)];
 
   return (
     <section className="py-20 bg-background overflow-hidden">

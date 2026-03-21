@@ -28,9 +28,9 @@ export const MarqueeRow = ({
   return (
     <div className="overflow-hidden w-full relative py-2">
       {/* Left fade */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-r from-[#fff8f2] to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-linear-to-r from-background to-transparent" />
       {/* Right fade */}
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-l from-[#fff8f2] to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-linear-to-l from-background to-transparent" />
 
       <div
         ref={trackRef}
