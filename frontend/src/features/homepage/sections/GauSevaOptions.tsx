@@ -1,37 +1,24 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import DonateNow from '@/shared/components/button/DonateNow';
 import { useTranslation } from 'react-i18next';
 import useDonationFormContext from '@/shared/hooks/useDonationFormContext';
-import { API_ENDPOINTS } from '@/core/config/api';
 import Button from '@/shared/components/ui/Button';
-
-interface DonationOption {
-  id: number;
-  title_en: string;
-  title_hi: string;
-  description_en: string;
-  description_hi: string;
-  amount: string;
-  image: string;
-}
+import type { DonationOption } from '@/shared/types/servicestypes';
+import { donationOptions } from '@/core/data/gau-seva-options';
 
 const GauSevaOptions = () => {
   const { t, i18n } = useTranslation();
-  const [options, setOptions] = useState<DonationOption[]>([]);
-  const [loading, setLoading] = useState(true);
+  const options = donationOptions;
   const { setSevaValue, handleAmountChange } = useDonationFormContext();
 
-  useEffect(() => {
-    axios
-      .get(API_ENDPOINTS.donationOptions)
-      .then(({ data }) => setOptions(data.data || []))
-      .catch(() => setOptions([]))
-      .finally(() => setLoading(false));
-  }, []);
+  //- data from backend (paused for now)
+  // useEffect(() => {
+  //   axios
+  //     .get(API_ENDPOINTS.donationOptions)
+  //     .then(({ data }) => setOptions(data.data || []))
+  //     .catch(() => setOptions([]))
+  //     .finally(() => setLoading(false));
+  // }, []);
 
-  if (loading) return null;
-
+  // if (loading) return null;
   const getTitle = (option: DonationOption) =>
     i18n.language === 'hi'
       ? option.title_hi || option.title_en
