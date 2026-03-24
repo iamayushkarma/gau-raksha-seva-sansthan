@@ -4,6 +4,7 @@ import useDonationFormContext from '@/shared/hooks/useDonationFormContext';
 import DonateNow from '@/shared/components/button/DonateNow';
 import { payNow } from '@/shared/utils/payNow';
 import { useState } from 'react';
+import paymentLogo from '/images/payment-qr.png';
 
 function SubmarrySection() {
   const { t } = useTranslation();
@@ -44,7 +45,7 @@ function SubmarrySection() {
         </div>
         <div className="mx-auto max-w-60 mt-4 border-4  rounded-lg overflow-hidden">
           <img
-            src="/images/payment-qr.png"
+            src={paymentLogo}
             onClick={() => setOpen(true)}
             className="cursor-pointer "
             alt="QR Code"
@@ -74,13 +75,13 @@ function SubmarrySection() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src="/images/payment-qr.png"
+              src={paymentLogo}
               className="max-w-[80vw] max-h-[80vh] rounded-lg border-8 border-[#0d0d0d]"
               alt="QR Full"
             />
 
             <a
-              href="/images/payment-qr.png"
+              href={paymentLogo}
               download
               className="mt-4 block text-center bg-primary text-white py-2 px-4 rounded-lg"
             >

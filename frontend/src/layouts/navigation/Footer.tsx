@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import DonateNow from '../../shared/components/button/DonateNow';
 import { useDonateNavigate } from '@/shared/hooks/useDonateNavigate';
+import logo from '/logo/logo-512x512.png';
 
 function Footer() {
   const { t } = useTranslation();
@@ -21,11 +22,7 @@ function Footer() {
         {/* Brand */}
         <div className="flex flex-col gap-5">
           <div className="flex items-center gap-3">
-            <img
-              className="size-10 md:size-12"
-              src="/logo/logo-192x192.png"
-              alt="Logo"
-            />
+            <img className="size-10 md:size-12" src={logo} alt="Logo" />
             <h2 className="font-semibold text-white text-lg md:text-xl">
               {t('footer.title')}
             </h2>
